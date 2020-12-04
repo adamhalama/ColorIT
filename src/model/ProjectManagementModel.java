@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public interface ProjectManagementModel
 {
     public void addProject(String name, String description);
@@ -49,29 +51,41 @@ public interface ProjectManagementModel
     public void setResponsibleTeamMember(Requirement requirement, TeamMember teamMember);
     public void setStatus(Requirement requirement, Status status);
     public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember);
+    public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime);
     public void ChangeTaskTimeTrack(Requirement requirement, TrackTime newTrackTime);
     public Task[] getAllTasks(Requirement requirement);
     public Task[] getTasksByName(Requirement requirement, String name);
     public void deleteTask(Requirement requirement, Task task);
     public void changeTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember);
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-    public
-
-
-
-
+    public Task[] getTasksByStatus(Requirement requirement, Status status);
+    public Task[] getTasksDaysBeforeDeadline(Requirement requirement, int days);
+    public int getTaskID(Task task);
+    public String getName(Task task);
+    public int getRequirementID(Task task);
+    public String getDescription(Task task);
+    public int getEstimatedTime(Task task);
+    public int getDeadlineTime(Task task);
+    public int getTimeSpend(Task task);
+    public int getTimeSpendOfMember(Task task, TeamMember teamMember);
+    public TeamMember[] getTeamMember(Task task);
+    public TeamMember getResponsibleTeamMember(Task task);
+    public Status getStatus(Task task);
+    public void setName(Task task, String name);
+    public void setDescription(Task task, String description);
+    public void setEstimatedTime(Task task, int estimatedTime);
+    public void setDeadlineTIme(Task task, int time);
+    public void setResponsibleTeamMember(Task task, TeamMember teamMember);
+    public void setStatus(Task task, Status status);
+    public void setTimeWorked(Task task, TeamMember teamMember, int time);
+    public void addTeamMember(Task task, TeamMember teamMember);
+    public void addTeamMember(String name, String email);
+    public void deleteTeamMember(TeamMember teamMember);
+    public ArrayList<TrackTime> getTrackTime(Task task);
+    public int getTotalTime(Task task);
+    public TeamMember[] getAllTeamMembers();
+    public String getEmail(TeamMember teamMember);
+    public String getName(TeamMember teamMember);
+    public void setEmail(TeamMember teamMember, String email);
+    public void setName(TeamMember teamMember, String name);
+    public Project[] getProjectsWorkedOn(TeamMember teamMember);
 }
