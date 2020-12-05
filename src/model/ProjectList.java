@@ -30,10 +30,9 @@ public class ProjectList
         projects.add(new Project(name, description));
     }
 
-    /** Returns an array of Project class objects with projects that have the name
-     *
-     * @param projectName
-     * @return
+    /** Returns an array of Project class objects with projects that have the name same as the input String
+     * @param projectName a String containing the name of the projects wanted as output
+     * @return an array of Project class objects, representing objects that have name variable equal to the input string
      */
     public Project[] getProjectsByName(String projectName)
     {
@@ -46,11 +45,17 @@ public class ProjectList
         return foundProjects.toArray(new Project[0]);
     }
 
+    /** Returns an array of all Project class objects present in the ArrayList of Project class, projects
+     * @return an array of Project class objects, representing all objects present in the ArrayList of Project class, projects
+     */
     public Project[] getAllProjects()
     {
         return projects.toArray(new Project[0]);
     }
 
+    /** Deletes a project that has the same 'projectID' as the input
+     * @param projectID determines which project to delete
+     */
     public void deleteProject(int projectID)
     {
         for (Project project : projects)
