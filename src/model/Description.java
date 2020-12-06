@@ -14,6 +14,12 @@ public abstract class Description
   {
       this.isFunctional = true;
   }
+  /* TODO - my suggestion to make it
+  public Description(boolean functional){
+    this.isFunctional = functional;
+  } TODO - than just make nonFunctional and Functional description call super(true) or super(false) as first thing in constructor
+
+   */
 
   public abstract String[] getDescription();
 
