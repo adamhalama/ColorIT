@@ -9,7 +9,7 @@ public class functionalDescription extends Description
 
     public functionalDescription(String[] description)
     {
-        super(description);
+        super(true);
         this.who = description[0];
         this.what = description[1];
         this.why = description[2];

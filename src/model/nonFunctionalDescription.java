@@ -6,7 +6,7 @@ public class nonFunctionalDescription extends Description
 
     public nonFunctionalDescription(String description)
     {
-        super(description);
+        super(false);
         this.description = description;
     }
 

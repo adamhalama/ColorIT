@@ -5,21 +5,11 @@ public abstract class Description
 
   private boolean isFunctional;
 
-  public Description(String description) //nonFunctional
+  public Description(boolean isFunctional) //nonFunctional
   {
-      this.isFunctional = false;
+      this.isFunctional = isFunctional;
 
   }
-  public Description(String[] description) //Functional
-  {
-      this.isFunctional = true;
-  }
-  /* TODO - my suggestion to make it
-  public Description(boolean functional){
-    this.isFunctional = functional;
-  } TODO - than just make nonFunctional and Functional description call super(true) or super(false) as first thing in constructor
-
-   */
 
   public abstract String[] getDescription();
 
