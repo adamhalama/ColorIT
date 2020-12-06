@@ -77,19 +77,25 @@ public class Requirement {
   public void setDescription(String description)
   {
     //we know that the user want to create non-functional description so we if we had non-functional description before we cas just set it
-    if (this.description.isFunctional()){
+    if (this.description.isFunctional())
+    {
       this.description = new nonFunctionalDescription(description);
-    } else {
-      ((nonFunctionalDescription) this.description).setNonFunctionalDescription(description); // I have cast the description to non functional and than I called set function
     }
+    else
+      {
+        ((nonFunctionalDescription) this.description).setNonFunctionalDescription(description); // I have cast the description to non functional and than I called set function
+      }
   }
   public void setDescription(String[] description)
   { //now we know that we got functional description, let's check if we had functional description before
-    if (this.description.isFunctional()){
+    if (this.description.isFunctional())
+    {
       ((functionalDescription) this.description).setFunctionalDescription(description[0],description[1],description[2]);
-    } else {
-      this.description = new functionalDescription(description); // I have cast the description to non functional and than I called set function
     }
+    else
+      {
+        this.description = new functionalDescription(description); // I have cast the description to non functional and than I called set function
+      }
   }
   public void setResponsibleTeamMember(TeamMember teamMember) {
     this.responsibleTeamMember=teamMember;

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Project
 {
@@ -14,7 +15,7 @@ public class Project
     private RequirementList requirementList;
 
 
-    public Project(String name, String description)
+    public Project(String name, String description) 
     {
         idCounter++;
         this.name = name;
@@ -57,10 +58,39 @@ public class Project
         return productOwner;
     }
 
-    public float getProductivityOfMember(TeamMember teamMember)
+    public float getProductivityOfMember(TeamMember teamMember) throws Exception
     {
-        //not finished
-        return 1;
+        // not finished
+        int spendTimeInTotal = 0;
+        int estimatedTimeInTotal = 0;
+
+        if (!(projectTeam.contains(teamMember)))
+        {
+            throw new Exception("teamMember is not in this project");
+        }
+
+        Requirement[] requirements = getRequirements().getAllRequirements();
+
+        for (int i = 0; i < requirements.length; i++)
+        {
+            Task[] tasks = requirements[i].getTasks();
+
+            for (int j = 0; j < tasks.length; j++)
+            {
+                if (tasks[i].getStatus() == new Status(/*FINISHED*/))
+                {
+                    ArrayList<TeamMember> taskTeamMembers
+                            = new ArrayList<>(Arrays.asList(tasks[i].getTeamMembers()));
+
+                    if (taskTeamMembers.contains(teamMember)) {
+                        spendTimeInTotal += tasks[i].getTimeSpentOfMember(teamMember);
+                        estimatedTimeInTotal += tasks[i].getEstimatedTime();
+                    }
+                }
+            }
+        }
+                
+        return (float) (estimatedTimeInTotal / spendTimeInTotal);
     }
 
     public void addTeamMember(TeamMember teamMember)
