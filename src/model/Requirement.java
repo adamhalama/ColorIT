@@ -55,8 +55,17 @@ public class Requirement {
   public Task[] getTasks() {
     return this.tasksList.getAllTasks();
   }
-  public int getEstimatedTime() {
-    return this.tasksList.getEstimatedTime();
+  public int getEstimatedTime()
+  {
+    Task[] tasks = this.tasksList.getAllTasks();
+    int outputTime = 0;
+
+    for (int i = 0; i < tasks.length; i++)
+    {
+      outputTime += tasks[i].getEstimatedTime();
+    }
+
+    return outputTime;
   }
 
   public void setName(String name) {
