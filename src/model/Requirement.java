@@ -12,20 +12,20 @@ public class Requirement {
   private TaskList tasksList;
 
   public Requirement(int id, String name, String description, int deadline, TeamMember responsibleTeamMember) {
-    this.requirementId=id;
-    this.name=name;
-    this.deadlineTime=deadline;
-    this.responsibleTeamMember=responsibleTeamMember;
-    this.status=new Status();
-    this.description=new Description(description);
+    this.requirementId = id;
+    this.name = name;
+    this.deadlineTime = deadline;
+    this.responsibleTeamMember = responsibleTeamMember;
+    this.status = new Status();
+    this.description = new nonFunctionalDescription(description);
   }
   public Requirement(int id, String name, String[] description, int deadline, TeamMember responsibleTeamMember) {
-    this.requirementId=id;
-    this.name=name;
-    this.deadlineTime=deadline;
-    this.responsibleTeamMember=responsibleTeamMember;
-    this.status=new Status();
-    this.description=new Description(description);
+    this.requirementId = id;
+    this.name = name;
+    this.deadlineTime = deadline;
+    this.responsibleTeamMember = responsibleTeamMember;
+    this.status = new Status();
+    this.description = new functionalDescription(description);
   }
 
   public int getRequirementId() {
@@ -65,11 +65,13 @@ public class Requirement {
   public void setDeadlineTime(int newTime) {
     this.deadlineTime=newTime;
   }
-  public void setDescription(String description) {
-    this.description=new Description(description);
+  public void setDescription(String description)
+  {
+    this.description.setDescription(description);
   }
-  public void setDescription(String[] description) {
-    this.description=new Description(description);
+  public void setDescription(String[] description)
+  {
+    this.description.setDescription(description[0], description[1], description[2]);
   }
   public void setResponsibleTeamMember(TeamMember teamMember) {
     this.responsibleTeamMember=teamMember;
