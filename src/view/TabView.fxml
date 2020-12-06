@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="view.TabViewController">
+    <TabPane prefHeight="409.0" prefWidth="600.0"
+             tabClosingPolicy="UNAVAILABLE" fx:id="tabPane">
+        <Tab text="Team Manager" onSelectionChanged="#tabSelected">
+            <fx:include source="TeamMemberView.fxml" fx:id="teamMemberView"/>
+        </Tab>
+        <Tab text="Project Manager" onSelectionChanged="#tabSelected">
+            <fx:include source="ProjectTabView.fxml" fx:id="projectTabView"/>
+        </Tab>
+    </TabPane>
+</VBox>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.StackPane?>
+<VBox prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="view.ProjectTabViewController">
+   <StackPane fx:id="stackPane">
+      <fx:include source="ProjectView.fxml" visible="true"
+                  fx:id="projectView"/>
+      <fx:include source="RequirementView.fxml" visible="false"
+                  fx:id="requirementView"/>
+      <fx:include source="TaskView.fxml" visible="false" fx:id="taskView"/>
+   </StackPane>
+</VBox>
