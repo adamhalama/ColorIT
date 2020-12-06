@@ -57,6 +57,12 @@ public class Project
         return productOwner;
     }
 
+    public float getProductivityOfMember(TeamMember teamMember)
+    {
+        //not finished
+        return 1;
+    }
+
     public void addTeamMember(TeamMember teamMember)
     {
         projectTeam.add(teamMember);
@@ -83,11 +89,6 @@ public class Project
         this.productOwner = productOwner;
     }
 
-    public float getProductivityOfMember(TeamMember teamMember)
-    {
-        //not finished
-        return 1;
-    }
 
     /*public String toString()
     {
