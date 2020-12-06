@@ -10,7 +10,7 @@ public class nonFunctionalDescription extends Description
         this.description = description;
     }
 
-    public void setDescription(String description)
+    public void setNonFunctionalDescription(String description)
     {
         this.description = description;
     }

@@ -17,9 +17,9 @@ public abstract class Description
 
   public abstract String[] getDescription();
 
-  public abstract void setDescription(String who, String what, String why);
+/*  public abstract void setDescription(String who, String what, String why);
 
-  public abstract void setDescription(String description);
+  public abstract void setDescription(String description);*/
 
   public boolean isFunctional()
   {

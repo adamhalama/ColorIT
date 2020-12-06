@@ -80,7 +80,7 @@ public class Requirement {
   }
   public void setDescription(String[] description)
   {
-    this.description.setDescription(description[0], description[1], description[2]);
+    this.description.setFunctionalDescription(description[0], description[1], description[2]);
   }
   public void setResponsibleTeamMember(TeamMember teamMember) {
     this.responsibleTeamMember=teamMember;
