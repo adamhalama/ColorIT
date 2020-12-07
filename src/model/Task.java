@@ -21,7 +21,7 @@ public class Task {
     this.deadlineTime=deadlineTime;
     this.estimatedTime=estimatedTime;
     this.status=Status.NOTSTARTED;
-    // this.trackTimeList = new TrackTimeList();
+    this.trackTimeList = new TrackTimeList();
   }
   public Task(String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember) {
     this.id=id;
@@ -31,7 +31,7 @@ public class Task {
     this.estimatedTime=estimatedTime;
     this.responsibleTeamMember=responsibleTeamMember;
     this.status=Status.NOTSTARTED;
-    // this.trackTimeList = new TrackTimeList();
+    this.trackTimeList = new TrackTimeList();
   }
 
   public int getTaskID() {
