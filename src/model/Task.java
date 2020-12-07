@@ -18,7 +18,7 @@ public class Task {
     this.description=description;
     this.deadlineTime=deadlineTime;
     this.estimatedTime=estimatedTime;
-    this.status=new Status();
+    this.status=Status.NOTSTARTED;
   }
   public Task(String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember) {
     this.id=id;
@@ -27,7 +27,7 @@ public class Task {
     this.deadlineTime=deadlineTime;
     this.estimatedTime=estimatedTime;
     this.responsibleTeamMember=responsibleTeamMember;
-    this.status=new Status();
+    this.status=Status.NOTSTARTED;
   }
 
   public int getTaskID() {
@@ -83,7 +83,7 @@ public class Task {
     this.responsibleTeamMember=teamMember;
   }
   public void setStatus(Status status) {
-    this.status=new Status(status);
+    this.status = status;
   }
   public void setTimeWorked(TeamMember teamMember, int time) {
     this.trackTimeList.setTimeWorked(teamMember, time);

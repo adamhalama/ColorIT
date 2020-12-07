@@ -77,7 +77,7 @@ public class Project
 
             for (int j = 0; j < tasks.length; j++)
             {
-                if (tasks[i].getStatus() == new Status(/*FINISHED*/))
+                if (tasks[i].getStatus() == Status.ENDED)
                 {
                     ArrayList<TeamMember> taskTeamMembers
                             = new ArrayList<>(Arrays.asList(tasks[i].getTeamMembers()));
