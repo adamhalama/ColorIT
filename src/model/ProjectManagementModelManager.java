@@ -49,112 +49,143 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     @Override
     public Project[] getProjectsByProductOwner(TeamMember teamMember)
     {
-        return new Project[0];
+        return projectList.getProjectsByProductOwner(teamMember);
     }
 
     @Override
-    public Project[] getProjectsByTeamMember(TeamMember teamMember) {
-        return new Project[0];
+    public Project[] getProjectsByTeamMember(TeamMember teamMember)
+    {
+        return projectList.getProjectsByTeamMember(teamMember);
     }
 
     @Override
-    public int getProjectID(Project project) {
-        return 0;
+    public int getProjectID(Project project)
+    {
+        return project.getProjectID();
     }
 
     @Override
-    public String getProjectName(Project project) {
-        return null;
+    public String getProjectName(Project project)
+    {
+        return project.getProjectName();
     }
 
     @Override
-    public String getProjectDescription(Project project) {
-        return null;
+    public String getProjectDescription(Project project)
+    {
+        return project.getProjectDescription();
     }
 
     @Override
-    public TeamMember[] getTeamMembers(Project project) {
-        return new TeamMember[0];
+    public TeamMember[] getTeamMembers(Project project)
+    {
+        return project.getTeamMembers();
     }
 
     @Override
-    public TeamMember getScrumMaster(Project project) {
-        return null;
+    public TeamMember getScrumMaster(Project project)
+    {
+        return project.getScrumMaster();
     }
 
     @Override
-    public TeamMember getProductOwner(Project project) {
-        return null;
+    public TeamMember getProductOwner(Project project)
+    {
+        return project.getProductOwner();
     }
 
     @Override
-    public void addTeamMember(Project project, TeamMember teamMember) {
-
+    public void addTeamMember(Project project, TeamMember teamMember)
+    {
+        project.addTeamMember(teamMember);
     }
 
     @Override
-    public void removeTeamMember(Project project, TeamMember teamMember) {
-
+    public void removeTeamMember(Project project, TeamMember teamMember)
+    {
+        project.removeTeamMember(teamMember);
     }
 
     @Override
-    public void setName(Project project, String name) {
-
+    public void setName(Project project, String name)
+    {
+        project.setName(name);
     }
 
     @Override
-    public void setScrumMaster(Project project, TeamMember teamMember) {
-
+    public void setScrumMaster(Project project, TeamMember teamMember)
+    {
+        project.setScrumMaster(teamMember);
     }
 
     @Override
-    public void setProductOwner(Project project, TeamMember teamMember) {
-
+    public void setProductOwner(Project project, TeamMember teamMember)
+    {
+        project.setProductOwner(teamMember);
     }
 
     @Override
-    public float getProductivityOfMember(Project project, TeamMember teamMember) {
-        return 0;
+    public float getProductivityOfMember(Project project, TeamMember teamMember)
+    {
+        // not sure about the whole exeption thing
+        // not finished
+        try
+        {
+            return project.getProductivityOfMember(teamMember);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     @Override
-    public void setDescription(Project project, String description) {
-
+    public void setDescription(Project project, String description)
+    {
+        project.setDescription(description);
     }
 
     @Override
-    public Requirement[] getRequirementsByStatus(Project project, Status status) {
-        return new Requirement[0];
+    public Requirement[] getRequirementsByStatus(Project project, Status status)
+    {
+        return project.getRequirements().getRequirementsByStatus(status);
     }
 
     @Override
-    public void deleteRequirement(Project project, Requirement requirement) {
-
+    public void deleteRequirement(Project project, Requirement requirement)
+    {
+        project.getRequirements().deleteRequirement(requirement);
     }
 
     @Override
-    public void reorderRequirements(int[] orderedRequirementsIDs) {
-
+    public void reorderRequirements(Project project, int[] orderedRequirementsIDs)
+    {
+        project.getRequirements().reorderRequirements(orderedRequirementsIDs);
     }
 
     @Override
-    public void addRequirement(Project project, String name, String nonFunctionalDescription, int deadline, TeamMember responsibleTeamMember) {
-
+    public void addRequirement(Project project, String name, String nonFunctionalDescription,
+                               int deadline, TeamMember responsibleTeamMember)
+    {
+        project.getRequirements().addRequirement(name, nonFunctionalDescription, deadline, responsibleTeamMember);
     }
 
     @Override
-    public void addRequirement(Project project, String name, String[] FunctionalDescription, int deadline, TeamMember responsibleTeamMember) {
-
+    public void addRequirement(Project project, String name, String[] FunctionalDescription,
+                               int deadline, TeamMember responsibleTeamMember)
+    {
+        project.getRequirements().addRequirement(name, FunctionalDescription, deadline, responsibleTeamMember);
     }
 
     @Override
-    public Requirement[] getAllRequirements(Project project) {
-        return new Requirement[0];
+    public Requirement[] getAllRequirements(Project project)
+    {
+        return project.getRequirements().getAllRequirements();
     }
 
     @Override
-    public Requirement[] getRequirementsBeforeDeadline(Project project, int days) {
-        return new Requirement[0];
+    public Requirement[] getRequirementsBeforeDeadline(Project project, int days)
+    {
+        return project.getRequirements().getRequirementsBeforeDeadline(days);
     }
 
     @Override

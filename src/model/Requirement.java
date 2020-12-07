@@ -101,7 +101,7 @@ public class Requirement {
     this.responsibleTeamMember=teamMember;
   }
   public void setStatus(Status status) {
-    this.status=new Status(status);
+    this.status = status;
   }
 
   public String toString() {

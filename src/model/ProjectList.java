@@ -68,7 +68,7 @@ public class ProjectList
         }
     }
 
-    public Project[] getProjectsByScumMaster(TeamMember teamMember)
+    public Project[] getProjectsByScrumMaster(TeamMember teamMember)
     {
         ArrayList<Project> foundProjects = new ArrayList<Project>();
         for (Project project : projects)
@@ -79,7 +79,7 @@ public class ProjectList
         return foundProjects.toArray(new Project[0]);
     }
 
-    public Project[] getProjectsByScrumMaster(TeamMember teamMember)
+    public Project[] getProjectsByProductOwner(TeamMember teamMember)
     {
         ArrayList<Project> foundProjects = new ArrayList<Project>();
         for (Project project : projects)
