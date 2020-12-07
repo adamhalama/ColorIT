@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 
 public class Task {
+  // not finished
+
   private int id;
   private String name;
   private String description;
@@ -19,6 +21,7 @@ public class Task {
     this.deadlineTime=deadlineTime;
     this.estimatedTime=estimatedTime;
     this.status=Status.NOTSTARTED;
+    // this.trackTimeList = new TrackTimeList();
   }
   public Task(String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember) {
     this.id=id;
@@ -28,6 +31,7 @@ public class Task {
     this.estimatedTime=estimatedTime;
     this.responsibleTeamMember=responsibleTeamMember;
     this.status=Status.NOTSTARTED;
+    // this.trackTimeList = new TrackTimeList();
   }
 
   public int getTaskID() {
@@ -49,13 +53,17 @@ public class Task {
     return this.deadlineTime;
   }
   public int getTimeSpent() {
-    return this.trackTimeList.getTotaltime();
+    return this.trackTimeList.getTotalTime();
   }
   public int getTimeSpentOfMember(TeamMember teamMember) {
     return this.trackTimeList.getTimeOfMember(teamMember);
   }
-  public TeamMember[] getTeamMembers() {
-    return this.trackTimeList.getTeamMembers();
+  public TeamMember[] getTeamMembers()
+  {
+    // return this.trackTimeList.getTeamMembers();
+
+
+    return new TeamMember[0];
   }
   public TeamMember getResponsibleTeamMember() {
     return this.responsibleTeamMember;
@@ -64,7 +72,7 @@ public class Task {
     return this.status;
   }
   public TrackTime[] getTrackTime() {
-    return this.trackTimeList.getTrackTime();
+    return this.trackTimeList.getTrackTime().toArray(new TrackTime[0]);
   }
 
   public void setName(String name) {
