@@ -3,32 +3,49 @@ package model;
 import java.util.ArrayList;
 
 public class TrackTimeList {
-    // not finished
-    // just dummy methods so there are no errors of methods not being implemented
+    private ArrayList<TrackTime> trackTimeList;
 
-    public TrackTimeList(){}
+    public TrackTimeList()
+    {
+        this.trackTimeList = new ArrayList<TrackTime>();
+    }
 
     public void setTimeWorked(TeamMember teamMember, int time)
     {
-        // need to implement
+        for (TrackTime trackTime : this.trackTimeList)
+        {
+            if (trackTime.getTeamMember().equals(teamMember)) {
+                trackTime.setTimeWorked(time);
+                return;
+            }
+        }
+        this.trackTimeList.add(new TrackTime(teamMember, time));
     }
 
 
     public ArrayList<TrackTime> getTrackTime()
     {
-        // need to implement
-        return new ArrayList<TrackTime>();
+        return this.trackTimeList;
     }
 
     public int getTimeOfMember(TeamMember teamMember)
     {
-        // need to implement
-        return 1;
+        for (TrackTime trackTime : this.trackTimeList)
+        {
+            if (trackTime.getTeamMember().equals(teamMember)) {
+                return trackTime.getTime();
+            }
+        }
+        return 0;
     }
 
     public int getTotalTime()
     {
-        // need to implement
-        return 1;
+        int totalTime = 0;
+        for (TrackTime trackTime : this.trackTimeList)
+        {
+            totalTime+=trackTime.getTime();
+        }
+        return totalTime;
     }
 }
