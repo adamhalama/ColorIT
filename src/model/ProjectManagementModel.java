@@ -56,7 +56,7 @@ public interface ProjectManagementModel
                         String description, int deadlineTime, TeamMember responsibleTeamMember);
     public void addTask(Requirement requirement, String name, int id, int estimatedTime,
                         String description, int deadlineTime);
-    public void ChangeTaskTimeTrack(Task task, TeamMember teamMember, int newTime);
+    public void ChangeTaskTrackTime(Task task, TeamMember teamMember, int newTime);
     public Task[] getAllTasks(Requirement requirement);
     public Task[] getTasksByName(Requirement requirement, String name);
     public void deleteTask(Requirement requirement, Task task);
