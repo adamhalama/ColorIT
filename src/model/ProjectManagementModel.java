@@ -27,8 +27,10 @@ public interface ProjectManagementModel
     public Requirement[] getRequirementsByStatus(Project project, Status status);
     public void deleteRequirement(Project project, Requirement requirement);
     public void reorderRequirements(Project project, int[] orderedRequirementsIDs);
-    public void addRequirement(Project project, String name, String nonFunctionalDescription, int deadline, TeamMember responsibleTeamMember);
-    public void addRequirement(Project project, String name, String[] FunctionalDescription, int deadline, TeamMember responsibleTeamMember);
+    public void addRequirement(Project project, String name, String nonFunctionalDescription,
+                               int deadline, TeamMember responsibleTeamMember);
+    public void addRequirement(Project project, String name, String[] FunctionalDescription,
+                               int deadline, TeamMember responsibleTeamMember);
     public Requirement[] getAllRequirements(Project project);
     public Requirement[] getRequirementsBeforeDeadline(Project project, int days);
     public Requirement[] getRequirementsByResponsibleTeamMember(Project project, TeamMember responsible);
@@ -50,13 +52,16 @@ public interface ProjectManagementModel
     public void setDeadlineTime(Requirement requirement, int newTime);
     public void setResponsibleTeamMember(Requirement requirement, TeamMember teamMember);
     public void setStatus(Requirement requirement, Status status);
-    public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember);
-    public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime);
+    public void addTask(Requirement requirement, String name, int id, int estimatedTime,
+                        String description, int deadlineTime, TeamMember responsibleTeamMember);
+    public void addTask(Requirement requirement, String name, int id, int estimatedTime,
+                        String description, int deadlineTime);
     public void ChangeTaskTimeTrack(Task task, TeamMember teamMember, int newTime);
     public Task[] getAllTasks(Requirement requirement);
     public Task[] getTasksByName(Requirement requirement, String name);
     public void deleteTask(Requirement requirement, Task task);
-    public void changeTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember);
+    public void changeTask(Task task, String name, int estimatedTime, String description,
+                           int deadlineTime, TeamMember responsibleTeamMember);
     public Task[] getTasksByStatus(Requirement requirement, Status status);
     public Task[] getTasksDaysBeforeDeadline(Requirement requirement, int days);
     public int getTaskID(Task task);

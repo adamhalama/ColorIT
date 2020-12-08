@@ -343,68 +343,61 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public void changeTask(Requirement requirement, String name, int id,
+    public void changeTask(Task task, String name,
                            int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember)
     {
-        Task[] task = requirement.getTasks().getAllTasks();
-
-        for (int i = 0; i < task.length; i++)
-        {
-            if(task[i].getTaskID() == id)
-            {
-                task[i].setName(name);
-                task[i].setEstimatedTime(estimatedTime);
-                task[i].setDescription(description);
-                task[i].setDeadlineTime(deadlineTime);
-                task[i].setResponsibleTeamMember(responsibleTeamMember);
-            }
-        }
-
-        /*task.setName(name);
+        task.setName(name);
         task.setEstimatedTime(estimatedTime);
         task.setDescription(description);
         task.setDeadlineTime(deadlineTime);
-        task.setResponsibleTeamMember(responsibleTeamMember);*/
+        task.setResponsibleTeamMember(responsibleTeamMember);
     }
 
     @Override
     public Task[] getTasksByStatus(Requirement requirement, Status status)
     {
+        return requirement.getTasks().getRequirementsByStatus(status);
+    }
+
+    @Override
+    public Task[] getTasksDaysBeforeDeadline(Requirement requirement, int days)
+    {
         return new Task[0];
     }
 
     @Override
-    public Task[] getTasksDaysBeforeDeadline(Requirement requirement, int days) {
-        return new Task[0];
-    }
-
-    @Override
-    public int getTaskID(Task task) {
+    public int getTaskID(Task task)
+    {
         return 0;
     }
 
     @Override
-    public String getName(Task task) {
+    public String getName(Task task)
+    {
         return null;
     }
 
     @Override
-    public int getRequirementID(Task task) {
+    public int getRequirementID(Task task)
+    {
         return 0;
     }
 
     @Override
-    public String getDescription(Task task) {
+    public String getDescription(Task task)
+    {
         return null;
     }
 
     @Override
-    public int getEstimatedTime(Task task) {
+    public int getEstimatedTime(Task task)
+    {
         return 0;
     }
 
     @Override
-    public int getDeadlineTime(Task task) {
+    public int getDeadlineTime(Task task)
+    {
         return 0;
     }
 
