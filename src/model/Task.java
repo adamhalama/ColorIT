@@ -93,7 +93,7 @@ public class Task {
   public void addTeamMember(TeamMember teamMember)
   {
     // not finished
-    // need tracktime for that
+    trackTimeList.setTimeWorked(teamMember, 0);
   }
 
   public void setName(String name) {

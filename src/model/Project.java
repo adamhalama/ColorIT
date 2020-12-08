@@ -82,7 +82,8 @@ public class Project
                     ArrayList<TeamMember> taskTeamMembers
                             = new ArrayList<>(Arrays.asList(tasks[i].getTeamMembers()));
 
-                    if (taskTeamMembers.contains(teamMember)) {
+                    if (taskTeamMembers.contains(teamMember))
+                    {
                         spendTimeInTotal += tasks[i].getTimeSpentOfMember(teamMember);
                         estimatedTimeInTotal += tasks[i].getEstimatedTime();
                     }

@@ -14,14 +14,14 @@ public class TrackTimeList {
     {
         for (TrackTime trackTime : this.trackTimeList)
         {
-            if (trackTime.getTeamMember().equals(teamMember)) {
+            if (trackTime.getTeamMember().equals(teamMember))
+            {
                 trackTime.setTimeWorked(time);
                 return;
             }
         }
         this.trackTimeList.add(new TrackTime(teamMember, time));
     }
-
 
     public ArrayList<TrackTime> getTrackTime()
     {

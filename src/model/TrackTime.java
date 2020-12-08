@@ -5,12 +5,12 @@ public class TrackTime {
   private TeamMember teamMember;
 
   public TrackTime(TeamMember teamMember, int timeSpend) {
-    this.teamMember=teamMember;
-    this.timeSpend=timeSpend;
+    this.teamMember = teamMember;
+    this.timeSpend = timeSpend;
   }
 
   public void setTimeWorked(int time) {
-    this.timeSpend=time;
+    this.timeSpend = time;
   }
   public TeamMember getTeamMember() {
     return  this.teamMember;
