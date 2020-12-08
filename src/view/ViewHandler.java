@@ -4,7 +4,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import model.Project;
 import model.ProjectManagementModel;
+import model.Requirement;
+import model.Task;
 
 import java.io.IOException;
 
@@ -14,8 +17,12 @@ public class ViewHandler
     private final Scene currentScene;
     private Stage primaryStage;
     private final ProjectManagementModel model;
+    private Project currentProject;
+    private Requirement currentRequirement;
+    private Task currentTask;
 
     private TabViewController tabViewController;
+    private ManageProjectViewController manageProjectViewController;
 
     public ViewHandler(ProjectManagementModel model)
     {
@@ -44,6 +51,8 @@ public class ViewHandler
             case "ProjectView":
             case "RequirementView":
             case "TaskView": root = loadTabView("TabView.fxml"); break;
+            case "ManageProject" : root = loadManageProject("ManageProjectView.fxml",true); break;
+            case "AddProject" : root = loadManageProject("ManageProjectView.fxml",false); break;
         }
         currentScene.setRoot(root);
         String title = "";
@@ -90,5 +99,55 @@ public class ViewHandler
             tabViewController.reset();
         }
         return tabViewController.getRoot();
+    }
+
+    private Region loadManageProject(String fxmlS,boolean edit){
+        Region root = null;
+        if (manageProjectViewController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlS));
+                root = loader.load();
+                manageProjectViewController = loader.getController();
+                manageProjectViewController.init(this,model, root, edit);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        } else {
+            manageProjectViewController.reset(edit);
+        }
+        return manageProjectViewController.getRoot();
+    }
+
+    public void setCurrentProject(Project currentProject)
+    {
+        this.currentProject = currentProject;
+    }
+
+    public Project getCurrentProject()
+    {
+        return currentProject;
+    }
+
+    public void setCurrentRequirement(Requirement currentRequirement)
+    {
+        this.currentRequirement = currentRequirement;
+    }
+
+    public Requirement getCurrentRequirement()
+    {
+        return currentRequirement;
+    }
+
+    public void setCurrentTask(Task currentTask)
+    {
+        this.currentTask = currentTask;
+    }
+
+    public Task getCurrentTask()
+    {
+        return currentTask;
     }
 }
