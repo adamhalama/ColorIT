@@ -30,7 +30,9 @@ public class ProjectTabViewController {
   }
 
   public void reset(){
-    //nothing
+    this.projectViewController.reset();
+    this.taskViewController.reset();
+    this.requirementViewController.reset();
   }
 
   public Region getRoot()
