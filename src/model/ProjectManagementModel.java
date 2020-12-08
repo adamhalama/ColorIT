@@ -85,7 +85,7 @@ public interface ProjectManagementModel
     public void addTeamMember(Task task, TeamMember teamMember);
     public void addTeamMember(String name, String email);
     public void deleteTeamMember(TeamMember teamMember);
-    public ArrayList<TrackTime> getTrackTime(Task task);
+    public TrackTime[] getTrackTime(Task task);
     public int getTotalTime(Task task);
     public TeamMember[] getAllTeamMembers();
     public String getEmail(TeamMember teamMember);
