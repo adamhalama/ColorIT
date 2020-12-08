@@ -37,9 +37,9 @@ public class Task {
   public int getTaskID() {
     return this.id;
   }
-  /*public int getRequirementID() {
-    return super.get;
-  }*/
+  public int getRequirementID() {
+    return 0;
+  }
   public String getName() {
     return this.name;
   }
@@ -74,6 +74,10 @@ public class Task {
   }
   public TrackTime[] getTrackTime() {
     return this.trackTimeList.getTrackTime().toArray(new TrackTime[0]);
+  }
+  public void addTeamMember(TeamMember teamMember)
+  {
+
   }
 
   public void setName(String name) {

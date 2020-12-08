@@ -1,5 +1,6 @@
 package model;
 
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class TaskList {
@@ -36,7 +37,8 @@ public class TaskList {
     }
     return foundTasks.toArray(new Task[0]);
   }
-  public Task[] getRequirementsByStatus(Status status) {
+  public Task[] getTasksByStatus(Status status)
+  {
     ArrayList<Task> foundTasks = new ArrayList<Task>();
     for (Task task : this.tasks)
     {
@@ -46,15 +48,42 @@ public class TaskList {
     }
     return foundTasks.toArray(new Task[0]);
   }
-  /*public Requirement[] getRequirementsBeforeDeadline(Status status) {
-    ArrayList<Requirement> foundRequirements = new ArrayList<Requirement>();
-    for (Requirement requirement : this.requirements)
+
+  /*public Task[] getTasksBeforeDeadline(Status status)
+  {
+    ArrayList<Task> foundTasks = new ArrayList<Task>();
+
+    for (Task task : this.tasks)
     {
-      if (requirement.getStatus().equals(status))
-        foundRequirements.add(requirement);
+      if (task.getStatus().equals(status))
+        foundTasks.add(task);
     }
-    return foundRequirements.toArray(new Requirement[0]);
+    return foundTasks.toArray(new Task[0]);
   }*/
+  
+  public Task[] getTasksDaysBeforeDeadline(int days)
+  {
+    // not finished
+    ArrayList<Task> tasksBeforeDeadline = new ArrayList<>();
+
+    int hoursInDay = 24;
+    int minutesInHour = 60;
+    int secondsInMinute = 60;
+
+    long secondsBeforeDeadline = days * hoursInDay * minutesInHour * secondsInMinute;
+    long currentTime = Instant.now().getEpochSecond();
+
+    for (int i = 0; i < tasks.size(); i++)
+    {
+      long deadline = tasks.get(i).getDeadlineTime();
+
+      if (deadline - secondsBeforeDeadline >= currentTime)
+        tasksBeforeDeadline.add(tasks.get(i));
+    }
+
+    return tasksBeforeDeadline.toArray(new Task[0]);
+  }
+
   public int getUsedTime() {
     int totalTime = 0;
     for (Task task : this.tasks)
