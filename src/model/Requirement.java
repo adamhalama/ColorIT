@@ -52,8 +52,8 @@ public class Requirement {
   public boolean isFunctional() {
     return this.description.isFunctional();
   }
-  public Task[] getTasks() {
-    return this.tasksList.getAllTasks();
+  public TaskList getTasks() {
+    return this.tasksList;
   }
   public int getEstimatedTime()
   {

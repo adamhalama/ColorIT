@@ -206,122 +206,170 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public int getRequirementID(Requirement requirement) {
-        return 0;
+    public int getRequirementID(Requirement requirement)
+    {
+        return requirement.getRequirementId();
     }
 
     @Override
-    public int getUsedTime(Requirement requirement) {
-        return 0;
+    public int getUsedTime(Requirement requirement)
+    {
+        return requirement.getUsedTime();
     }
 
     @Override
-    public String getName(Requirement requirement) {
-        return null;
+    public String getName(Requirement requirement)
+    {
+        return requirement.getName();
     }
 
     @Override
-    public boolean isFunctional(Requirement requirement) {
-        return false;
+    public boolean isFunctional(Requirement requirement)
+    {
+        return requirement.isFunctional();
     }
 
     @Override
-    public String[] getDescription(Requirement requirement) {
-        return new String[0];
+    public String[] getDescription(Requirement requirement)
+    {
+        return requirement.getDescription();
     }
 
     @Override
-    public TaskList getTasks(Requirement requirement) {
-        return null;
+    public TaskList getTasks(Requirement requirement)
+    {
+        return requirement.getTasks();
     }
 
     @Override
-    public int getEstimatedTime(Requirement requirement) {
-        return 0;
+    public int getEstimatedTime(Requirement requirement)
+    {
+        return requirement.getEstimatedTime();
     }
 
     @Override
-    public TeamMember getResponsibleTeamMember(Requirement requirement) {
-        return null;
+    public TeamMember getResponsibleTeamMember(Requirement requirement)
+    {
+        return requirement.getResponsibleTeamMember();
     }
 
     @Override
-    public Status getStatus(Requirement requirement) {
-        return null;
+    public Status getStatus(Requirement requirement)
+    {
+        return requirement.getStatus();
     }
 
     @Override
-    public int getDeadlineTime(Requirement requirement) {
-        return 0;
+    public int getDeadlineTime(Requirement requirement)
+    {
+        return requirement.getDeadlineTime();
     }
 
     @Override
-    public void setName(Requirement requirement, String name) {
-
+    public void setName(Requirement requirement, String name)
+    {
+        requirement.setName(name);
     }
 
     @Override
-    public void setDescription(Requirement requirement, String description) {
-
+    public void setDescription(Requirement requirement, String description)
+    {
+        requirement.setDescription(description);
     }
 
     @Override
-    public void setDescription(Requirement requirement, String who, String what, String why) {
-
+    public void setDescription(Requirement requirement, String who, String what, String why)
+    {
+        String[] description = new String[2];
+        description[0] = who;
+        description[1] = what;
+        description[2] = why;
+        requirement.setDescription(description);
     }
 
     @Override
-    public void setDeadlineTime(Requirement requirement, int newTime) {
-
+    public void setDeadlineTime(Requirement requirement, int newTime)
+    {
+        requirement.setDeadlineTime(newTime);
     }
 
     @Override
-    public void setResponsibleTeamMember(Requirement requirement, TeamMember teamMember) {
-
+    public void setResponsibleTeamMember(Requirement requirement, TeamMember teamMember)
+    {
+        requirement.setResponsibleTeamMember(teamMember);
     }
 
     @Override
-    public void setStatus(Requirement requirement, Status status) {
-
+    public void setStatus(Requirement requirement, Status status)
+    {
+        requirement.setStatus(status);
     }
 
     @Override
-    public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember) {
-
+    public void addTask(Requirement requirement, String name, int id, int estimatedTime,
+                        String description, int deadlineTime, TeamMember responsibleTeamMember)
+    {
+        requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime, responsibleTeamMember);
     }
 
     @Override
-    public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime) {
-
+    public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime)
+    {
+        requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime);
     }
 
     @Override
-    public void ChangeTaskTimeTrack(Requirement requirement, TrackTime newTrackTime) {
-
+    public void ChangeTaskTimeTrack(Task task, TeamMember teamMember, int newTime)
+    {
+        task.setTimeWorked(teamMember, newTime);
     }
 
     @Override
-    public Task[] getAllTasks(Requirement requirement) {
-        return new Task[0];
+    public Task[] getAllTasks(Requirement requirement)
+    {
+        return requirement.getTasks().getAllTasks();
     }
 
     @Override
-    public Task[] getTasksByName(Requirement requirement, String name) {
-        return new Task[0];
+    public Task[] getTasksByName(Requirement requirement, String name)
+    {
+        return requirement.getTasks().getTasksByName(name);
     }
 
     @Override
-    public void deleteTask(Requirement requirement, Task task) {
-
+    public void deleteTask(Requirement requirement, Task task)
+    {
+        requirement.getTasks().deleteTask(task);
     }
 
     @Override
-    public void changeTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember) {
+    public void changeTask(Requirement requirement, String name, int id,
+                           int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember)
+    {
+        Task[] task = requirement.getTasks().getAllTasks();
 
+        for (int i = 0; i < task.length; i++)
+        {
+            if(task[i].getTaskID() == id)
+            {
+                task[i].setName(name);
+                task[i].setEstimatedTime(estimatedTime);
+                task[i].setDescription(description);
+                task[i].setDeadlineTime(deadlineTime);
+                task[i].setResponsibleTeamMember(responsibleTeamMember);
+            }
+        }
+
+        /*task.setName(name);
+        task.setEstimatedTime(estimatedTime);
+        task.setDescription(description);
+        task.setDeadlineTime(deadlineTime);
+        task.setResponsibleTeamMember(responsibleTeamMember);*/
     }
 
     @Override
-    public Task[] getTasksByStatus(Requirement requirement, Status status) {
+    public Task[] getTasksByStatus(Requirement requirement, Status status)
+    {
         return new Task[0];
     }
 

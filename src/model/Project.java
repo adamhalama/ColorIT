@@ -73,7 +73,7 @@ public class Project
 
         for (int i = 0; i < requirements.length; i++)
         {
-            Task[] tasks = requirements[i].getTasks();
+            Task[] tasks = requirements[i].getTasks().getAllTasks();
 
             for (int j = 0; j < tasks.length; j++)
             {
