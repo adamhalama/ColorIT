@@ -43,14 +43,6 @@ public class RequirementList {
   public Requirement[] getRequirementsBeforeDeadline(int days)
   {
     // not finished
-    /*ArrayList<Requirement> foundRequirements = new ArrayList<Requirement>();
-    for (Requirement requirement : this.requirements)
-    {
-      if (requirement.getStatus() == status)
-        foundRequirements.add(requirement);
-    }
-    return foundRequirements.toArray(new Requirement[0]);*/
-
     ArrayList<Requirement> requirementsBeforeDeadline = new ArrayList<>();
 
     int hoursInDay = 24;
@@ -92,7 +84,7 @@ public class RequirementList {
     return null;
   }
 
-  public Requirement[] getRequirementByID(String name) {
+  public Requirement[] getRequirementByName(String name) {
     ArrayList<Requirement> foundRequirements = new ArrayList<Requirement>();
     for (Requirement requirement : this.requirements)
     {

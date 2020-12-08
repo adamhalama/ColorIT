@@ -189,18 +189,20 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public Requirement[] getRequirementsByResponsibleTeamMember(Project project, TeamMember responsible) {
+    public Requirement[] getRequirementsByResponsibleTeamMember(Project project, TeamMember responsible)
+    {
         return new Requirement[0];
     }
 
     @Override
-    public Requirement getRequirementByID(Project project, int requirementID) {
-        return null;
+    public Requirement getRequirementByID(Project project, int requirementID)
+    {
+        return project.getRequirements().getRequirementByID(requirementID);
     }
 
     @Override
     public Requirement[] getRequirementsByName(Project project, String name) {
-        return new Requirement[0];
+        return project.getRequirements().getRequirementByName(name);
     }
 
     @Override
