@@ -39,6 +39,7 @@ public class TeamMemberViewController {
     );
 
     teamMemberList.setItems(viewModel.getTeamList());
+    errorLabel.setText("");
   }
 
   public Region getRoot()
@@ -57,6 +58,7 @@ public class TeamMemberViewController {
     try {
       TeamMemberViewModel selectedMember = teamMemberList.getSelectionModel().getSelectedItem();
       TeamMember teamMember = new TeamMember(selectedMember.getNameProperty().get(),selectedMember.getEmailProperty().get());
+
       model.deleteTeamMember(teamMember);
       viewModel.remove(teamMember);
       teamMemberList.getSelectionModel().clearSelection();

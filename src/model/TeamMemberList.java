@@ -19,7 +19,17 @@ public class TeamMemberList
 
     public void deleteTeamMember(TeamMember teamMember)
     {
-        teamMembers.remove(teamMember);
+        for (TeamMember teamMember1 : teamMembers)
+            if (teamMember1.getName().equals(teamMember.getName())
+                    && teamMember1.getEmail().equals(teamMember.getEmail()))
+            {
+                teamMembers.remove(teamMember1);
+                System.out.println("here");
+            }
+
+
+
+        // this.teamMembers.remove(teamMember);
     }
 
     public TeamMember[] getAllTeamMembers()
