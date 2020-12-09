@@ -37,27 +37,36 @@ public class Task {
   public int getTaskID() {
     return this.id;
   }
-  public int getRequirementID() {
+
+  public int getRequirementID()
+  {
     return 0;
   }
+
   public String getName() {
     return this.name;
   }
+
   public String getDescription() {
     return this.description;
   }
+
   public int getEstimatedTime() {
     return this.estimatedTime;
   }
+
   public int getDeadlineTime() {
     return this.deadlineTime;
   }
+
   public int getTimeSpent() {
     return this.trackTimeList.getTotalTime();
   }
+
   public int getTimeSpentOfMember(TeamMember teamMember) {
     return this.trackTimeList.getTimeOfMember(teamMember);
   }
+
   public TeamMember[] getTeamMembers()
   {
     //not finished
@@ -66,38 +75,51 @@ public class Task {
 
     return new TeamMember[0];
   }
+
   public TeamMember getResponsibleTeamMember() {
     return this.responsibleTeamMember;
   }
-  public Status getStatus() {
+
+  public Status getStatus()
+  {
     return this.status;
   }
-  public TrackTime[] getTrackTime() {
+
+  public TrackTime[] getTrackTime()
+  {
     return this.trackTimeList.getTrackTime().toArray(new TrackTime[0]);
   }
+
   public void addTeamMember(TeamMember teamMember)
   {
-
+    // not finished
+    trackTimeList.setTimeWorked(teamMember, 0);
   }
 
   public void setName(String name) {
     this.name=name;
   }
+
   public void setDescription(String description) {
     this.description=description;
   }
+
   public void setDeadlineTime(int time) {
     this.deadlineTime=time;
   }
+
   public void setEstimatedTime(int estimatedTime) {
     this.estimatedTime=estimatedTime;
   }
+
   public void setResponsibleTeamMember(TeamMember teamMember) {
     this.responsibleTeamMember=teamMember;
   }
+
   public void setStatus(Status status) {
     this.status = status;
   }
+
   public void setTimeWorked(TeamMember teamMember, int time) {
     this.trackTimeList.setTimeWorked(teamMember, time);
   }

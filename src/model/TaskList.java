@@ -66,18 +66,13 @@ public class TaskList {
     // not finished
     ArrayList<Task> tasksBeforeDeadline = new ArrayList<>();
 
-    int hoursInDay = 24;
-    int minutesInHour = 60;
-    int secondsInMinute = 60;
-
-    long secondsBeforeDeadline = days * hoursInDay * minutesInHour * secondsInMinute;
-    long currentTime = Instant.now().getEpochSecond();
+    long currentTime = new TimeClass().getTime();
 
     for (int i = 0; i < tasks.size(); i++)
     {
       long deadline = tasks.get(i).getDeadlineTime();
 
-      if (deadline - secondsBeforeDeadline >= currentTime)
+      if (new TimeClass(deadline).addDays(-days).getTime() >= currentTime)
         tasksBeforeDeadline.add(tasks.get(i));
     }
 

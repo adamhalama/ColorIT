@@ -56,7 +56,7 @@ public interface ProjectManagementModel
                         String description, int deadlineTime, TeamMember responsibleTeamMember);
     public void addTask(Requirement requirement, String name, int id, int estimatedTime,
                         String description, int deadlineTime);
-    public void ChangeTaskTimeTrack(Task task, TeamMember teamMember, int newTime);
+    public void ChangeTaskTrackTime(Task task, TeamMember teamMember, int newTime);
     public Task[] getAllTasks(Requirement requirement);
     public Task[] getTasksByName(Requirement requirement, String name);
     public void deleteTask(Requirement requirement, Task task);
@@ -85,7 +85,7 @@ public interface ProjectManagementModel
     public void addTeamMember(Task task, TeamMember teamMember);
     public void addTeamMember(String name, String email);
     public void deleteTeamMember(TeamMember teamMember);
-    public ArrayList<TrackTime> getTrackTime(Task task);
+    public TrackTime[] getTrackTime(Task task);
     public int getTotalTime(Task task);
     public TeamMember[] getAllTeamMembers();
     public String getEmail(TeamMember teamMember);
