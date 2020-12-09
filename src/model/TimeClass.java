@@ -7,7 +7,7 @@ public class TimeClass
 {
   private Timestamp savedTimestamp;
 
-  public TimeClass(int timeInMilSec)
+  public TimeClass(long timeInMilSec)
   {
     this.savedTimestamp = new Timestamp(timeInMilSec);
   }
@@ -36,11 +36,8 @@ public class TimeClass
     return timestampToCompare==this.savedTimestamp.getTime();
   }
 
-  public void addDays(int days) {
-    this.savedTimestamp.setTime(this.savedTimestamp.getTime()+ dayToMilliseconds(days));
-  }
-
-  public void minusDays(int days) {
-    this.savedTimestamp.setTime(this.savedTimestamp.getTime()- dayToMilliseconds(days));
+  public TimeClass addDays(int days) {
+    this.savedTimestamp.setTime(this.savedTimestamp.getTime() + dayToMilliseconds(days));
+    return this;
   }
 }

@@ -45,18 +45,13 @@ public class RequirementList {
     // not finished
     ArrayList<Requirement> requirementsBeforeDeadline = new ArrayList<>();
 
-    int hoursInDay = 24;
-    int minutesInHour = 60;
-    int secondsInMinute = 60;
-
-    long secondsBeforeDeadline = days * hoursInDay * minutesInHour * secondsInMinute;
-    long currentTime = Instant.now().getEpochSecond();
+    long currentTime = new TimeClass().getTime();
 
     for (int i = 0; i < requirements.size(); i++)
     {
       long deadline = requirements.get(i).getDeadlineTime();
 
-      if (deadline - secondsBeforeDeadline >= currentTime)
+      if (new TimeClass(deadline).addDays(-days).getTime() >= currentTime)
         requirementsBeforeDeadline.add(requirements.get(i));
     }
 
