@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="view.ManageMembersViewController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label text="Name:" />
+        <TextField fx:id="name" />
+        <Label text="email:" />
+        <TextArea fx:id="email" prefHeight="30.0" prefWidth="600.0" />
+        <HBox prefHeight="44.0" prefWidth="600.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#save" text="save" />
+                <Button mnemonicParsing="false" onAction="#cancel" text="cancel" />
+            </children>
+        </HBox>
+        <Label text="error label" textFill="RED" fx:id="errorLabel"/>
+    </children>
+
+</VBox>

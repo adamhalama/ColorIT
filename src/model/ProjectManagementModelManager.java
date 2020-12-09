@@ -12,6 +12,16 @@ public class ProjectManagementModelManager implements ProjectManagementModel {
     public ProjectManagementModelManager() {
         this.projectList = new ProjectList();
         this.teamMemberList = new TeamMemberList();
+        this.projectList.addProject("project number 1", "this is very good project");
+        this.projectList.addProject("project number 1", "this is very good project");
+        this.projectList.addProject("project number 1", "this is very good project");
+        this.projectList.addProject("project number 1", "this is very good project");
+        this.projectList.addProject("project number 1", "this is very good project");
+        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
+        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.deleteTeamMember(new TeamMember("martin kuklo","nikde@play.33games.com"));
     }
 
     @Override
@@ -431,7 +441,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel {
     @Override
     public TeamMember[] getAllTeamMembers() 
     {
-        return new TeamMember[0];
+        return teamMemberList.getAllTeamMembers(); //NOTE if you implement something please make it work
     }
 
     @Override

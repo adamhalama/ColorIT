@@ -41,10 +41,8 @@ public class ManageProjectViewController
       project = null;
       this.root.setUserData("Create Project");
       this.name.setText("");
-      this.name.setFocusTraversable(false);
       this.name.setPromptText("Enter project name here.");
       this.description.setText("");
-      this.description.setFocusTraversable(false);
       this.description.setPromptText("Enter project description here.");
     }
     errorLabel.setText("");
@@ -56,6 +54,7 @@ public class ManageProjectViewController
 
   public void save()
   {
+    errorLabel.setText("");
     if (project != null){
       try {
         if(!this.name.getText().equals(this.project.getProjectName())){
@@ -63,7 +62,6 @@ public class ManageProjectViewController
         }
         if(!this.description.getText().equals(this.project.getProjectDescription())){
           project.setDescription(this.description.getText());
-          System.out.println(this.description.getText() + "\n" + project.getProjectDescription());
         }
         viewHandler.openView("ProjectView");
       } catch (Exception e) {

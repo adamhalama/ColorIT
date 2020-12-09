@@ -4,10 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import model.Project;
-import model.ProjectManagementModel;
-import model.Requirement;
-import model.Task;
+import model.*;
 
 import java.io.IOException;
 
@@ -20,9 +17,11 @@ public class ViewHandler
     private Project currentProject;
     private Requirement currentRequirement;
     private Task currentTask;
+    private TeamMember currentTeamMember;
 
     private TabViewController tabViewController;
     private ManageProjectViewController manageProjectViewController;
+    private ManageMembersViewController manageMembersViewController;
 
     public ViewHandler(ProjectManagementModel model)
     {
@@ -53,6 +52,8 @@ public class ViewHandler
             case "TaskView": root = loadTabView("TabView.fxml"); break;
             case "ManageProject" : root = loadManageProject("ManageProjectView.fxml",true); break;
             case "AddProject" : root = loadManageProject("ManageProjectView.fxml",false); break;
+            case "ManageMember" : root = loadManageTeam("ManageMemberView.fxml",true); break;
+            case "AddMember" : root = loadManageTeam("ManageMemberView.fxml",false); break;
         }
         currentScene.setRoot(root);
         String title = "";
@@ -121,6 +122,26 @@ public class ViewHandler
         return manageProjectViewController.getRoot();
     }
 
+    private Region loadManageTeam(String fxmlS,boolean edit){
+        Region root = null;
+        if (manageMembersViewController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlS));
+                root = loader.load();
+                manageMembersViewController = loader.getController();
+                manageMembersViewController.init(this,model, root, edit);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        } else {
+            manageMembersViewController.reset(edit);
+        }
+        return manageMembersViewController.getRoot();
+    }
+
     public void setCurrentProject(Project currentProject)
     {
         this.currentProject = currentProject;
@@ -149,5 +170,15 @@ public class ViewHandler
     public Task getCurrentTask()
     {
         return currentTask;
+    }
+
+    public void setCurrentTeamMember(TeamMember currentTeamMember)
+    {
+        this.currentTeamMember = currentTeamMember;
+    }
+
+    public TeamMember getCurrentTeamMember()
+    {
+        return currentTeamMember;
     }
 }
