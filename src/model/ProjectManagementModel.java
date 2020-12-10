@@ -72,7 +72,7 @@ public interface ProjectManagementModel
     public int getDeadlineTime(Task task);
     public int getTimeSpend(Task task);
     public int getTimeSpendOfMember(Task task, TeamMember teamMember);
-    public TeamMember[] getTeamMember(Task task);
+    public TeamMember[] getTeamMembers(Task task);
     public TeamMember getResponsibleTeamMember(Task task);
     public Status getStatus(Task task);
     public void setName(Task task, String name);
