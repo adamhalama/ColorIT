@@ -192,9 +192,9 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public void reorderRequirements(Project project, int[] orderedRequirementsIDs)
+    public void reorderRequirements(Project project, int index1, int index2)
     {
-        project.getRequirements().reorderRequirements(orderedRequirementsIDs);
+        project.getRequirements().reorderRequirements(index1, index2);
     }
 
     @Override

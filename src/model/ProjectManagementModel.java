@@ -26,7 +26,7 @@ public interface ProjectManagementModel
     public void setDescription(Project project, String description);
     public Requirement[] getRequirementsByStatus(Project project, Status status);
     public void deleteRequirement(Project project, Requirement requirement);
-    public void reorderRequirements(Project project, int[] orderedRequirementsIDs);
+    public void reorderRequirements(Project project, int index1, int index2);
     public void addRequirement(Project project, String name, String nonFunctionalDescription,
                                int deadline, TeamMember responsibleTeamMember);
     public void addRequirement(Project project, String name, String[] FunctionalDescription,

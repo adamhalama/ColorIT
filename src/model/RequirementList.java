@@ -93,8 +93,8 @@ public class RequirementList {
     this.requirements.remove(requirement);
   }
 
-  public void reorderRequirements(int[] orderedRequirementsIDs)
+  public void reorderRequirements(int index1, int index2)
   {
-
+    Collections.swap(this.requirements, index1, index2);
   }
 }
