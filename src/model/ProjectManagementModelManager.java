@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import persistence.*;
 
 public class ProjectManagementModelManager implements ProjectManagementModel
     {
@@ -16,15 +17,22 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     private ProjectList projectList;
     private TeamMemberList teamMemberList;
 
+    private ProjectManagementPersistenceManager persistenceManager;
+
     public ProjectManagementModelManager()
     {
         this.projectList = new ProjectList();
         this.teamMemberList = new TeamMemberList();
+
+        this.teamMemberList = persistenceManager.loadTeamMembersFromFile();
+        this.projectList = persistenceManager.loadProjectsFromFile();
+
         this.projectList.addProject("project number 1", "this is very good project");
         this.projectList.addProject("project number 1", "this is very good project");
         this.projectList.addProject("project number 1", "this is very good project");
         this.projectList.addProject("project number 1", "this is very good project");
         this.projectList.addProject("project number 1", "this is very good project");
+
         this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
         this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
@@ -55,6 +63,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void addProject(String name, String description)
     {
         projectList.addProject(name, description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -73,6 +82,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void deleteProject(int projectID)
     {
         projectList.deleteProject(projectID);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -133,30 +143,35 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void addTeamMember(Project project, TeamMember teamMember)
     {
         project.addTeamMember(teamMember);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
     public void removeTeamMember(Project project, TeamMember teamMember)
     {
         project.removeTeamMember(teamMember);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
     public void setName(Project project, String name)
     {
         project.setName(name);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setScrumMaster(Project project, TeamMember teamMember)
     {
         project.setScrumMaster(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setProductOwner(Project project, TeamMember teamMember)
     {
         project.setProductOwner(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -177,6 +192,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void setDescription(Project project, String description)
     {
         project.setDescription(description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -189,12 +205,14 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void deleteRequirement(Project project, Requirement requirement)
     {
         project.getRequirements().deleteRequirement(requirement);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void reorderRequirements(Project project, int index1, int index2)
     {
         project.getRequirements().reorderRequirements(index1, index2);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -202,6 +220,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
                                int deadline, TeamMember responsibleTeamMember)
     {
         project.getRequirements().addRequirement(name, nonFunctionalDescription, deadline, responsibleTeamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -209,6 +228,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
                                int deadline, TeamMember responsibleTeamMember)
     {
         project.getRequirements().addRequirement(name, FunctionalDescription, deadline, responsibleTeamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -305,12 +325,14 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void setName(Requirement requirement, String name)
     {
         requirement.setName(name);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setDescription(Requirement requirement, String description)
     {
         requirement.setDescription(description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -321,23 +343,27 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         description[1] = what;
         description[2] = why;
         requirement.setDescription(description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setDeadlineTime(Requirement requirement, int newTime) {
         requirement.setDeadlineTime(newTime);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setResponsibleTeamMember(Requirement requirement, TeamMember teamMember)
     {
         requirement.setResponsibleTeamMember(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setStatus(Requirement requirement, Status status)
     {
         requirement.setStatus(status);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -345,18 +371,21 @@ public class ProjectManagementModelManager implements ProjectManagementModel
                         String description, int deadlineTime, TeamMember responsibleTeamMember)
     {
         requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime, responsibleTeamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime)
     {
         requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void ChangeTaskTrackTime(Task task, TeamMember teamMember, int newTime)
     {
         task.setTimeWorked(teamMember, newTime);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -375,6 +404,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void deleteTask(Requirement requirement, Task task)
     {
         requirement.getTasks().deleteTask(task);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -386,6 +416,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         task.setDescription(description);
         task.setDeadlineTime(deadlineTime);
         task.setResponsibleTeamMember(responsibleTeamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -451,79 +482,89 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     @Override
     public TeamMember[] getTeamMember(Task task)
     {
-        return new TeamMember[0];
+        return task.getTeamMembers();
     }
 
     @Override
     public TeamMember getResponsibleTeamMember(Task task)
     {
-        return null;
+        return task.getResponsibleTeamMember();
     }
 
     @Override
     public Status getStatus(Task task)
     {
-        return null;
+        return task.getStatus();
     }
 
     @Override
     public void setName(Task task, String name)
     {
         task.setName(name);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setDescription(Task task, String description)
     {
         task.setDescription(description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setEstimatedTime(Task task, int estimatedTime)
     {
         task.setEstimatedTime(estimatedTime);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setDeadlineTIme(Task task, int time)
     {
         task.setDeadlineTime(time);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setResponsibleTeamMember(Task task, TeamMember teamMember)
     {
         task.setResponsibleTeamMember(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setStatus(Task task, Status status)
     {
         task.setStatus(status);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setTimeWorked(Task task, TeamMember teamMember, int time)
     {
         task.setTimeWorked(teamMember, time);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void addTeamMember(Task task, TeamMember teamMember)
     {
         task.addTeamMember(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void addTeamMember(String name, String email)
     {
         teamMemberList.addTeamMember(name, email);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
     public void deleteTeamMember(TeamMember teamMember) 
     {
         teamMemberList.deleteTeamMember(teamMember);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
@@ -560,12 +601,14 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void setEmail(TeamMember teamMember, String email) 
     {
         teamMember.setEmail(email);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
     public void setName(TeamMember teamMember, String name) 
     {
         teamMember.setName(name);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override

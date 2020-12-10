@@ -69,11 +69,12 @@ public class Task {
 
   public TeamMember[] getTeamMembers()
   {
-    //not finished
-    // return this.trackTimeList.getTeamMembers();
+    ArrayList<TeamMember> teamMembers = new ArrayList<>();
 
+    for (int i = 0; i < trackTimeList.getTrackTime().size(); i++)
+      teamMembers.add(trackTimeList.getTrackTime().get(i).getTeamMember());
 
-    return new TeamMember[0];
+    return teamMembers.toArray(new TeamMember[0]);
   }
 
   public TeamMember getResponsibleTeamMember() {

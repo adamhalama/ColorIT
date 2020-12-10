@@ -1,6 +1,7 @@
 package model;
 
-public class TrackTime {
+public class TrackTime
+{
   private int timeSpend = 0;
   private TeamMember teamMember;
 
