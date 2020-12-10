@@ -1,6 +1,8 @@
 package model;
 
-public class TeamMember
+import java.io.Serializable;
+
+public class TeamMember implements Serializable
 {
     private String name;
     private Email email;

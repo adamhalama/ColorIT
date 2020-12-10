@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-public class TimeClass
+public class TimeClass implements Serializable
 {
   private Timestamp savedTimestamp;
 

@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Project
+public class Project implements Serializable
 {
     private String name;
     private int projectID = 0;
