@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Email
+public class Email implements Serializable
 {
     private String email;
 

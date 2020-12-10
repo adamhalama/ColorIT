@@ -1,6 +1,8 @@
 package model;
 
-public class nonFunctionalDescription extends Description
+import java.io.Serializable;
+
+public class nonFunctionalDescription extends Description implements Serializable
 {
     private String description;
 

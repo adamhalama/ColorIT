@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Description
+import java.io.Serializable;
+
+public abstract class Description implements Serializable
 {
 
   private boolean isFunctional;
