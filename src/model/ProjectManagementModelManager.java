@@ -1,5 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -27,6 +32,23 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.teamMemberList.deleteTeamMember(new TeamMember("martin kuklo","nikde@play.33games.com"));
         System.out.println(
             Arrays.toString(this.teamMemberList.getAllTeamMembers()));
+
+        /*JSONObject jo = new JSONObject();
+        jo.put("name", "jon doe");
+        jo.put("age", "22");
+        jo.put("city", "chicago");
+        System.out.println(jo.toString());
+        try
+        {
+            File file = new File("./data.json");
+            PrintWriter out = new PrintWriter(file);
+            out.println(jo.toString());
+            out.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }*/
     }
 
     @Override
