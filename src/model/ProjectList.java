@@ -27,7 +27,10 @@ public class ProjectList
      */
     public void addProject(String name, String description)
     {
-        projects.add(new Project(name, description));
+        if (getProjectsByName(name).length == 0)
+            projects.add(new Project(name, description));
+        else
+            throw new IllegalArgumentException("The name is already used");
     }
 
     /** Returns an array of Project class objects with projects that have the name same as the input String

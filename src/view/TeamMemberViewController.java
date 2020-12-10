@@ -55,14 +55,18 @@ public class TeamMemberViewController {
   public void deleteTeamMember(ActionEvent actionEvent)
   {
     errorLabel.setText("");
-    try {
+    try
+    {
       TeamMemberViewModel selectedMember = teamMemberList.getSelectionModel().getSelectedItem();
-      TeamMember teamMember = new TeamMember(selectedMember.getNameProperty().get(),selectedMember.getEmailProperty().get());
+      TeamMember teamMember = new TeamMember(selectedMember.getNameProperty().get(),
+                                              selectedMember.getEmailProperty().get());
 
       model.deleteTeamMember(teamMember);
       viewModel.remove(teamMember);
       teamMemberList.getSelectionModel().clearSelection();
-    } catch (Exception e){
+
+    } catch (Exception e)
+    {
       errorLabel.setText("team member not found");
     }
     viewModel.update();

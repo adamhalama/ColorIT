@@ -9,7 +9,9 @@ public class Email
 
     public Email(String email)
     {
-        this.email = email;
+        if (isEmailValid(email))
+            this.email = email;
+        else throw new IllegalArgumentException("The email is not valid");
     }
 
     public String getEmail() {
