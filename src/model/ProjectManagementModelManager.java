@@ -25,6 +25,8 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
         this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
         this.teamMemberList.deleteTeamMember(new TeamMember("martin kuklo","nikde@play.33games.com"));
+        System.out.println(
+            Arrays.toString(this.teamMemberList.getAllTeamMembers()));
     }
 
     @Override

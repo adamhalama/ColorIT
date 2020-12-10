@@ -6,7 +6,10 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import model.*;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 public class ViewHandler
 {
@@ -33,6 +36,16 @@ public class ViewHandler
     public void start(Stage primaryStage)
     {
         this.primaryStage = primaryStage;
+        String filename = "logo.png";
+        try {
+            File file = new File(filename);
+            FileInputStream inputStream = new FileInputStream(file);
+            Image image = new Image(inputStream);
+            this.primaryStage.getIcons().add(image);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         /*
          also from the GL GUI example
          but "openView("mainMenu");" is missing
