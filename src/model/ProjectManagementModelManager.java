@@ -28,19 +28,24 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.teamMemberList = persistenceManager.loadTeamMembersFromFile();
         this.projectList = persistenceManager.loadProjectsFromFile();
 
-       /* this.projectList.addProject("project number 1", "this is very good project");
+        /*this.projectList.addProject("project number 1", "this is very good project");
         this.projectList.addProject("project number 2", "this is very good project");
         this.projectList.addProject("project number 3", "this is very good project");
         this.projectList.addProject("project number 4", "this is very good project");
-        this.projectList.addProject("project number 5", "this is very good project");
+        this.projectList.addProject("project number 5", "this is very good project");*/
 
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        /*this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
         this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
         this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
-        this.teamMemberList.deleteTeamMember(new TeamMember("martin kuklo","nikde@play.33games.com"));
+
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);*/
+
+        /*this.teamMemberList.deleteTeamMember(new TeamMember("martin kuklo","nikde@play.33games.com"));
         System.out.println(
             Arrays.toString(this.teamMemberList.getAllTeamMembers()));*/
+
+
 
         /*JSONObject jo = new JSONObject();
         jo.put("name", "jon doe");
