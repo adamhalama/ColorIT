@@ -9,7 +9,7 @@
       xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="view.TabViewController">
-    <TabPane prefHeight="409.0" prefWidth="600.0"
+    <TabPane prefHeight="1000" prefWidth="1200"
              tabClosingPolicy="UNAVAILABLE" fx:id="tabPane">
         <Tab text="Team Manager" onSelectionChanged="#tabSelected">
             <fx:include source="TeamMemberView.fxml" fx:id="teamMemberView"/>
