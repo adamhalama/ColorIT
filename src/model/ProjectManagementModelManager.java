@@ -344,7 +344,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     @Override
     public void setDescription(Requirement requirement, String who, String what, String why)
     {
-        String[] description = new String[2];
+        String[] description = new String[3];
         description[0] = who;
         description[1] = what;
         description[2] = why;
