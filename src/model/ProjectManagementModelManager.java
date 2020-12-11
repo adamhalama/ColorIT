@@ -317,7 +317,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public int getDeadlineTime(Requirement requirement)
+    public long getDeadlineTime(Requirement requirement)
     {
         return requirement.getDeadlineTime();
     }
