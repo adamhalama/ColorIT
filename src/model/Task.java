@@ -22,7 +22,7 @@ public class Task implements Serializable
     this.description=description;
     this.deadlineTime=deadlineTime;
     this.estimatedTime=estimatedTime;
-    this.status=Status.NOTSTARTED;
+    this.status=Status.NOT_STARTED;
     this.trackTimeList = new TrackTimeList();
   }
   public Task(String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember) {
@@ -32,7 +32,7 @@ public class Task implements Serializable
     this.deadlineTime=deadlineTime;
     this.estimatedTime=estimatedTime;
     this.responsibleTeamMember=responsibleTeamMember;
-    this.status=Status.NOTSTARTED;
+    this.status=Status.NOT_STARTED;
     this.trackTimeList = new TrackTimeList();
   }
 

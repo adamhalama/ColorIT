@@ -1,10 +1,5 @@
 package model;
 
-import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import persistence.*;
@@ -32,37 +27,14 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.projectList.addProject("project number 2", "this is very good project");
         this.projectList.addProject("project number 3", "this is very good project");
         this.projectList.addProject("project number 4", "this is very good project");
-        this.projectList.addProject("project number 5", "this is very good project");*/
+        this.projectList.addProject("project number 5", "this is very good project");
 
-        /*this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
         this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");*/
 
-        persistenceManager.saveTeamMemberListToFile(teamMemberList);*/
-
-        /*this.teamMemberList.deleteTeamMember(new TeamMember("martin kuklo","nikde@play.33games.com"));
-        System.out.println(
-            Arrays.toString(this.teamMemberList.getAllTeamMembers()));*/
-
-
-
-        /*JSONObject jo = new JSONObject();
-        jo.put("name", "jon doe");
-        jo.put("age", "22");
-        jo.put("city", "chicago");
-        System.out.println(jo.toString());
-        try
-        {
-            File file = new File("./data.json");
-            PrintWriter out = new PrintWriter(file);
-            out.println(jo.toString());
-            out.close();
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }*/
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
@@ -322,7 +294,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public int getDeadlineTime(Requirement requirement)
+    public long getDeadlineTime(Requirement requirement)
     {
         return requirement.getDeadlineTime();
     }
