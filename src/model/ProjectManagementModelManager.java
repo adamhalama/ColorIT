@@ -32,32 +32,9 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
         this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");*/
 
-        persistenceManager.saveTeamMemberListToFile(teamMemberList);*/
-
-        /*this.teamMemberList.deleteTeamMember(new TeamMember("martin kuklo","nikde@play.33games.com"));
-        System.out.println(
-            Arrays.toString(this.teamMemberList.getAllTeamMembers()));*/
-
-
-
-        /*JSONObject jo = new JSONObject();
-        jo.put("name", "jon doe");
-        jo.put("age", "22");
-        jo.put("city", "chicago");
-        System.out.println(jo.toString());
-        try
-        {
-            File file = new File("./data.json");
-            PrintWriter out = new PrintWriter(file);
-            out.println(jo.toString());
-            out.close();
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }*/
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
@@ -550,9 +527,8 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     @Override
     public void addTeamMember(Task task, TeamMember teamMember)
     {
-        //TODO
-            task.addTeamMember(teamMember);
-            persistenceManager.saveProjectListToFile(projectList);
+        task.addTeamMember(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
