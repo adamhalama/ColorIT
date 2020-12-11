@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="448.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProjectViewController">
+<VBox prefHeight="680" prefWidth="1000" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProjectViewController">
    <ListView fx:id="projectListView" prefHeight="374.0" prefWidth="590.0" />
    <HBox prefHeight="38.0" prefWidth="600.0">
       <children>

@@ -2,16 +2,15 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.ProjectManagementModel;
 import model.TeamMember;
 import model.TeamMemberList;
 
+import java.util.Optional;
+
 public class TeamMemberViewController {
-  @FXML private Label errorLabel;
   @FXML private TableView<TeamMemberViewModel> teamMemberList;
   @FXML private TableColumn<TeamMemberViewModel, String> nameColumn;
   @FXML private TableColumn<TeamMemberViewModel, String> emailColumn;
@@ -39,7 +38,6 @@ public class TeamMemberViewController {
     );
 
     teamMemberList.setItems(viewModel.getTeamList());
-    errorLabel.setText("");
   }
 
   public Region getRoot()
@@ -54,9 +52,8 @@ public class TeamMemberViewController {
 
   public void deleteTeamMember(ActionEvent actionEvent)
   {
-    errorLabel.setText("");
-    try
-    {
+    try {
+
       TeamMemberViewModel selectedMember = teamMemberList.getSelectionModel().getSelectedItem();
       TeamMember teamMember = new TeamMember(selectedMember.getNameProperty().get(),
                                               selectedMember.getEmailProperty().get());
@@ -64,10 +61,12 @@ public class TeamMemberViewController {
       model.deleteTeamMember(teamMember);
       viewModel.remove(teamMember);
       teamMemberList.getSelectionModel().clearSelection();
-
-    } catch (Exception e)
-    {
-      errorLabel.setText("team member not found");
+    } catch (Exception e){
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setTitle("error");
+      alert.setHeaderText("grade do not found");
+      /*Optional<ButtonType> result = */alert.show();
+      //boolean hej = (result.isPresent())&&(result.get()== ButtonType.OK);
     }
     viewModel.update();
   }
@@ -77,15 +76,19 @@ public class TeamMemberViewController {
     TeamMemberViewModel selectedMember = teamMemberList.getSelectionModel().getSelectedItem();
     TeamMember[] teamMembers = model.getAllTeamMembers();
     TeamMember currentTeamMember = null;
-    for (TeamMember teamMember: teamMembers){
-      if (teamMember.getEmail().equals(selectedMember.getEmailProperty().get()) &&
-      teamMember.getName().equals(selectedMember.getNameProperty().get())){
-        currentTeamMember = teamMember;
-      }
-    }
-    if (currentTeamMember == null){
-      errorLabel.setText("Member not found");
+
+    if (selectedMember == null){
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("select a team member");
+      alert.setHeaderText("You need to select team member that you want to edit first.");
+      alert.show();
     } else {
+      for (TeamMember teamMember: teamMembers){
+        if (teamMember.getEmail().equals(selectedMember.getEmailProperty().get()) &&
+            teamMember.getName().equals(selectedMember.getNameProperty().get())){
+          currentTeamMember = teamMember;
+        }
+      }
       viewHandler.setCurrentTeamMember(currentTeamMember);
       viewHandler.openView("ManageMember");
     }
