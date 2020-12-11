@@ -1,15 +1,18 @@
 package model;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Email
+public class Email implements Serializable
 {
     private String email;
 
     public Email(String email)
     {
-        this.email = email;
+        if (isEmailValid(email))
+            this.email = email;
+        else throw new IllegalArgumentException("The email is not valid");
     }
 
     public String getEmail() {

@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import persistence.*;
 
 public class ProjectManagementModelManager implements ProjectManagementModel
     {
@@ -16,65 +17,35 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     private ProjectList projectList;
     private TeamMemberList teamMemberList;
 
+    private ProjectManagementPersistenceManager persistenceManager = new ProjectManagementPersistenceManager();
+
     public ProjectManagementModelManager()
     {
+
         this.projectList = new ProjectList();
         this.teamMemberList = new TeamMemberList();
-        this.projectList.addProject("project number 1", "this is very good project");
-        this.projectList.addProject("project number 2", "this is very bad project");
-        this.projectList.addProject("project number 3", "this is very short project");
-        this.projectList.addProject("project number 4", "this is very long project \n"
-            + "\n"
-            + "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis arcu felis. Maecenas egestas euismod tellus, vitae consectetur ligula euismod auctor. Cras mi est, vulputate a ex eu, varius mattis ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc dignissim molestie ligula, varius placerat lacus egestas a. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam sed elementum leo. Etiam vitae maximus magna. Donec quis pharetra massa.\n"
-            + "\n"
-            + "Aenean venenatis sed augue vitae volutpat. Nam consectetur ipsum et nunc cursus lobortis. Aenean ullamcorper consequat accumsan. Nullam vitae varius dolor, sed rhoncus dolor. ");
-        this.projectList.addProject("project number 5", "this is very veird project");
 
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
-        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
-        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList = persistenceManager.loadTeamMembersFromFile();
+        this.projectList = persistenceManager.loadProjectsFromFile();
 
-        this.addRequirement(projectList.getAllProjects()[0],"mena","customer want to do it",1,teamMemberList.getAllTeamMembers()[0]);
-        this.addRequirement(projectList.getAllProjects()[1],"meni","customer want to do it",1,teamMemberList.getAllTeamMembers()[1]);
-        this.addRequirement(projectList.getAllProjects()[2],"mene","customer want to do it",1,teamMemberList.getAllTeamMembers()[2]);
-        this.addRequirement(projectList.getAllProjects()[3],"meno","customer want to do it",1,teamMemberList.getAllTeamMembers()[3]);
-        System.out.println(Arrays
-            .toString(getAllRequirements(projectList.getAllProjects()[0])));
+        /*this.projectList.addProject("project number 1", "this is very good project");
+        this.projectList.addProject("project number 2", "this is very good project");
+        this.projectList.addProject("project number 3", "this is very good project");
+        this.projectList.addProject("project number 4", "this is very good project");
+        this.projectList.addProject("project number 5", "this is very good project");*/
+
         /*this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
         this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
         this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
-        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
-        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
-        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
-        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
-        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
-        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
-        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
-        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
-        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
-        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
-        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
-        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
-        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
-        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","v888sade@play.33games.com");*/
+
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);*/
+
+        /*this.teamMemberList.deleteTeamMember(new TeamMember("martin kuklo","nikde@play.33games.com"));
         System.out.println(
-            Arrays.toString(this.teamMemberList.getAllTeamMembers()));
+            Arrays.toString(this.teamMemberList.getAllTeamMembers()));*/
+
+
 
         /*JSONObject jo = new JSONObject();
         jo.put("name", "jon doe");
@@ -98,6 +69,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void addProject(String name, String description)
     {
         projectList.addProject(name, description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -116,6 +88,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void deleteProject(int projectID)
     {
         projectList.deleteProject(projectID);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -176,30 +149,35 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void addTeamMember(Project project, TeamMember teamMember)
     {
         project.addTeamMember(teamMember);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
     public void removeTeamMember(Project project, TeamMember teamMember)
     {
         project.removeTeamMember(teamMember);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
     public void setName(Project project, String name)
     {
         project.setName(name);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setScrumMaster(Project project, TeamMember teamMember)
     {
         project.setScrumMaster(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setProductOwner(Project project, TeamMember teamMember)
     {
         project.setProductOwner(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -220,6 +198,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void setDescription(Project project, String description)
     {
         project.setDescription(description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -232,12 +211,14 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void deleteRequirement(Project project, Requirement requirement)
     {
         project.getRequirements().deleteRequirement(requirement);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void reorderRequirements(Project project, int index1, int index2)
     {
         project.getRequirements().reorderRequirements(index1, index2);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -245,6 +226,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
                                int deadline, TeamMember responsibleTeamMember)
     {
         project.getRequirements().addRequirement(name, nonFunctionalDescription, deadline, responsibleTeamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -252,6 +234,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
                                int deadline, TeamMember responsibleTeamMember)
     {
         project.getRequirements().addRequirement(name, FunctionalDescription, deadline, responsibleTeamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -348,39 +331,45 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void setName(Requirement requirement, String name)
     {
         requirement.setName(name);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setDescription(Requirement requirement, String description)
     {
         requirement.setDescription(description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setDescription(Requirement requirement, String who, String what, String why)
     {
-        String[] description = new String[2];
+        String[] description = new String[3];
         description[0] = who;
         description[1] = what;
         description[2] = why;
         requirement.setDescription(description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setDeadlineTime(Requirement requirement, int newTime) {
         requirement.setDeadlineTime(newTime);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setResponsibleTeamMember(Requirement requirement, TeamMember teamMember)
     {
         requirement.setResponsibleTeamMember(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setStatus(Requirement requirement, Status status)
     {
         requirement.setStatus(status);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -388,18 +377,21 @@ public class ProjectManagementModelManager implements ProjectManagementModel
                         String description, int deadlineTime, TeamMember responsibleTeamMember)
     {
         requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime, responsibleTeamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime)
     {
         requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void ChangeTaskTrackTime(Task task, TeamMember teamMember, int newTime)
     {
         task.setTimeWorked(teamMember, newTime);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -418,6 +410,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void deleteTask(Requirement requirement, Task task)
     {
         requirement.getTasks().deleteTask(task);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -429,6 +422,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         task.setDescription(description);
         task.setDeadlineTime(deadlineTime);
         task.setResponsibleTeamMember(responsibleTeamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
@@ -492,81 +486,91 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public TeamMember[] getTeamMember(Task task)
+    public TeamMember[] getTeamMembers(Task task)
     {
-        return new TeamMember[0];
+        return task.getTeamMembers();
     }
 
     @Override
     public TeamMember getResponsibleTeamMember(Task task)
     {
-        return null;
+        return task.getResponsibleTeamMember();
     }
 
     @Override
     public Status getStatus(Task task)
     {
-        return null;
+        return task.getStatus();
     }
 
     @Override
     public void setName(Task task, String name)
     {
         task.setName(name);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setDescription(Task task, String description)
     {
         task.setDescription(description);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setEstimatedTime(Task task, int estimatedTime)
     {
         task.setEstimatedTime(estimatedTime);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setDeadlineTIme(Task task, int time)
     {
         task.setDeadlineTime(time);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setResponsibleTeamMember(Task task, TeamMember teamMember)
     {
         task.setResponsibleTeamMember(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setStatus(Task task, Status status)
     {
         task.setStatus(status);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void setTimeWorked(Task task, TeamMember teamMember, int time)
     {
         task.setTimeWorked(teamMember, time);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void addTeamMember(Task task, TeamMember teamMember)
     {
         task.addTeamMember(teamMember);
+        persistenceManager.saveProjectListToFile(projectList);
     }
 
     @Override
     public void addTeamMember(String name, String email)
     {
         teamMemberList.addTeamMember(name, email);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
     public void deleteTeamMember(TeamMember teamMember) 
     {
         teamMemberList.deleteTeamMember(teamMember);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
@@ -603,12 +607,14 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void setEmail(TeamMember teamMember, String email) 
     {
         teamMember.setEmail(email);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override
     public void setName(TeamMember teamMember, String name) 
     {
         teamMember.setName(name);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);
     }
 
     @Override

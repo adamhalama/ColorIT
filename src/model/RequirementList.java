@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class RequirementList {
+public class RequirementList implements Serializable
+{
   private ArrayList<Requirement> requirements;
   private int requirementsCreated = 0;
 

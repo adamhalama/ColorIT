@@ -1,7 +1,8 @@
 package model;
 
-public class functionalDescription extends Description
-{
+import java.io.Serializable;
+
+public class functionalDescription extends Description implements Serializable {
 
     private String who;
     private String what;

@@ -55,7 +55,8 @@ public class TeamMemberViewController {
     try {
 
       TeamMemberViewModel selectedMember = teamMemberList.getSelectionModel().getSelectedItem();
-      TeamMember teamMember = new TeamMember(selectedMember.getNameProperty().get(),selectedMember.getEmailProperty().get());
+      TeamMember teamMember = new TeamMember(selectedMember.getNameProperty().get(),
+                                              selectedMember.getEmailProperty().get());
 
       model.deleteTeamMember(teamMember);
       viewModel.remove(teamMember);

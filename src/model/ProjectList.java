@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @since 1.0
  */
-public class ProjectList
+public class ProjectList implements Serializable
 {
     /** Represents the ArrayList of Project class objects
      */
@@ -27,7 +28,10 @@ public class ProjectList
      */
     public void addProject(String name, String description)
     {
-        projects.add(new Project(name, description));
+        if (getProjectsByName(name).length == 0)
+            projects.add(new Project(name, description));
+        else
+            throw new IllegalArgumentException("The name is already used");
     }
 
     /** Returns an array of Project class objects with projects that have the name same as the input String

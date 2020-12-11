@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-public class TimeClass
+public class TimeClass implements Serializable
 {
   private Timestamp savedTimestamp;
 
@@ -29,11 +30,11 @@ public class TimeClass
   }
 
   public boolean equals(Timestamp timestampToCompare) {
-    return timestampToCompare.getTime()==this.savedTimestamp.getTime();
+    return timestampToCompare.getTime() == this.savedTimestamp.getTime();
   }
 
   public boolean equals(long timestampToCompare) {
-    return timestampToCompare==this.savedTimestamp.getTime();
+    return timestampToCompare == this.savedTimestamp.getTime();
   }
 
   public TimeClass addDays(int days) {

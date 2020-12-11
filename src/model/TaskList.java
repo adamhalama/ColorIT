@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 
-public class TaskList {
+public class TaskList implements Serializable
+{
   private ArrayList<Task> tasks;
   private int tasksCreated = 0;
 

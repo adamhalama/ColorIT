@@ -1,6 +1,9 @@
 package model;
 
-public class Status {
+import java.io.Serializable;
+
+public class Status implements Serializable
+{
 
   public static Status NOTSTARTED;
   public static Status STARTED;

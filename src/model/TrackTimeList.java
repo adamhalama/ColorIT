@@ -1,8 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TrackTimeList {
+public class TrackTimeList implements Serializable
+{
     private ArrayList<TrackTime> trackTimeList;
 
     public TrackTimeList()
