@@ -48,9 +48,9 @@ public class RequirementDetailsViewController
     } else {
       this.description.setText(desc[0]);
     }
-    this.reasTeamMember.setText(currentRequirement.getResponsibleTeamMember().getName()); //TODO maybe to do this better
+    this.reasTeamMember.setText(currentRequirement.getResponsibleTeamMember().getName());
     this.status.setText(currentRequirement.getStatus().toString());
-    this.deadline.setText(String.valueOf(currentRequirement.getDeadlineTime())); //TODO make this look better
+    this.deadline.setText(String.valueOf(currentRequirement.getDeadlineTime()));
     //TODO add estimated time
   }
   

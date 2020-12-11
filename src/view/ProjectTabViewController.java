@@ -41,7 +41,6 @@ public class ProjectTabViewController {
   }
 
   public void showView(String id){
-    //TODO
     if (id == null){
       return;
     }

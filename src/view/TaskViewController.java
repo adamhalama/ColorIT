@@ -20,7 +20,7 @@ public class TaskViewController {
   }
 
   public void reset(){
-    //TODO parameter of the requirement that will be showed will be added
+    //nothing
   }
 
   public Region getRoot(){

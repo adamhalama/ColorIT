@@ -61,7 +61,6 @@ public class ProjectViewController {
   }
 
   public Project getProjectSelected(){
-    System.out.println(projectListView.getSelectionModel().getSelectedIndices());
     return projects[projectListView.getSelectionModel().getSelectedIndices().get(0)];
   }
 

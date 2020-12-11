@@ -4,15 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import model.Project;
 import model.ProjectManagementModel;
 import model.Requirement;
 
 public class RequirementViewController {
-  public VBox requirementDetailsView;
+  public StackPane stackPane;
+
   ObservableList<String> searchOptions = FXCollections.observableArrayList("status","days before deadline","name");
   @FXML private TextField searchValue;
   @FXML private ChoiceBox cb;
@@ -25,6 +28,7 @@ public class RequirementViewController {
   private ProjectManagementModel model;
   private Project currentProject;
   private Requirement[] requirements;
+  @FXML private RequirementDetailsViewController requirementDetailsViewController;
 
   public RequirementViewController(){
     //nothing
@@ -34,14 +38,15 @@ public class RequirementViewController {
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
+    requirementDetailsViewController.init(viewHandler, model, root);
     this.cb.setItems(searchOptions);
   }
 
   public void reset(){
     cb.setTooltip(new Tooltip("Select search category"));
-    //TODO parameter of the project that will be showed will be added
     requirementListView.getItems().clear();
     this.currentProject = viewHandler.getCurrentProject();
+    requirementDetailsViewController.reset();
 
     if (this.currentProject != null)
     {
@@ -94,15 +99,33 @@ public class RequirementViewController {
     this.viewHandler.openView("AddRequirement");
   }
 
-  public void openRequirement(ActionEvent actionEvent)
+  public void openRequirement()
   {
+    this.viewHandler.setCurrentRequirement(requirements[requirementListView.getSelectionModel()
+        .getSelectedIndices().get(0)]);
+    stackPane.getChildren().get(0).setVisible(true);
+    requirementDetailsViewController.reset();
   }
 
   public void editRequirement(ActionEvent actionEvent)
   {
+    this.viewHandler.setCurrentRequirement(
+        requirements[this.requirementListView.getSelectionModel().getSelectedIndex()]
+    );
+    this.viewHandler.openView("ManageRequirement");
   }
 
   public void deleteRequirement(ActionEvent actionEvent)
   {
+    int index = this.requirementListView.getSelectionModel().getSelectedIndex();
+    try {
+      model.deleteRequirement(currentProject,requirements[index]);
+      requirementListView.getItems().remove(index);
+    } catch (Exception e) {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("unable to delete");
+      alert.setHeaderText("It was not able to remove it, please try it later.");
+      alert.show();
+    }
   }
 }

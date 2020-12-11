@@ -14,7 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="680.0" prefWidth="1000" userData="Project info" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RequirementViewController">
+<HBox prefHeight="680.0" prefWidth="1000" userData="Project info"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="view.RequirementViewController">
    <VBox prefHeight="659.0" prefWidth="501.0">
       <children>
          <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="450.0">
@@ -140,8 +142,8 @@
                </TableView>
             </content>
          </ScrollPane>
-         <StackPane prefHeight="460.0" prefWidth="466.0">
-            <fx:include fx:id="requirementDetailsView" source="RequirementDetailsView.fxml" visible="true" />
+         <StackPane prefHeight="460.0" prefWidth="466.0" fx:id="stackPane">
+            <fx:include fx:id="requirementDetailsView" source="RequirementDetailsView.fxml" visible="false" />
          </StackPane>
       </children>
       <HBox.margin>

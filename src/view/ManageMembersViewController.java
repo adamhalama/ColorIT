@@ -56,10 +56,10 @@ public class ManageMembersViewController {
     if (teamMember != null){
       try {
         if(!this.name.getText().equals(this.teamMember.getName())){
-          teamMember.setName(this.name.getText());
+          model.setName(teamMember,this.name.getText());
         }
         if(!this.email.getText().equals(this.teamMember.getEmail())){
-          teamMember.setEmail(this.email.getText());
+          model.setEmail(teamMember,this.email.getText());
         }
         viewHandler.openView("TeamMemberView");
       } catch (Exception e) {
