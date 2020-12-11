@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public interface ProjectManagementModel
 {
     public void addProject(String name, String description);
@@ -45,7 +43,7 @@ public interface ProjectManagementModel
     public int getEstimatedTime(Requirement requirement);
     public TeamMember getResponsibleTeamMember(Requirement requirement);
     public Status getStatus(Requirement requirement);
-    public int getDeadlineTime(Requirement requirement);
+    public long getDeadlineTime(Requirement requirement);
     public void setName(Requirement requirement, String name);
     public void setDescription(Requirement requirement, String description);
     public void setDescription(Requirement requirement, String who, String what, String why);

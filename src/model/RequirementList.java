@@ -5,32 +5,72 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
+/**
+ * Accumulates Requirement class objects in an ArrayList requirements.
+ * @author Group 6 - 1Y ICT A2020
+ * @version 1.0
+ * @since 1.0
+ */
 public class RequirementList implements Serializable
 {
+  /**
+   * Represents the ArrayList of Requirement class objects.
+   */
   private ArrayList<Requirement> requirements;
+  /**
+   * Represents the number of requirements created in this project.
+   * Used in ID assigning.
+   */
   private int requirementsCreated = 0;
 
+  /**
+   * Creates the ArrayList of Requirement class objects
+   */
   public RequirementList()
   {
     this.requirements = new ArrayList<Requirement>();
   }
 
-  public void addRequirement(String name, String nonFunctionalDescription, int deadline, TeamMember responsibleTeamMember)
+  /**
+   * Creates a new Requirement in the ArrayList of Requirement class, requirements.
+   * The requirement gets an auto assigned Project-wide unique ID, based on the number of requirements created.
+   * @param name A string representing the name of the requirement.
+   * @param nonFunctionalDescription A string representing a non functional description.
+   * @param deadline A long representing the time of the deadline with a UNIX timestamp.
+   * @param responsibleTeamMember A TeamMember object representing the responsible team member.
+   */
+  public void addRequirement(String name, String nonFunctionalDescription, long deadline, TeamMember responsibleTeamMember)
   {
     requirements.add(new Requirement(this.requirementsCreated, name, nonFunctionalDescription, deadline, responsibleTeamMember));
     this.requirementsCreated++;
   }
-  public void addRequirement(String name, String[] FunctionalDescription, int deadline, TeamMember responsibleTeamMember)
+
+  /**
+   * Creates a new Requirement in the ArrayList of Requirement class, requirements.
+   * @param name A string representing the name of the requirement.
+   * @param FunctionalDescription An array of strings representing a functional description in "who, what, why" template.
+   * @param deadline A long representing the time of the deadline with a UNIX timestamp.
+   * @param responsibleTeamMember A TeamMember object representing the responsible team member.
+   */
+  public void addRequirement(String name, String[] FunctionalDescription, long deadline, TeamMember responsibleTeamMember)
   {
     requirements.add(new Requirement(this.requirementsCreated, name, FunctionalDescription, deadline, responsibleTeamMember));
     this.requirementsCreated++;
   }
 
+  /**
+   * Gets all requirements of this RequirementList
+   * @return An array of Requirement objects representing all the requirements <br> of this RequirementList(of Project the RequirementList belongs to)
+   */
   public Requirement[] getAllRequirements() {
     return this.requirements.toArray(new Requirement[0]);
   }
 
+  /**
+   * Gets all requirements with a specified status.
+   * @param status A Status representing the status of the requirements we want.
+   * @return An array of Requirement objects representing requirements with a specified status.
+   */
   public Requirement[] getRequirementsByStatus(Status status) {
     ArrayList<Requirement> foundRequirements = new ArrayList<Requirement>();
     for (Requirement requirement : this.requirements)
@@ -42,9 +82,14 @@ public class RequirementList implements Serializable
     return foundRequirements.toArray(new Requirement[0]);
   }
 
+  /**
+   * Gets requirements that are close to the deadline.
+   * @param days An integer representing the number of days.
+   * @return An array of Requirement objects representing requirements that are closer to the deadline <br> than the specified number of days
+   */
   public Requirement[] getRequirementsBeforeDeadline(int days)
   {
-    // not finished
+    // TODO
     ArrayList<Requirement> requirementsBeforeDeadline = new ArrayList<>();
 
     long currentTime = new TimeClass().getTime();
@@ -60,6 +105,11 @@ public class RequirementList implements Serializable
     return requirementsBeforeDeadline.toArray(new Requirement[0]);
   }
 
+  /**
+   * Gets requirements with a specified responsible member.
+   * @param responsible A TeamMember object representing the responsible team member we want to filter by.
+   * @return An array of Requirement objects representing requirements with a specified team member.
+   */
   public Requirement[] getRequirementByResponsibleTeamMember(TeamMember responsible) {
     ArrayList<Requirement> foundRequirements = new ArrayList<Requirement>();
     for (Requirement requirement : this.requirements)
@@ -71,6 +121,11 @@ public class RequirementList implements Serializable
     return foundRequirements.toArray(new Requirement[0]);
   }
 
+  /**
+   * Gets a requirement with a specific ID.
+   * @param requirementID An integer representing the ID of the requirement.
+   * @return A Requirement object that has the id fitting the parameter.
+   */
   public Requirement getRequirementByID(int requirementID) {
     for (Requirement requirement : this.requirements)
     {
@@ -81,6 +136,11 @@ public class RequirementList implements Serializable
     return null;
   }
 
+  /**
+   * Gets all requirements with a specified name.
+   * @param name A String representing the name of the wanted requirements.
+   * @return An array of Requirement objects representing requirements with the same name as the input.
+   */
   public Requirement[] getRequirementByName(String name) {
     ArrayList<Requirement> foundRequirements = new ArrayList<Requirement>();
     for (Requirement requirement : this.requirements)
@@ -91,10 +151,19 @@ public class RequirementList implements Serializable
     return foundRequirements.toArray(new Requirement[0]);
   }
 
+  /**
+   * Deletes a requirement.
+   * @param requirement Represents the requirement we want to delete.
+   */
   public void deleteRequirement(Requirement requirement) {
     this.requirements.remove(requirement);
   }
 
+  /**
+   * Reorders two requirements, swaps their places in the ArrayList.
+   * @param index1 An integer representing a position of the first requirement.
+   * @param index2 An integer representing a position of the second requirement.
+   */
   public void reorderRequirements(int index1, int index2)
   {
     Collections.swap(this.requirements, index1, index2);

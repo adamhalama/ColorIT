@@ -1,12 +1,5 @@
 package model;
 
-import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
 import persistence.*;
 
 public class ProjectManagementModelManager implements ProjectManagementModel
@@ -322,7 +315,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public int getDeadlineTime(Requirement requirement)
+    public long getDeadlineTime(Requirement requirement)
     {
         return requirement.getDeadlineTime();
     }
