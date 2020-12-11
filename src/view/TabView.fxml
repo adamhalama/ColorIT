@@ -4,18 +4,15 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox prefHeight="400.0" prefWidth="600.0"
-      xmlns="http://javafx.com/javafx/11.0.1"
+<VBox prefHeight="750" prefWidth="1000" xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="view.TabViewController">
-    <TabPane prefHeight="1000" prefWidth="1200"
-             tabClosingPolicy="UNAVAILABLE" fx:id="tabPane">
-        <Tab text="Team Manager" onSelectionChanged="#tabSelected">
-            <fx:include source="TeamMemberView.fxml" fx:id="teamMemberView"/>
+      fx:controller="view.TabViewController" userData="Color IT Manager">
+    <TabPane fx:id="tabPane" prefHeight="710" prefWidth="600" tabClosingPolicy="UNAVAILABLE">
+        <Tab closable="false" onSelectionChanged="#tabSelected" text="Team Manager">
+            <fx:include fx:id="teamMemberView" source="TeamMemberView.fxml" />
         </Tab>
-        <Tab text="Project Manager" onSelectionChanged="#tabSelected">
-            <fx:include source="ProjectTabView.fxml" fx:id="projectTabView"/>
+        <Tab onSelectionChanged="#tabSelected" text="Project Manager">
+            <fx:include fx:id="projectTabView" source="ProjectTabView.fxml" />
         </Tab>
     </TabPane>
 </VBox>

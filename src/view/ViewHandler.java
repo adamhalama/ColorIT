@@ -36,6 +36,7 @@ public class ViewHandler
     public void start(Stage primaryStage)
     {
         this.primaryStage = primaryStage;
+        this.primaryStage.setResizable(false);
         String filename = "logo.png";
         try {
             File file = new File(filename);

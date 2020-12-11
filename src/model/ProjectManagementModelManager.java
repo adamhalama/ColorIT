@@ -21,15 +21,58 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.projectList = new ProjectList();
         this.teamMemberList = new TeamMemberList();
         this.projectList.addProject("project number 1", "this is very good project");
-        this.projectList.addProject("project number 1", "this is very good project");
-        this.projectList.addProject("project number 1", "this is very good project");
-        this.projectList.addProject("project number 1", "this is very good project");
-        this.projectList.addProject("project number 1", "this is very good project");
+        this.projectList.addProject("project number 2", "this is very bad project");
+        this.projectList.addProject("project number 3", "this is very short project");
+        this.projectList.addProject("project number 4", "this is very long project \n"
+            + "\n"
+            + "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis arcu felis. Maecenas egestas euismod tellus, vitae consectetur ligula euismod auctor. Cras mi est, vulputate a ex eu, varius mattis ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc dignissim molestie ligula, varius placerat lacus egestas a. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam sed elementum leo. Etiam vitae maximus magna. Donec quis pharetra massa.\n"
+            + "\n"
+            + "Aenean venenatis sed augue vitae volutpat. Nam consectetur ipsum et nunc cursus lobortis. Aenean ullamcorper consequat accumsan. Nullam vitae varius dolor, sed rhoncus dolor. ");
+        this.projectList.addProject("project number 5", "this is very veird project");
+
         this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
         this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
         this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
-        this.teamMemberList.deleteTeamMember(new TeamMember("martin kuklo","nikde@play.33games.com"));
+
+        this.addRequirement(projectList.getAllProjects()[0],"mena","customer want to do it",1,teamMemberList.getAllTeamMembers()[0]);
+        this.addRequirement(projectList.getAllProjects()[1],"meni","customer want to do it",1,teamMemberList.getAllTeamMembers()[1]);
+        this.addRequirement(projectList.getAllProjects()[2],"mene","customer want to do it",1,teamMemberList.getAllTeamMembers()[2]);
+        this.addRequirement(projectList.getAllProjects()[3],"meno","customer want to do it",1,teamMemberList.getAllTeamMembers()[3]);
+        System.out.println(Arrays
+            .toString(getAllRequirements(projectList.getAllProjects()[0])));
+        /*this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
+        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
+        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
+        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
+        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
+        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
+        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
+        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
+        this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","v888sade@play.33games.com");*/
         System.out.println(
             Arrays.toString(this.teamMemberList.getAllTeamMembers()));
 
