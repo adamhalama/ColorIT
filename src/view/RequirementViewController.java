@@ -6,11 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import model.Project;
 import model.ProjectManagementModel;
 import model.Requirement;
 
 public class RequirementViewController {
+  public VBox requirementDetailsView;
   ObservableList<String> searchOptions = FXCollections.observableArrayList("status","days before deadline","name");
   @FXML private TextField searchValue;
   @FXML private ChoiceBox cb;
@@ -89,6 +91,7 @@ public class RequirementViewController {
 
   public void addRequirement(ActionEvent actionEvent)
   {
+    this.viewHandler.openView("AddRequirement");
   }
 
   public void openRequirement(ActionEvent actionEvent)

@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -139,6 +140,9 @@
                </TableView>
             </content>
          </ScrollPane>
+         <StackPane prefHeight="460.0" prefWidth="466.0">
+            <fx:include fx:id="requirementDetailsView" source="RequirementDetailsView.fxml" visible="true" />
+         </StackPane>
       </children>
       <HBox.margin>
          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
