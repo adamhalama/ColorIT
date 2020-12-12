@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-abstract class Description implements Serializable
+abstract public class Description implements Serializable
 {
 
   private boolean isFunctional;

@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-class Task implements Serializable
+public class Task implements Serializable
 {
   // not finished
 

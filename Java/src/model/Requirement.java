@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @since 1.0
  */
-class Requirement implements Serializable
+public class Requirement implements Serializable
 {
   private int requirementId;
   private String name;

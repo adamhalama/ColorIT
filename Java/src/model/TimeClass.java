@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-class TimeClass implements Serializable
+public class TimeClass implements Serializable
 {
   private Timestamp savedTimestamp;
 

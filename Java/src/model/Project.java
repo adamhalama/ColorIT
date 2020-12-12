@@ -10,7 +10,7 @@ import java.util.Arrays;
  * @version 1.0
  * @since 1.0
  */
-class Project implements Serializable
+public class Project implements Serializable
 {
     private String name;
     private int projectID;

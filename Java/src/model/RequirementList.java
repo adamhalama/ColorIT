@@ -11,7 +11,7 @@ import java.util.Collections;
  * @version 1.0
  * @since 1.0
  */
-class RequirementList implements Serializable
+public class RequirementList implements Serializable
 {
   /**
    * Represents the ArrayList of Requirement class objects.

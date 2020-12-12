@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 
-class TaskList implements Serializable
+public class TaskList implements Serializable
 {
   private ArrayList<Task> tasks;
   private int tasksCreated = 0;
