@@ -39,9 +39,9 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         /*String[] desc = new String[3];
         desc[0] = "i need";
         desc[1] = " to";
-        desc[2] = " shit";*/
+        desc[2] = " shit";
 
-        /*this.projectList.getAllProjects()[0].getRequirements().addRequirement("Test Requirement 1", desc,
+        this.projectList.getAllProjects()[0].getRequirements().addRequirement("Test Requirement 1", desc,
                 1000000000, teamMemberList.getAllTeamMembers()[0]);
         this.projectList.getAllProjects()[0].getRequirements().addRequirement("Test Requirement 2", desc,
                 1000000000, teamMemberList.getAllTeamMembers()[1]);
