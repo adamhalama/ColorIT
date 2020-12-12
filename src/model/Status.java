@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class Status implements Serializable
 {
 
-  public static final String NOT_STARTED  = "NOT_STARTED";
-  public static final String STARTED  = "STARTED";
-  public static final String ENDED  = "ENDED";
-  public static final String APPROVED  = "APPROVED";
-  public static final String REJECTED  = "REJECTED";
+  public static final String NOT_STARTED  = "Not started";
+  public static final String STARTED  = "Started";
+  public static final String ENDED  = "Ended";
+  public static final String APPROVED  = "Approved";
+  public static final String REJECTED  = "Rejected";
 
 
   public Status()
