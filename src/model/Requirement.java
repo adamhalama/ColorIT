@@ -27,7 +27,7 @@ public class Requirement implements Serializable
    * Represents the status of the requirement.
    * Can be: NOT_STARTED, STARTED, ENDED, APPROVED, REJECTED
    */
-  private Status status;
+  private String status;
   /**
    * Represents the list of task that are part of the requirement and therefore a project, stored in a TaskList class.
    */
@@ -46,7 +46,7 @@ public class Requirement implements Serializable
     this.name = name;
     this.deadlineTime = deadline;
     this.responsibleTeamMember = responsibleTeamMember;
-    this.status = new Status();
+    this.status = Status.NOT_STARTED;
     this.description = new nonFunctionalDescription(description);
   }
 
@@ -63,7 +63,7 @@ public class Requirement implements Serializable
     this.name = name;
     this.deadlineTime = deadline;
     this.responsibleTeamMember = responsibleTeamMember;
-    this.status = new Status();
+    this.status = Status.NOT_STARTED;
     this.description = new functionalDescription(description);
   }
 
@@ -109,9 +109,9 @@ public class Requirement implements Serializable
 
   /**
    * Gets the status of the requirement.
-   * @return An Status object representing the status.
+   * @return An String representing the status.
    */
-  public Status getStatus() {
+  public String getStatus() {
     return this.status;
   }
 
@@ -217,7 +217,7 @@ public class Requirement implements Serializable
    * Sets the requirements status.
    * @param status A Status containing the status.
    */
-  public void setStatus(Status status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 

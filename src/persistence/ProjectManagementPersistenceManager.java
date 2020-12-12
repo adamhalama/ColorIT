@@ -12,16 +12,68 @@ public class ProjectManagementPersistenceManager implements ProjectManagementPer
     FileHandling fileHandling = new FileHandling();
 
     @Override
-    public void saveProjectListToFile(ProjectList projectList)
+    public void saveProjectListToFile(ProjectList projectList,
+        TeamMemberList teamMemberList)
     {
         fileHandling.saveProjectListToFile(projectList);
-        this.saveToJson(projectList);
+        this.saveToJSON(projectList, teamMemberList);
     }
 
     @Override
-    public void saveTeamMemberListToFile(TeamMemberList teamMemberList)
+    public void saveTeamMemberListToFile(TeamMemberList teamMemberList, ProjectList projectList)
     {
         fileHandling.saveTeamMemberListToFile(teamMemberList);
+        this.saveToJSON(projectList, teamMemberList);
+    }
+
+    @Override
+    public void saveToJSON(ProjectList projectList, TeamMemberList teamMemberList)
+    {
+        JSONObject jsonData = new JSONObject();
+        JSONArray projectsArray = new JSONArray();
+        JSONArray teamMembersArray = new JSONArray();
+        for (Project project : projectList.getAllProjects())
+        {
+            JSONObject projectObject = new JSONObject();
+            projectObject.put("id", project.getProjectID());
+            projectObject.put("name", project.getProjectName());
+            projectObject.put("description", project.getProjectDescription());
+            JSONArray requirementsArray = new JSONArray();
+            for (Requirement requirement : project.getRequirements().getAllRequirements())
+            {
+                JSONObject requirementObject = new JSONObject();
+                requirementObject.put("id", requirement.getRequirementId());
+                requirementObject.put("name", requirement.getName());
+                requirementObject.put("description", requirement.getDescription());
+                requirementObject.put("status", requirement.getStatus());
+                requirementObject.put("deadline", requirement.getDeadlineTime());
+                requirementsArray.put(requirementObject);
+            }
+            projectObject.put("requirements", requirementsArray);
+            projectsArray.put(projectObject);
+        }
+        jsonData.put("projects", projectsArray);
+
+        for (TeamMember teamMember : teamMemberList.getAllTeamMembers())
+        {
+            JSONObject teamMemberObject = new JSONObject();
+            teamMemberObject.put("name", teamMember.getName());
+            teamMemberObject.put("email", teamMember.getEmail());
+            teamMembersArray.put(teamMemberObject);
+        }
+        jsonData.put("team", teamMembersArray);
+
+        try
+        {
+            File file = new File("./data.js");
+            PrintWriter out = new PrintWriter(file);
+            out.println("window.projectsData = " + jsonData.toString());
+            out.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -34,43 +86,5 @@ public class ProjectManagementPersistenceManager implements ProjectManagementPer
     public ProjectList loadProjectsFromFile()
     {
         return fileHandling.loadProjectsFromFile();
-    }
-
-    private void saveToJson(ProjectList projectList) {
-        JSONObject jsonData = new JSONObject();
-        JSONArray projectsArray = new JSONArray();
-        for (Project project : projectList.getAllProjects())
-        {
-            JSONObject projectObject = new JSONObject();
-            projectObject.put("id", project.getProjectID());
-            projectObject.put("name", project.getProjectName());
-            projectObject.put("description", project.getProjectDescription());
-            JSONArray requirementsArray = new JSONArray();
-            for (Requirement requirement : project.getRequirements().getAllRequirements())
-            {
-                JSONObject requirementObject = new JSONObject();
-                projectObject.put("id", requirement.getRequirementId());
-                projectObject.put("name", requirement.getName());
-                projectObject.put("description", requirement.getDescription());
-                projectObject.put("status", requirement.getStatus());
-                projectObject.put("deadline", requirement.getDeadlineTime());
-                requirementsArray.put(requirementObject);
-            }
-            projectObject.put("requirements", requirementsArray);
-            projectsArray.put(projectObject);
-        }
-        jsonData.put("projects", projectsArray);
-
-        try
-        {
-            File file = new File("./data.json");
-            PrintWriter out = new PrintWriter(file);
-            out.println(jsonData.toString());
-            out.close();
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
     }
 }

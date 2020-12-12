@@ -11,9 +11,9 @@ public class Task implements Serializable
   private String name;
   private String description;
   private int estimatedTime;
-  private int deadlineTime;
+  private long deadlineTime;
   private TeamMember responsibleTeamMember;
-  private Status status;
+  private String status;
   private TrackTimeList trackTimeList;
 
   public Task(String name, int id, int estimatedTime, String description, int deadlineTime) {
@@ -22,7 +22,7 @@ public class Task implements Serializable
     this.description=description;
     this.deadlineTime=deadlineTime;
     this.estimatedTime=estimatedTime;
-    this.status=Status.NOT_STARTED;
+    this.status = Status.NOT_STARTED;
     this.trackTimeList = new TrackTimeList();
   }
   public Task(String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember) {
@@ -32,7 +32,7 @@ public class Task implements Serializable
     this.deadlineTime=deadlineTime;
     this.estimatedTime=estimatedTime;
     this.responsibleTeamMember=responsibleTeamMember;
-    this.status=Status.NOT_STARTED;
+    this.status = Status.NOT_STARTED;
     this.trackTimeList = new TrackTimeList();
   }
 
@@ -57,7 +57,7 @@ public class Task implements Serializable
     return this.estimatedTime;
   }
 
-  public int getDeadlineTime() {
+  public long getDeadlineTime() {
     return this.deadlineTime;
   }
 
@@ -83,7 +83,7 @@ public class Task implements Serializable
     return this.responsibleTeamMember;
   }
 
-  public Status getStatus()
+  public String getStatus()
   {
     return this.status;
   }
@@ -119,7 +119,7 @@ public class Task implements Serializable
     this.responsibleTeamMember=teamMember;
   }
 
-  public void setStatus(Status status) {
+  public void setStatus(String status) {
     this.status = status;
   }
 
