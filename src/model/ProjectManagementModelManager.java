@@ -25,14 +25,14 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.projectList.addProject("project number 2", "this is very good project");
         this.projectList.addProject("project number 3", "this is very good project");
         this.projectList.addProject("project number 4", "this is very good project");
-        this.projectList.addProject("project number 5", "this is very good project");
+        this.projectList.addProject("project number 5", "this is very good project");*/
 
-        this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
+        /*this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
         this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");*/
 
-        persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);*/
+        persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
 
         /*String[] desc = new String[3];
         desc[0] = "i need";
@@ -51,9 +51,10 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0].setStatus(Status.NOT_STARTED);
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[1].setStatus(Status.STARTED);
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[2].setStatus(Status.APPROVED);
-        this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[3].setStatus(Status.ENDED);*/
+        this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[3].setStatus(Status.ENDED);
 
-
+       persistenceManager.saveProjectListToFile(projectList, teamMemberList);
+*/
     }
 
     @Override
