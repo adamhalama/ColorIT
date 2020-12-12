@@ -12,33 +12,26 @@ public class ProjectManagementPersistenceManager implements ProjectManagementPer
     FileHandling fileHandling = new FileHandling();
 
     @Override
-    public void saveProjectListToFile(ProjectList projectList)
+    public void saveProjectListToFile(ProjectList projectList,
+        TeamMemberList teamMemberList)
     {
         fileHandling.saveProjectListToFile(projectList);
-        this.saveToJson(projectList);
+        this.saveToJSON(projectList, teamMemberList);
     }
 
     @Override
-    public void saveTeamMemberListToFile(TeamMemberList teamMemberList)
+    public void saveTeamMemberListToFile(TeamMemberList teamMemberList, ProjectList projectList)
     {
         fileHandling.saveTeamMemberListToFile(teamMemberList);
+        this.saveToJSON(projectList, teamMemberList);
     }
 
     @Override
-    public TeamMemberList loadTeamMembersFromFile()
+    public void saveToJSON(ProjectList projectList, TeamMemberList teamMemberList)
     {
-        return fileHandling.loadTeamMembersFromFile();
-    }
-
-    @Override
-    public ProjectList loadProjectsFromFile()
-    {
-        return fileHandling.loadProjectsFromFile();
-    }
-
-    private void saveToJson(ProjectList projectList) {
         JSONObject jsonData = new JSONObject();
         JSONArray projectsArray = new JSONArray();
+        JSONArray teamMembersArray = new JSONArray();
         for (Project project : projectList.getAllProjects())
         {
             JSONObject projectObject = new JSONObject();
@@ -52,7 +45,7 @@ public class ProjectManagementPersistenceManager implements ProjectManagementPer
                 requirementObject.put("id", requirement.getRequirementId());
                 requirementObject.put("name", requirement.getName());
                 requirementObject.put("description", requirement.getDescription());
-                requirementObject.put("status", requirement.getStatus().toString());
+                requirementObject.put("status", requirement.getStatus());
                 requirementObject.put("deadline", requirement.getDeadlineTime());
                 requirementsArray.put(requirementObject);
             }
@@ -60,6 +53,15 @@ public class ProjectManagementPersistenceManager implements ProjectManagementPer
             projectsArray.put(projectObject);
         }
         jsonData.put("projects", projectsArray);
+
+        for (TeamMember teamMember : teamMemberList.getAllTeamMembers())
+        {
+            JSONObject teamMemberObject = new JSONObject();
+            teamMemberObject.put("name", teamMember.getName());
+            teamMemberObject.put("email", teamMember.getEmail());
+            teamMembersArray.put(teamMemberObject);
+        }
+        jsonData.put("team", teamMembersArray);
 
         try
         {
@@ -72,5 +74,17 @@ public class ProjectManagementPersistenceManager implements ProjectManagementPer
         {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public TeamMemberList loadTeamMembersFromFile()
+    {
+        return fileHandling.loadTeamMembersFromFile();
+    }
+
+    @Override
+    public ProjectList loadProjectsFromFile()
+    {
+        return fileHandling.loadProjectsFromFile();
     }
 }
