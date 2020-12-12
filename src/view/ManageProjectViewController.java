@@ -58,10 +58,10 @@ public class ManageProjectViewController
     if (project != null){
       try {
         if(!this.name.getText().equals(this.project.getProjectName())){
-          project.setName(this.name.getText());
+          model.setName(project ,this.name.getText());
         }
         if(!this.description.getText().equals(this.project.getProjectDescription())){
-          project.setDescription(this.description.getText());
+          model.setDescription(project, this.description.getText());
         }
         viewHandler.openView("ProjectView");
       } catch (Exception e) {
