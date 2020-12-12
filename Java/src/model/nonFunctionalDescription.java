@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class nonFunctionalDescription extends Description implements Serializable
+class nonFunctionalDescription extends Description implements Serializable
 {
     private String description;
 

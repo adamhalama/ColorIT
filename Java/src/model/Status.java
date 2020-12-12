@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class Status implements Serializable
+class Status implements Serializable
 {
 
   public static final String NOT_STARTED  = "Not started";

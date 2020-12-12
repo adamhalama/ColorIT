@@ -11,7 +11,7 @@ public class FileHandling
 
     public TeamMemberList loadTeamMembersFromFile() {
         teamMemberList = new TeamMemberList();
-        String filename = "./TeamMemberList.bin";
+        String filename = "./Java/TeamMemberList.bin";
         ObjectInputStream in = null;
 
         try
@@ -59,7 +59,7 @@ public class FileHandling
 
     public ProjectList loadProjectsFromFile() {
         projectList = new ProjectList();
-        String filename = "./ProjectList.bin";
+        String filename = "./Java/ProjectList.bin";
         ObjectInputStream in = null;
 
         try
@@ -107,7 +107,7 @@ public class FileHandling
 
     public void saveTeamMemberListToFile(TeamMemberList teamMemberList)
     {
-        String filename = "./TeamMemberList.bin";
+        String filename = "./Java/TeamMemberList.bin";
 
         ObjectOutputStream out = null;
 
@@ -139,7 +139,7 @@ public class FileHandling
 
     public void saveProjectListToFile(ProjectList projectList)
     {
-        String filename = "./ProjectList.bin";
+        String filename = "./Java/ProjectList.bin";
 
         ObjectOutputStream out = null;
 

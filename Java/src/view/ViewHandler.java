@@ -38,7 +38,8 @@ public class ViewHandler
     {
         this.primaryStage = primaryStage;
         this.primaryStage.setResizable(false);
-        String filename = "logo.png";
+        String filename = "./Java/logo.png";
+
         try {
             File file = new File(filename);
             FileInputStream inputStream = new FileInputStream(file);

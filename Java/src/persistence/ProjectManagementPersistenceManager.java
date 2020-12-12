@@ -65,7 +65,7 @@ public class ProjectManagementPersistenceManager implements ProjectManagementPer
 
         try
         {
-            File file = new File("../data.js");
+            File file = new File("./data.js");
             PrintWriter out = new PrintWriter(file);
             out.println("window.projectsData = " + jsonData.toString());
             out.close();

@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class functionalDescription extends Description implements Serializable {
+class functionalDescription extends Description implements Serializable {
 
     private String who;
     private String what;

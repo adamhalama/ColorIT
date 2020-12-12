@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class TrackTime implements Serializable
+class TrackTime implements Serializable
 {
   private int timeSpend = 0;
   private TeamMember teamMember;

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @since 1.0
  */
-public class ProjectList implements Serializable
+class ProjectList implements Serializable
 {
     /**
      * Represents the ArrayList of Project class objects
