@@ -32,9 +32,29 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.teamMemberList.addTeamMember("jan michal","tu@play.33games.com");
         this.teamMemberList.addTeamMember("michal jan","tam@play.33games.com");
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
-        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");*/
+        this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");
 
-        persistenceManager.saveTeamMemberListToFile(teamMemberList);
+        persistenceManager.saveTeamMemberListToFile(teamMemberList);*/
+
+        String[] desc = new String[3];
+        desc[0] = "i need";
+        desc[1] = " to";
+        desc[2] = " shit";
+
+        /*this.projectList.getAllProjects()[0].getRequirements().addRequirement("Test Requirement 1", desc,
+                1000000000, teamMemberList.getAllTeamMembers()[0]);
+        this.projectList.getAllProjects()[0].getRequirements().addRequirement("Test Requirement 2", desc,
+                1000000000, teamMemberList.getAllTeamMembers()[1]);
+        this.projectList.getAllProjects()[0].getRequirements().addRequirement("Test Requirement 3", "this is a non functional desc",
+                1000000000, teamMemberList.getAllTeamMembers()[2]);
+        this.projectList.getAllProjects()[0].getRequirements().addRequirement("Test Requirement 4", "another non functional desc",
+                1000000001, teamMemberList.getAllTeamMembers()[3]);
+
+        this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0].setStatus(Status.NOT_STARTED);
+        this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[1].setStatus(Status.STARTED);
+        this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[2].setStatus(Status.APPROVED);
+        this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[3].setStatus(Status.ENDED);*/
+
     }
 
     @Override

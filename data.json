@@ -1,1 +1,1 @@
-{"projects":[{"requirements":[],"name":"project number 1","description":"this is very good project","id":1},{"requirements":[],"name":"project number 2","description":"this is very good project","id":2},{"requirements":[],"name":"project number 3","description":"this is very good project","id":3}]}
+{"projects":[{"requirements":[{},{},{},{}],"name":"Test Requirement 4","description":["another non functional desc"],"id":3,"deadline":1000000001},{"requirements":[],"name":"Test project 2","description":"no requirements i think\n","id":1}]}
