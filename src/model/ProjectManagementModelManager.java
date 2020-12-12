@@ -36,10 +36,10 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
         persistenceManager.saveTeamMemberListToFile(teamMemberList);*/
 
-        String[] desc = new String[3];
+        /*String[] desc = new String[3];
         desc[0] = "i need";
         desc[1] = " to";
-        desc[2] = " shit";
+        desc[2] = " shit";*/
 
         /*this.projectList.getAllProjects()[0].getRequirements().addRequirement("Test Requirement 1", desc,
                 1000000000, teamMemberList.getAllTeamMembers()[0]);
@@ -54,6 +54,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[1].setStatus(Status.STARTED);
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[2].setStatus(Status.APPROVED);
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[3].setStatus(Status.ENDED);*/
+
 
     }
 

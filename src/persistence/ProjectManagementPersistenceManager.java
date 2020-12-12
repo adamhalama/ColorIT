@@ -49,11 +49,11 @@ public class ProjectManagementPersistenceManager implements ProjectManagementPer
             for (Requirement requirement : project.getRequirements().getAllRequirements())
             {
                 JSONObject requirementObject = new JSONObject();
-                projectObject.put("id", requirement.getRequirementId());
-                projectObject.put("name", requirement.getName());
-                projectObject.put("description", requirement.getDescription());
-                projectObject.put("status", requirement.getStatus());
-                projectObject.put("deadline", requirement.getDeadlineTime());
+                requirementObject.put("id", requirement.getRequirementId());
+                requirementObject.put("name", requirement.getName());
+                requirementObject.put("description", requirement.getDescription());
+                requirementObject.put("status", requirement.getStatus().toString());
+                requirementObject.put("deadline", requirement.getDeadlineTime());
                 requirementsArray.put(requirementObject);
             }
             projectObject.put("requirements", requirementsArray);
@@ -63,9 +63,9 @@ public class ProjectManagementPersistenceManager implements ProjectManagementPer
 
         try
         {
-            File file = new File("./data.json");
+            File file = new File("./data.js");
             PrintWriter out = new PrintWriter(file);
-            out.println(jsonData.toString());
+            out.println("window.projectsData = " + jsonData.toString());
             out.close();
         }
         catch (FileNotFoundException e)

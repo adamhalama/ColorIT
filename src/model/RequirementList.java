@@ -21,7 +21,7 @@ public class RequirementList implements Serializable
    * Represents the number of requirements created in this project.
    * Used in ID assigning.
    */
-  private int requirementsCreated = 0;
+  private int requirementsCreated = 1;
 
   /**
    * Creates the ArrayList of Requirement class objects
