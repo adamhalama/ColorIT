@@ -39,7 +39,7 @@ public class TaskList implements Serializable
     }
     return foundTasks.toArray(new Task[0]);
   }
-  public Task[] getTasksByStatus(Status status)
+  public Task[] getTasksByStatus(String status)
   {
     ArrayList<Task> foundTasks = new ArrayList<Task>();
     for (Task task : this.tasks)

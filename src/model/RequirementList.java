@@ -71,7 +71,7 @@ public class RequirementList implements Serializable
    * @param status A Status representing the status of the requirements we want.
    * @return An array of Requirement objects representing requirements with a specified status.
    */
-  public Requirement[] getRequirementsByStatus(Status status) {
+  public Requirement[] getRequirementsByStatus(String status) {
     ArrayList<Requirement> foundRequirements = new ArrayList<Requirement>();
     for (Requirement requirement : this.requirements)
     {

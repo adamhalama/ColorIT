@@ -135,7 +135,7 @@ public class Project implements Serializable
 
             for (int j = 0; j < tasks.length; j++)
             {
-                if (tasks[i].getStatus() == Status.ENDED)
+                if (tasks[i].getStatus().equals(Status.ENDED))
                 {
                     ArrayList<TeamMember> taskTeamMembers
                             = new ArrayList<>(Arrays.asList(tasks[i].getTeamMembers()));

@@ -194,7 +194,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public Requirement[] getRequirementsByStatus(Project project, Status status)
+    public Requirement[] getRequirementsByStatus(Project project, String status)
     {
         return project.getRequirements().getRequirementsByStatus(status);
     }
@@ -308,7 +308,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public Status getStatus(Requirement requirement)
+    public String getStatus(Requirement requirement)
     {
         return requirement.getStatus();
     }
@@ -358,7 +358,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public void setStatus(Requirement requirement, Status status)
+    public void setStatus(Requirement requirement, String status)
     {
         requirement.setStatus(status);
         persistenceManager.saveProjectListToFile(projectList);
@@ -418,7 +418,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public Task[] getTasksByStatus(Requirement requirement, Status status)
+    public Task[] getTasksByStatus(Requirement requirement, String status)
     {
         return requirement.getTasks().getTasksByStatus(status);
     }
@@ -490,7 +490,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public Status getStatus(Task task)
+    public String getStatus(Task task)
     {
         return task.getStatus();
     }
@@ -531,7 +531,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public void setStatus(Task task, Status status)
+    public void setStatus(Task task, String status)
     {
         task.setStatus(status);
         persistenceManager.saveProjectListToFile(projectList);

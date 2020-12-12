@@ -22,7 +22,7 @@ public interface ProjectManagementModel
     public void setProductOwner(Project project, TeamMember teamMember);
     public float getProductivityOfMember(Project project, TeamMember teamMember);
     public void setDescription(Project project, String description);
-    public Requirement[] getRequirementsByStatus(Project project, Status status);
+    public Requirement[] getRequirementsByStatus(Project project, String status);
     public void deleteRequirement(Project project, Requirement requirement);
     public void reorderRequirements(Project project, int index1, int index2);
     public void addRequirement(Project project, String name, String nonFunctionalDescription,
@@ -42,14 +42,14 @@ public interface ProjectManagementModel
     public TaskList getTasks(Requirement requirement);
     public int getEstimatedTime(Requirement requirement);
     public TeamMember getResponsibleTeamMember(Requirement requirement);
-    public Status getStatus(Requirement requirement);
+    public String getStatus(Requirement requirement);
     public long getDeadlineTime(Requirement requirement);
     public void setName(Requirement requirement, String name);
     public void setDescription(Requirement requirement, String description);
     public void setDescription(Requirement requirement, String who, String what, String why);
     public void setDeadlineTime(Requirement requirement, int newTime);
     public void setResponsibleTeamMember(Requirement requirement, TeamMember teamMember);
-    public void setStatus(Requirement requirement, Status status);
+    public void setStatus(Requirement requirement, String status);
     public void addTask(Requirement requirement, String name, int id, int estimatedTime,
                         String description, int deadlineTime, TeamMember responsibleTeamMember);
     public void addTask(Requirement requirement, String name, int id, int estimatedTime,
@@ -60,7 +60,7 @@ public interface ProjectManagementModel
     public void deleteTask(Requirement requirement, Task task);
     public void changeTask(Task task, String name, int estimatedTime, String description,
                            int deadlineTime, TeamMember responsibleTeamMember);
-    public Task[] getTasksByStatus(Requirement requirement, Status status);
+    public Task[] getTasksByStatus(Requirement requirement, String status);
     public Task[] getTasksDaysBeforeDeadline(Requirement requirement, int days);
     public int getTaskID(Task task);
     public String getName(Task task);
@@ -72,13 +72,13 @@ public interface ProjectManagementModel
     public int getTimeSpendOfMember(Task task, TeamMember teamMember);
     public TeamMember[] getTeamMembers(Task task);
     public TeamMember getResponsibleTeamMember(Task task);
-    public Status getStatus(Task task);
+    public String getStatus(Task task);
     public void setName(Task task, String name);
     public void setDescription(Task task, String description);
     public void setEstimatedTime(Task task, int estimatedTime);
     public void setDeadlineTIme(Task task, int time);
     public void setResponsibleTeamMember(Task task, TeamMember teamMember);
-    public void setStatus(Task task, Status status);
+    public void setStatus(Task task, String status);
     public void setTimeWorked(Task task, TeamMember teamMember, int time);
     public void addTeamMember(Task task, TeamMember teamMember);
     public void addTeamMember(String name, String email);
