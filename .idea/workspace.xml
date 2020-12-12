@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="393610ac-5eb4-441a-959d-11514d502eca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/json_20200518.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ColorIT.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectList.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TeamMemberList.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/json-20200518.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Description.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Email.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Project.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ProjectList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ProjectManagementModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ProjectManagementModelManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Requirement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/RequirementList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TaskList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TeamMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TeamMemberList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TimeClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TrackTime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TrackTimeList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/functionalDescription.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/nonFunctionalDescription.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/FileHandling.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/ProjectManagementPersistence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/ProjectManagementPersistenceManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ManageMemberView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ManageMembersViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ManageProjectView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ManageProjectViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ManageRequirementsView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ManageRequirementsViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ManageTaskView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ManageTasksViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ProjectTabView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ProjectTabViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ProjectView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ProjectViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RequirementDetailsView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RequirementDetailsViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RequirementListViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RequirementView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RequirementViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RequirementViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TabView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TabViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TaskListViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TaskView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TaskViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TaskViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TeamMemberListViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TeamMemberView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TeamMemberViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TeamMemberViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ViewHandler.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Programs\JetBrains\IntelliJ IDEA 2020.2.1\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1lCJ1POjlUTbTaSNJy4tj3IzqyV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/json-20200518.jar" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ColorIT" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="javax.json.bind-api-1.0.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/lib/javax.json.bind-api-1.0.jar" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.javax.json.bind-api-1.0.jar" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="393610ac-5eb4-441a-959d-11514d502eca" name="Default Changelist" comment="" />
+      <created>1607094923281</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607094923281</updated>
+      <workItem from="1607094924395" duration="1594000" />
+      <workItem from="1607190895797" duration="3515000" />
+      <workItem from="1607264148002" duration="3948000" />
+      <workItem from="1607450993273" duration="4648000" />
+      <workItem from="1607589035391" duration="259000" />
+      <workItem from="1607589451971" duration="7977000" />
+      <workItem from="1607608511940" duration="2699000" />
+      <workItem from="1607709194459" duration="2462000" />
+      <workItem from="1607712038937" duration="990000" />
+      <workItem from="1607747963547" duration="1730000" />
+      <workItem from="1607784340352" duration="686000" />
+      <workItem from="1607785067049" duration="5968000" />
+      <workItem from="1607792320671" duration="3438000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="527" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607589194060">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="527" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1607589194060" />
+    <state x="531" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1607791693341">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="531" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607791693341" />
+    <state x="486" y="122" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1607608755607">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="486" y="122" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.824@0.0.1536.824" timestamp="1607608755607" />
+    <state x="473" y="154" key="FileChooserDialogImpl" timestamp="1607608958675">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="473" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607608958675" />
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1607798440276">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607798440276" />
+    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1607798440275">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607798440275" />
+    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1607798440275">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607798440275" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1607798440276">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607798440276" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1607608962267">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1607608962267" />
+    <state x="498" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1607095753029">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824@0.0.1536.824" timestamp="1607095753029" />
+    <state x="397" y="149" width="633" height="622" key="find.popup" timestamp="1607791792974">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="397" y="149" width="633" height="622" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1607791792974" />
+    <state x="360" y="33" key="new project wizard" timestamp="1607606636744">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="360" y="33" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1607606636744" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1607608123560">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1607608123560" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1607266240505">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607266240505" />
+  </component>
+</project>

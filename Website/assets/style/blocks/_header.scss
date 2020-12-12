@@ -1,0 +1,84 @@
+header {
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    height: $desktopHeaderHeight;
+    top: 0;
+    left: 0;
+    background: transparentize($color: $white, $amount: 0.2);
+    backdrop-filter: blur(15px);
+    padding: 10px 0;
+    box-sizing: border-box;
+    display: flex !important;
+    align-items: center;
+    
+    .navbar {
+        height: 100%;
+        padding-top: 0;
+        padding-bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+.logoImgContainer {
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    cursor: pointer;
+
+    .logo {
+        display: block;
+        height: 100%;
+        width: auto;
+        transition: filter $transition;
+    }
+    .logoText {
+        display: block;
+        text-align: left;
+        color: $black;
+        font-size: 24px;
+        font-weight: 700;
+        padding-left: 15px;
+        transition: color $transition;
+    }
+    &:hover {
+        .logo {
+            filter: brightness(120%);
+        }
+        .logoText {
+            color: $orange;
+        }
+    }
+}
+.linksContainer {
+    height: 100%;
+    width: max-content;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    grid-template-rows: 100%;
+    grid-gap: 30px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    .link {
+        font-size: 16px;
+        font-weight: 500;
+        color: $black;
+        transition: color $transition;
+        text-decoration: none;
+        &.nuxt-link-exact-active {
+            color: $yellow;
+        }
+        &:not(.nuxt-link-exact-active):hover {
+            color: $orange;
+        }
+    }
+    .defbtn {
+        margin-left: 5px;
+    }
+}
