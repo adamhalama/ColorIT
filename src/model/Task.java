@@ -11,7 +11,7 @@ public class Task implements Serializable
   private String name;
   private String description;
   private int estimatedTime;
-  private int deadlineTime;
+  private long deadlineTime;
   private TeamMember responsibleTeamMember;
   private String status;
   private TrackTimeList trackTimeList;
@@ -57,7 +57,7 @@ public class Task implements Serializable
     return this.estimatedTime;
   }
 
-  public int getDeadlineTime() {
+  public long getDeadlineTime() {
     return this.deadlineTime;
   }
 

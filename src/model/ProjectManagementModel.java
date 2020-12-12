@@ -67,7 +67,7 @@ public interface ProjectManagementModel
     public int getRequirementID(Task task);
     public String getDescription(Task task);
     public int getEstimatedTime(Task task);
-    public int getDeadlineTime(Task task);
+    public long getDeadlineTime(Task task);
     public int getTimeSpend(Task task);
     public int getTimeSpendOfMember(Task task, TeamMember teamMember);
     public TeamMember[] getTeamMembers(Task task);

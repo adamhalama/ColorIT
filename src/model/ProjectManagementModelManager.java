@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import persistence.*;
 
 public class ProjectManagementModelManager implements ProjectManagementModel
@@ -461,7 +459,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public int getDeadlineTime(Task task)
+    public long getDeadlineTime(Task task)
     {
         return task.getDeadlineTime();
     }

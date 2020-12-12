@@ -109,7 +109,7 @@ public class Requirement implements Serializable
 
   /**
    * Gets the status of the requirement.
-   * @return An Status object representing the status.
+   * @return An String representing the status.
    */
   public String getStatus() {
     return this.status;
