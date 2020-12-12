@@ -4,8 +4,9 @@ import model.*;
 
 public interface ProjectManagementPersistence
 {
-    public void saveProjectListToFile(ProjectList projectList);
-    public void saveTeamMemberListToFile(TeamMemberList teamMemberList);
+    void saveProjectListToFile(ProjectList projectList, TeamMemberList teamMemberList);
+    void saveTeamMemberListToFile(TeamMemberList teamMemberList, ProjectList projectList);
+    void saveToJSON(ProjectList projectList, TeamMemberList teamMemberList);
     public TeamMemberList loadTeamMembersFromFile();
     public ProjectList loadProjectsFromFile();
 }
