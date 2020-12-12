@@ -1,6 +1,6 @@
 package model;
 
-interface ProjectManagementModel
+public interface ProjectManagementModel
 {
     void addProject(String name, String description);
     Project[] getProjectsByName(String projectName);
