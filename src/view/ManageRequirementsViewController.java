@@ -48,7 +48,7 @@ public class ManageRequirementsViewController {
     for (TeamMember teamMember:
          teamMembers)
     {
-      this.teamMemberOptions.add(teamMember.getName());
+      this.teamMemberOptions.add(model.getName(teamMember));
     }
     this.RequirementResponsibleMember.setItems(teamMemberOptions);
   }
