@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TimeClass implements Serializable
 {
@@ -11,6 +12,10 @@ public class TimeClass implements Serializable
   public TimeClass(long timeInMilSec)
   {
     this.savedTimestamp = new Timestamp(timeInMilSec);
+  }
+
+  public TimeClass(String datestring) {
+    this.savedTimestamp = new Timestamp(this.parseString(datestring));
   }
 
   public TimeClass() {
@@ -23,6 +28,17 @@ public class TimeClass implements Serializable
 
   public String getFormattedTime() {
     return new SimpleDateFormat("HH:mm:ss MM.dd.yyyy").format(this.savedTimestamp);
+  }
+
+  public long parseString(String datestring) {
+    try {
+      SimpleDateFormat dateFormat = new SimpleDateFormat("MM.dd.yyyy");
+      Date parsedDate = dateFormat.parse(datestring);
+      return parsedDate.getTime();
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+    return 0;
   }
 
   public long getTime() {
