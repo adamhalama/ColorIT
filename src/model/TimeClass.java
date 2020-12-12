@@ -26,8 +26,14 @@ public class TimeClass implements Serializable
     return (long) (days * 24 * 60 * 60 * 1000);
   }
 
-  public String getFormattedTime() {
+  public String getFormattedDateTime() {
     return new SimpleDateFormat("HH:mm:ss MM.dd.yyyy").format(this.savedTimestamp);
+  }
+  public String getFormattedTime() {
+    return new SimpleDateFormat("HH:mm:ss").format(this.savedTimestamp);
+  }
+  public String getFormattedDate() {
+    return new SimpleDateFormat("MM.dd.yyyy").format(this.savedTimestamp);
   }
 
   public long parseString(String datestring) {
