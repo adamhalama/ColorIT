@@ -36,10 +36,10 @@ public class RequirementDetailsViewController
     if (currentRequirement == null){
       return;
     }
-    this.requirementName.setText(currentRequirement.getName());
-    this.requirementID.setText(String.valueOf(currentRequirement.getRequirementId()));
-    String [] desc = currentRequirement.getDescription();
-    if (currentRequirement.isFunctional()){
+    this.requirementName.setText(model.getName(currentRequirement));
+    this.requirementID.setText(String.valueOf(model.getRequirementID(currentRequirement)));
+    String [] desc = model.getDescription(currentRequirement);
+    if (model.isFunctional(currentRequirement)){
       String finalDescription = "";
       finalDescription += "As a "+desc[0]+
           "I want to " + desc[1] +

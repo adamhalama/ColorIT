@@ -20,6 +20,78 @@ header {
         align-items: center;
         justify-content: space-between;
     }
+    #ham {
+        /* position: absolute;
+        right: 15px; */
+        z-index: 2;
+        top: 12px;
+        width: 50px;
+        height: auto;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        transition: transform 400ms;
+        user-select: none;
+
+        .line {
+            fill:none;
+            transition: 400ms ease;
+            stroke:$coax;
+            stroke-width:5.5;
+            stroke-linecap:round;
+        }
+        .top {
+            stroke-dasharray: 40 139;
+        }
+        .bottom {
+            stroke-dasharray: 40 180;
+        }
+    }
+    nav.hamburgerOpened #ham {
+        transform: rotate(45deg);
+        .line {
+            stroke: $black;
+        }
+        .top {
+            stroke-dashoffset: -98px;
+        }
+        .bottom {
+            stroke-dashoffset: -138px;
+        }
+    }
+
+    @media (max-width: $mobile) {
+        .linksContainer {
+            z-index: 2;
+            display: flex;
+            position: absolute;
+            width: 100vw;
+            height: calc(100vh - #{$desktopHeaderHeight});
+            left: 0;
+            top: $desktopHeaderHeight;
+            background: transparentize($color: $white, $amount: 0.1);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100vw);
+            transition: transform $transition;
+
+            li {
+                padding: 5px 0;
+            }
+        }
+        .logoImgContainer {
+            .logo {
+                height: 80%;
+            }
+            .logoText {
+                font-size: 20px;
+            }
+        }
+        nav.hamburgerOpened .linksContainer {
+            transform: translateX(0);
+            backdrop-filter: blur(15px);
+        }
+    }
 }
 .logoImgContainer {
     height: 100%;
@@ -80,5 +152,21 @@ header {
     }
     .defbtn {
         margin-left: 5px;
+    }
+
+    @media (max-width: $mobile) {
+        width: 100%;
+        grid-template-columns: 100%;
+        grid-auto-flow: row;
+        grid-template-rows: initial !important;
+        grid-auto-rows: max-content;
+        grid-gap: 10px;
+        justify-content: center;
+
+        .link {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
     }
 }

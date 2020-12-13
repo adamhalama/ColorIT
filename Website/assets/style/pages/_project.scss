@@ -18,7 +18,7 @@
         align-items: center;
         padding-top: 30px;
         box-sizing: border-box;
-        @media (max-width: 768px) {
+        @media (max-width: $mobile) {
             grid-template-columns: 100%;
             grid-template-rows: repeat(3,max-content);
             justify-items: center;
@@ -123,7 +123,8 @@
             grid-auto-flow: row;
             grid-auto-rows: $itemHeight;
             grid-gap: 11px;
-            @media (max-width: 768px) {
+            @media (max-width: $mobile) {
+                padding-top: 20px;
                 grid-auto-rows: max-content;
                 grid-gap: 35px;
 
@@ -147,6 +148,14 @@
 
                             i {
                                 display: none;
+                            }
+                        }
+                        .functional {
+                            display: block;
+                            padding-top: 7px;
+
+                            i {
+                                padding-left: 0 !important;
                             }
                         }
                     }
@@ -236,6 +245,21 @@
                             padding: 0 5px;
                         }
                     }
+                }
+            }
+        }
+
+        @media (max-width: $mobile) {
+            .tileHeadline {
+                margin-bottom: 10px;
+                &:not(:first-child) {
+                    margin-top: 30px;
+                }
+                
+                span {
+                    display: block;
+                    padding-left: 0;
+                    padding-top: 5px;
                 }
             }
         }

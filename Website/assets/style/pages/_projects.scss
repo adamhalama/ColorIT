@@ -94,4 +94,16 @@
         color: $gray;
         padding: 130px 15px;
     }
+
+    @media (max-width: $mobile) {
+        .projects {
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 5px;
+        }
+        .noProjects {
+            font-size: 20px;
+            padding: 20px 15px;
+        }
+    }
 }

@@ -4,9 +4,6 @@ footer {
     box-sizing: border-box;
     padding: 10px 0;
     background: $white;
-    @media (max-width: 768px) {
-        height: max-content;
-    }
 
     .container {
         height: 100%;
@@ -27,6 +24,22 @@ footer {
     .copyright {
         color: $gray;
         font-size: 14px;
+    }
+
+    @media (max-width: $mobile) {
+        height: max-content;
+
+        .logoImgContainer {
+            padding-bottom: 10px;
+        }
+        .footerRow {
+            flex-direction: column;
+            justify-content: center;
+        }
+        .copyright {
+            padding-top: 20px;
+            text-align: center;
+        }
     }
 }
 

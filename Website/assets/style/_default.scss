@@ -46,3 +46,16 @@ h1 {
     margin-bottom: 15px;
     color: $black;
 }
+
+@media (min-width: $mobile+1) {
+    .mobileOnly {
+        display: none;
+    }
+}
+@media (max-width: $mobile) {
+    h1 {
+        font-size: 28px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+}
