@@ -614,7 +614,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     @Override
     public void setEmail(TeamMember teamMember, String email) 
     {
-        teamMember.setEmail(email);
+        teamMemberList.setTeamMemberEmail(teamMember, email);
         persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
     }
 
