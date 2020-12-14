@@ -157,6 +157,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     {
         project.addTeamMember(teamMember);
         persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
+        persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
     @Override
