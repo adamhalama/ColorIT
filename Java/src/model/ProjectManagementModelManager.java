@@ -194,9 +194,12 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         // not sure about the whole exception thing
         // maybe not finished
         // TODO
-        try {
-            return project.getProductivityOfMember(teamMember);
-        } catch (Exception e) {
+        try
+        {
+            return projectList.getProductivityOfMember(teamMember);
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
         return -1;
