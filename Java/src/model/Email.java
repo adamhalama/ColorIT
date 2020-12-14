@@ -10,9 +10,10 @@ public class Email implements Serializable
 
     public Email(String email)
     {
-        if (isEmailValid(email))
-            this.email = email;
-        else throw new IllegalArgumentException("The email is not valid");
+        if (isEmailValid(email.trim()))
+            this.email = email.trim();
+        else
+            throw new IllegalArgumentException("The email is not valid");
     }
 
     public String getEmail() {
@@ -20,7 +21,9 @@ public class Email implements Serializable
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if (isEmailValid(email.trim()))
+            this.email = email.trim();
+        else throw new IllegalArgumentException("The email is not valid");
     }
 
     public boolean equals(Email email)

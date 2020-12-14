@@ -157,6 +157,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     {
         project.addTeamMember(teamMember);
         persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
+        persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
     @Override
@@ -188,17 +189,18 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public float getProductivityOfMember(Project project, TeamMember teamMember)
-    {
+    public float getProductivityOfMember(Project project, TeamMember teamMember) throws Exception {
         // not sure about the whole exception thing
         // maybe not finished
         // TODO
-        try {
-            return project.getProductivityOfMember(teamMember);
-        } catch (Exception e) {
-            e.printStackTrace();
+        try
+        {
+            return projectList.getProductivityOfMember(teamMember);
         }
-        return -1;
+        catch (Exception e)
+        {
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
@@ -613,7 +615,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     @Override
     public void setEmail(TeamMember teamMember, String email) 
     {
-        teamMember.setEmail(email);
+        teamMemberList.setTeamMemberEmail(teamMember, email);
         persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
     }
 

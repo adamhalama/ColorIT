@@ -20,7 +20,7 @@ public interface ProjectManagementModel
     void setName(Project project, String name);
     void setScrumMaster(Project project, TeamMember teamMember);
     void setProductOwner(Project project, TeamMember teamMember);
-    float getProductivityOfMember(Project project, TeamMember teamMember);
+    float getProductivityOfMember(Project project, TeamMember teamMember) throws Exception;
     void setDescription(Project project, String description);
     Requirement[] getRequirementsByStatus(Project project, String status);
     void deleteRequirement(Project project, Requirement requirement);

@@ -30,6 +30,7 @@ public class TeamMember implements Serializable
 
     public void setEmail(String email)
     {
+
         this.email.setEmail(email);
     }
 
@@ -39,7 +40,7 @@ public class TeamMember implements Serializable
             return false;
 
         return this.name.equals(teamMember.getName()) &&
-                this.email.equals(teamMember.getEmail());
+                this.email.getEmail().equals(teamMember.getEmail());
     }
 
     public String toString()

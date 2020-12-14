@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /**
@@ -133,4 +134,48 @@ public class ProjectList implements Serializable
         }
         return foundProjects.toArray(new Project[0]);
     }
+
+    /**
+     * Gets the productivity of team member that equals to the ratio of estimated time and actual time spent on tasks.
+     * @param teamMember The team member which we want the productivity for.
+     * @return A float value representing the ratio of estimated time of ended tasks and the spent time of ended tasks.
+     * @throws Exception when the team member has not tracked any work.
+     */
+    public float getProductivityOfMember(TeamMember teamMember) throws Exception
+    {
+        // not finished
+        int spendTimeInTotal = 0;
+        int estimatedTimeInTotal = 0;
+
+        for (int k = 0; k < projects.size(); k++)
+        {
+            Requirement[] requirements = projects.get(k).getRequirements().getAllRequirements();
+
+            for (int i = 0; i < requirements.length; i++)
+            {
+                Task[] tasks = requirements[i].getTasks().getAllTasks();
+
+                for (int j = 0; j < tasks.length; j++)
+                {
+                    if (tasks[i].getStatus().equals(Status.ENDED))
+                    {
+                        ArrayList<TeamMember> taskTeamMembers
+                                = new ArrayList<>(Arrays.asList(tasks[i].getTeamMembers()));
+
+                        if (taskTeamMembers.contains(teamMember))
+                        {
+                            spendTimeInTotal += tasks[i].getTimeSpentOfMember(teamMember);
+                            estimatedTimeInTotal += tasks[i].getEstimatedTime();
+                        }
+                    }
+                }
+            }
+        }
+
+        if (spendTimeInTotal == 0 && estimatedTimeInTotal == 0)
+            throw new Exception("This team member has not tracked any work.");
+
+        return (float) (estimatedTimeInTotal / spendTimeInTotal);
+    }
+
 }
