@@ -10,7 +10,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" ref="scrollToBlock">
             <h2 class="homeHeadline iconBarHeadline">What we do</h2>
             <div class="icon-bar">
                 <div class="iconItem">
@@ -74,7 +74,23 @@ export default {
     },
     methods: {
         scrollDown: function() {
-            
+            this.$scrollTo(
+                this.$refs.scrollToBlock,
+                500,
+                {
+                    x:false,
+                    y:true,
+                    cancelable: true,
+                    offset: -79,
+                    /* force: true,
+                    onCancel: ()=>{
+                        lastScroll=false;
+                    },
+                    onDone: ()=>{
+                        lastScroll=false;
+                    }, */
+                }
+            );
         }
     },
 }
