@@ -30,6 +30,7 @@ public class TeamMember implements Serializable
 
     public void setEmail(String email)
     {
+
         this.email.setEmail(email);
     }
 
