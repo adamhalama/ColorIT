@@ -163,8 +163,15 @@ public class Requirement implements Serializable
    * Sets the requirements name.
    * @param name A String containing the requirement name.
    */
-  public void setName(String name) {
-    this.name=name;
+  public void setName(String name)
+  {
+    if (name.trim().equals(""))
+      throw new IllegalArgumentException("Invalid name");
+    else
+      {
+      this.name=name.trim();
+    }
+
   }
 
   /**

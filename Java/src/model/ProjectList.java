@@ -35,8 +35,11 @@ public class ProjectList implements Serializable
      */
     public void addProject(String name, String description)
     {
-        if (getProjectsByName(name).length == 0)
-            projects.add(new Project(name, description));
+        if (name.trim().equals(""))
+            throw new IllegalArgumentException("Invalid name");
+
+        if (getProjectsByName(name.trim()).length == 0)
+            projects.add(new Project(name.trim(), description));
         else
             throw new IllegalArgumentException("The name is already used");
     }
@@ -51,7 +54,7 @@ public class ProjectList implements Serializable
         ArrayList<Project> foundProjects = new ArrayList<Project>();
         for (Project project : projects)
         {
-            if (project.getProjectName().equalsIgnoreCase(projectName))
+            if (project.getProjectName().trim().equalsIgnoreCase(projectName))
                 foundProjects.add(project);
         }
         return foundProjects.toArray(new Project[0]);
@@ -176,6 +179,18 @@ public class ProjectList implements Serializable
             throw new Exception("This team member has not tracked any work.");
 
         return (float) (estimatedTimeInTotal / spendTimeInTotal);
+    }
+
+    public void setProjectName(Project project, String name)
+    {
+        if (getProjectsByName(name.trim()).length == 0)
+        {
+            if (name.trim().equals(""))
+                throw new IllegalArgumentException("Invalid name");
+            projects.get(projects.indexOf(project)).setName(name.trim());
+        }
+        else
+            throw new IllegalArgumentException("The name is already used");
     }
 
 }

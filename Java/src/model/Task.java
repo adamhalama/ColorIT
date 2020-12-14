@@ -99,8 +99,14 @@ public class Task implements Serializable
     trackTimeList.setTimeWorked(teamMember, 0);
   }
 
-  public void setName(String name) {
-    this.name=name;
+  public void setName(String name)
+  {
+    if (name.trim().equals(""))
+      throw new IllegalArgumentException("Invalid name");
+    else
+      {
+      this.name = name.trim();
+    }
   }
 
   public void setDescription(String description) {

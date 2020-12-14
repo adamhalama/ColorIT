@@ -170,7 +170,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     @Override
     public void setName(Project project, String name)
     {
-        project.setName(name);
+        projectList.setProjectName(project, name);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 

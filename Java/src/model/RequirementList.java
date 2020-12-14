@@ -41,8 +41,13 @@ public class RequirementList implements Serializable
    */
   public void addRequirement(String name, String nonFunctionalDescription, long deadline, TeamMember responsibleTeamMember)
   {
-    requirements.add(new Requirement(this.requirementsCreated, name, nonFunctionalDescription, deadline, responsibleTeamMember));
-    this.requirementsCreated++;
+    if (name.trim().equals(""))
+      throw new IllegalArgumentException("Invalid name");
+    else
+      {
+      requirements.add(new Requirement(this.requirementsCreated, name.trim(), nonFunctionalDescription, deadline, responsibleTeamMember));
+      this.requirementsCreated++;
+    }
   }
 
   /**
@@ -54,8 +59,13 @@ public class RequirementList implements Serializable
    */
   public void addRequirement(String name, String[] FunctionalDescription, long deadline, TeamMember responsibleTeamMember)
   {
-    requirements.add(new Requirement(this.requirementsCreated, name, FunctionalDescription, deadline, responsibleTeamMember));
-    this.requirementsCreated++;
+    if (name.trim().equals(""))
+      throw new IllegalArgumentException("Invalid name");
+    else
+      {
+      requirements.add(new Requirement(this.requirementsCreated, name.trim(), FunctionalDescription, deadline, responsibleTeamMember));
+      this.requirementsCreated++;
+    }
   }
 
   /**
@@ -145,7 +155,7 @@ public class RequirementList implements Serializable
     ArrayList<Requirement> foundRequirements = new ArrayList<Requirement>();
     for (Requirement requirement : this.requirements)
     {
-      if (requirement.getName().equalsIgnoreCase(name))
+      if (requirement.getName().trim().equalsIgnoreCase(name))
         foundRequirements.add(requirement);
     }
     return foundRequirements.toArray(new Requirement[0]);

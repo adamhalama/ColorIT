@@ -16,13 +16,23 @@ public class TaskList implements Serializable
 
   public void addTask(String name, int estimatedTime, String description, int deadlineTime)
   {
-    tasks.add(new Task(name, this.tasksCreated, 0, description, deadlineTime));
-    this.tasksCreated++;
+    if (name.trim().equals(""))
+      throw new IllegalArgumentException("Invalid name");
+    else
+      {
+      tasks.add(new Task(name, this.tasksCreated, 0, description, deadlineTime));
+      this.tasksCreated++;
+    }
   }
   public void addTask(String name, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember)
   {
-    tasks.add(new Task(name, this.tasksCreated, 0, description, deadlineTime, responsibleTeamMember));
-    this.tasksCreated++;
+    if (name.trim().equals(""))
+      throw new IllegalArgumentException("Invalid name");
+    else
+      {
+      tasks.add(new Task(name, this.tasksCreated, 0, description, deadlineTime, responsibleTeamMember));
+      this.tasksCreated++;
+    }
   }
 
   public Task[] getAllTasks() {

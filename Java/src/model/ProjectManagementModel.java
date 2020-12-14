@@ -17,7 +17,7 @@ public interface ProjectManagementModel
     TeamMember getProductOwner(Project project);
     void addTeamMember(Project project, TeamMember teamMember);
     void removeTeamMember(Project project, TeamMember teamMember);
-    void setName(Project project, String name);
+    void setName(Project project, String name) throws Exception;
     void setScrumMaster(Project project, TeamMember teamMember);
     void setProductOwner(Project project, TeamMember teamMember);
     float getProductivityOfMember(Project project, TeamMember teamMember) throws Exception;
