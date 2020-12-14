@@ -25,7 +25,12 @@ public class TeamMember implements Serializable
 
     public void setName(String name)
     {
-        this.name = name;
+        if (name.trim().equals(""))
+            throw new IllegalArgumentException("Invalid name");
+        else
+        {
+            this.name = name.trim();
+        }
     }
 
     public void setEmail(String email)

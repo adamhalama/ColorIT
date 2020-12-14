@@ -15,11 +15,16 @@ public class TeamMemberList implements Serializable
 
     public void addTeamMember(String name, String email)
     {
-        for (int i = 0; i < teamMembers.size(); i++)
-            if(teamMembers.get(i).getEmail().equals(email.trim()))
-                throw new IllegalArgumentException("The email is already used");
+        if (name.trim().equals(""))
+            throw new IllegalArgumentException("Invalid name");
+        else {
 
-        teamMembers.add(new TeamMember(name, email));
+            for (int i = 0; i < teamMembers.size(); i++)
+                if (teamMembers.get(i).getEmail().equals(email.trim()))
+                    throw new IllegalArgumentException("The email is already used");
+
+            teamMembers.add(new TeamMember(name, email));
+        }
     }
 
     public void setTeamMemberEmail(TeamMember teamMember, String email)
