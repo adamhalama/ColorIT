@@ -14,7 +14,7 @@ public class TaskList implements Serializable
     this.tasks = new ArrayList<Task>();
   }
 
-  public void addTask(String name, int estimatedTime, String description, int deadlineTime)
+  public void addTask(String name, int estimatedTime, String description, long deadlineTime)
   {
     if (name.trim().equals(""))
       throw new IllegalArgumentException("Invalid name");
@@ -24,7 +24,7 @@ public class TaskList implements Serializable
       this.tasksCreated++;
     }
   }
-  public void addTask(String name, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember)
+  public void addTask(String name, int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember)
   {
     if (name.trim().equals(""))
       throw new IllegalArgumentException("Invalid name");

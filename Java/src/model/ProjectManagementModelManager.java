@@ -65,7 +65,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         Requirement requirement1 = this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0];
 //       requirement1.getTasks().addTask("Task1", 3600, "very descriptive description", 1000000);
         addTask(requirement1 ,"Task1", 1, 3600,
-                "very descriptive description", 1000000000);
+                "very descriptive description", 100000000000L);
 
 
        /*persistenceManager.saveProjectListToFile(projectList, teamMemberList);
@@ -386,14 +386,15 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     @Override
     public void addTask(Requirement requirement, String name, int id, int estimatedTime,
-                        String description, int deadlineTime, TeamMember responsibleTeamMember)
+                        String description, long deadlineTime, TeamMember responsibleTeamMember)
     {
         requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime, responsibleTeamMember);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
     @Override
-    public void addTask(Requirement requirement, String name, int id, int estimatedTime, String description, int deadlineTime)
+    public void addTask(Requirement requirement, String name, int id, int estimatedTime,
+                        String description, long deadlineTime)
     {
         requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);

@@ -16,7 +16,7 @@ public class Task implements Serializable
   private String status;
   private TrackTimeList trackTimeList;
 
-  public Task(String name, int id, int estimatedTime, String description, int deadlineTime) {
+  public Task(String name, int id, int estimatedTime, String description, long deadlineTime) {
     this.id=id;
     this.name=name;
     this.description=description;
@@ -25,7 +25,7 @@ public class Task implements Serializable
     this.status = Status.NOT_STARTED;
     this.trackTimeList = new TrackTimeList();
   }
-  public Task(String name, int id, int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember) {
+  public Task(String name, int id, int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember) {
     this.id=id;
     this.name=name;
     this.description=description;
