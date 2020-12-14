@@ -96,6 +96,8 @@ public class RequirementViewController {
 
   public void addRequirement(ActionEvent actionEvent)
   {
+    this.viewHandler.setCurrentRequirement(null);
+    stackPane.getChildren().get(0).setVisible(false);
     this.viewHandler.openView("AddRequirement");
   }
 
@@ -121,6 +123,7 @@ public class RequirementViewController {
     try {
       model.deleteRequirement(currentProject,requirements[index]);
       requirementListView.getItems().remove(index);
+      stackPane.getChildren().get(0).setVisible(false);
     } catch (Exception e) {
       Alert alert = new Alert(Alert.AlertType.ERROR);
       alert.setTitle("unable to delete");
