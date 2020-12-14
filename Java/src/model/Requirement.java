@@ -48,6 +48,7 @@ public class Requirement implements Serializable
     this.responsibleTeamMember = responsibleTeamMember;
     this.status = Status.NOT_STARTED;
     this.description = new nonFunctionalDescription(description);
+    this.tasksList = new TaskList();
   }
 
   /**
@@ -65,6 +66,7 @@ public class Requirement implements Serializable
     this.responsibleTeamMember = responsibleTeamMember;
     this.status = Status.NOT_STARTED;
     this.description = new functionalDescription(description);
+    this.tasksList = new TaskList();
   }
 
   /**
@@ -135,7 +137,8 @@ public class Requirement implements Serializable
    * Gets all tasks, belonging to a requirement.
    * @return A TaskList object representing the tasks of this requirement.
    */
-  public TaskList getTasks() {
+  public TaskList getTasks()
+  {
     return this.tasksList;
   }
 
