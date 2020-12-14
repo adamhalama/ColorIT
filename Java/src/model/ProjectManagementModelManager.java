@@ -54,15 +54,18 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[3].setStatus(Status.ENDED);
 
 
-        Requirement requirement1 = this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0];
-//       requirement1.getTasks().addTask("Task1", 3600, "very descriptive description", 1000000);
-        addTask(requirement1 ,"Task1", 1, 3600, "very descriptive description", 1000000);
+
 
         Task[] gettingAllTasks = getAllTasks(requirement1);
         for (Task tasks : gettingAllTasks)
         {
             System.out.println(tasks);
         }*/
+
+        Requirement requirement1 = this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0];
+//       requirement1.getTasks().addTask("Task1", 3600, "very descriptive description", 1000000);
+        addTask(requirement1 ,"Task1", 1, 3600,
+                "very descriptive description", 1000000000);
 
 
        /*persistenceManager.saveProjectListToFile(projectList, teamMemberList);
@@ -232,7 +235,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     @Override
     public void addRequirement(Project project, String name, String nonFunctionalDescription,
-                               int deadline, TeamMember responsibleTeamMember)
+                               long deadline, TeamMember responsibleTeamMember)
     {
         project.getRequirements().addRequirement(name, nonFunctionalDescription, deadline, responsibleTeamMember);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
@@ -240,7 +243,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     @Override
     public void addRequirement(Project project, String name, String[] FunctionalDescription,
-                               int deadline, TeamMember responsibleTeamMember)
+                               long deadline, TeamMember responsibleTeamMember)
     {
         project.getRequirements().addRequirement(name, FunctionalDescription, deadline, responsibleTeamMember);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);

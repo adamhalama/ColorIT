@@ -26,9 +26,9 @@ public interface ProjectManagementModel
     void deleteRequirement(Project project, Requirement requirement);
     void reorderRequirements(Project project, int index1, int index2);
     void addRequirement(Project project, String name, String nonFunctionalDescription,
-                               int deadline, TeamMember responsibleTeamMember);
+                               long deadline, TeamMember responsibleTeamMember);
     void addRequirement(Project project, String name, String[] FunctionalDescription,
-                               int deadline, TeamMember responsibleTeamMember);
+                               long deadline, TeamMember responsibleTeamMember);
     Requirement[] getAllRequirements(Project project);
     Requirement[] getRequirementsBeforeDeadline(Project project, int days);
     Requirement[] getRequirementsByResponsibleTeamMember(Project project, TeamMember responsible);
