@@ -142,12 +142,12 @@
                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                   </HBox.margin>
                </Button>
-               <ChoiceBox prefWidth="150.0">
+               <ChoiceBox prefWidth="150.0" fx:id="chooseRoleBox">
                   <HBox.margin>
                      <Insets bottom="2.0" left="120.0" right="2.0" top="2.0" />
                   </HBox.margin>
                </ChoiceBox>
-               <Button mnemonicParsing="false" text="set role">
+               <Button mnemonicParsing="false" text="set role" onAction="#changeRole">
                   <HBox.margin>
                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                   </HBox.margin>
@@ -159,7 +159,7 @@
                <TableView fx:id="projectTeamList" prefHeight="200.0" prefWidth="462.0">
                  <columns>
                    <TableColumn fx:id="nameColumn" prefWidth="236.8" text="name" />
-                   <TableColumn fx:id="roleColumn" prefWidth="207.20008850097656" text="role" />
+                   <TableColumn fx:id="roleColumn" prefWidth="207.20008850097656" text="special role" />
                  </columns>
                </TableView>
             </content>
