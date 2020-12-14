@@ -179,8 +179,8 @@ public class RequirementViewController {
       return;
     }
     switch (this.chooseRoleBox.getSelectionModel().getSelectedIndex()) {
-      case 0:/*scrum master*/ model.setProductOwner(currentProject,projectTeam[index]); break;
-      case 1:/*product owner*/ model.setScrumMaster(currentProject,projectTeam[index]); break;
+      case 0:/*scrum master*/ model.setScrumMaster(currentProject,projectTeam[index]); break;
+      case 1:/*product owner*/ model.setProductOwner(currentProject,projectTeam[index]); break;
       default: Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("select what new role");
         alert.setHeaderText("You need to select new role that you want to be assigned.");

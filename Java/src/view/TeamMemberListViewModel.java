@@ -19,7 +19,6 @@ public class TeamMemberListViewModel
   public void update(){
     this.teamList.clear();
     TeamMember[] teamMembers = model.getAllTeamMembers();
-    System.out.println(teamMembers.length);
     for (TeamMember teamMember:teamMembers){
       teamList.add(new TeamMemberViewModel(teamMember));
     }

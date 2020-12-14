@@ -42,7 +42,7 @@
          </Label>
          <ScrollPane maxHeight="100.0" prefHeight="40.0" prefWidth="397.0" VBox.vgrow="ALWAYS">
             <content>
-               <Label fx:id="description" minHeight="30.0" prefWidth="352.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis arcu felis. Maecenas egestas euismod tellus, vitae consectetur ligula euismod auctor. Cras mi est, vulputate a ex eu, varius mattis ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc dignissim molestie ligula, varius placerat lacus egestas a. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam sed elementum leo. Etiam vitae maximus magna. Donec quis pharetra massa.Aenean venenatis sed augue vitae volutpat. Nam consectetur ipsum et nunc cursus lobortis. Aenean ullamcorper consequat accumsan. Nullam vitae varius dolor, sed rhoncus dolor. " wrapText="true">
+               <Label fx:id="description" minHeight="30.0" prefHeight="224.0" prefWidth="475.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis arcu felis. Maecenas egestas euismod tellus, vitae consectetur ligula euismod auctor. Cras mi est, vulputate a ex eu, varius mattis ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc dignissim molestie ligula, varius placerat lacus egestas a. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam sed elementum leo. Etiam vitae maximus magna. Donec quis pharetra massa.Aenean venenatis sed augue vitae volutpat. Nam consectetur ipsum et nunc cursus lobortis. Aenean ullamcorper consequat accumsan. Nullam vitae varius dolor, sed rhoncus dolor. " wrapText="true">
                   <padding>
                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                   </padding>
@@ -142,12 +142,12 @@
                      <Insets bottom="2.0" left="5.0" right="5.0" top="2.0" />
                   </HBox.margin>
                </Button>
-               <ChoiceBox prefWidth="150.0" fx:id="chooseRoleBox">
+               <ChoiceBox fx:id="chooseRoleBox" prefWidth="150.0">
                   <HBox.margin>
                      <Insets bottom="2.0" left="120.0" right="2.0" top="2.0" />
                   </HBox.margin>
                </ChoiceBox>
-               <Button mnemonicParsing="false" text="set role" onAction="#changeRole">
+               <Button mnemonicParsing="false" onAction="#changeRole" text="set role">
                   <HBox.margin>
                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                   </HBox.margin>
