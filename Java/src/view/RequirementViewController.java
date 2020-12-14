@@ -12,11 +12,16 @@ import javafx.scene.layout.VBox;
 import model.Project;
 import model.ProjectManagementModel;
 import model.Requirement;
+import model.TeamMember;
 
 public class RequirementViewController {
   public StackPane stackPane;
+  public TableColumn<ProjectTeamViewModel, String> nameColumn;
+  public TableColumn<ProjectTeamViewModel, String> roleColumn;
+  @FXML private ChoiceBox chooseRoleBox;
+  @FXML private TableView<ProjectTeamViewModel> projectTeamList;
+  private ProjecTeamListViewModel viewModel;
 
-  ObservableList<String> searchOptions = FXCollections.observableArrayList("status","days before deadline","name");
   @FXML private TextField searchValue;
   @FXML private ChoiceBox cb;
   @FXML private ListView<String> requirementListView;
@@ -29,6 +34,7 @@ public class RequirementViewController {
   private Project currentProject;
   private Requirement[] requirements;
   @FXML private RequirementDetailsViewController requirementDetailsViewController;
+  private TeamMember[] projectTeam;
 
   public RequirementViewController(){
     //nothing
@@ -39,10 +45,12 @@ public class RequirementViewController {
     this.model = model;
     this.root = root;
     requirementDetailsViewController.init(viewHandler, model, root);
-    this.cb.setItems(searchOptions);
+    this.chooseRoleBox.getItems().addAll("Scrum master","Product owner");
+    this.cb.getItems().addAll("status","days before deadline","name");
   }
 
   public void reset(){
+
     cb.setTooltip(new Tooltip("Select search category"));
     requirementListView.getItems().clear();
     this.currentProject = viewHandler.getCurrentProject();
@@ -55,6 +63,19 @@ public class RequirementViewController {
       {
         requirementListView.getItems().add(requirement.getName());
       }
+
+      this.viewModel = new ProjecTeamListViewModel(model,currentProject);
+
+      nameColumn.setCellValueFactory(
+          cellDate -> cellDate.getValue().getNameProperty()
+      );
+      roleColumn.setCellValueFactory(
+          cellData -> cellData.getValue().getRoleProperty()
+      );
+
+      projectTeamList.setItems(viewModel.getTeamList());
+
+      projectTeam = model.getTeamMembers(currentProject);
     }
 
     //this.errorLabel.setText("");
@@ -130,5 +151,41 @@ public class RequirementViewController {
       alert.setHeaderText("It was not able to remove it, please try it later.");
       alert.show();
     }
+  }
+
+  public void addTeamMember(ActionEvent actionEvent)
+  {
+    viewHandler.setCurrentProject(currentProject);
+    viewHandler.openView("AddTeamMemberToProject");
+  }
+
+  public void deleteTeamMember(ActionEvent actionEvent)
+  {
+    int index = this.projectTeamList.getSelectionModel().getSelectedIndex();
+    model.removeTeamMember(currentProject,projectTeam[index]);
+    viewModel.remove(projectTeam[index]);
+    projectTeamList.getSelectionModel().clearSelection();
+    this.reset();
+  }
+
+  public void changeRole()
+  {
+    int index = this.projectTeamList.getSelectionModel().getFocusedIndex();
+    if (index < 0){
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("select team member");
+      alert.setHeaderText("You need to select team member to which you want to change role.");
+      alert.show();
+      return;
+    }
+    switch (this.chooseRoleBox.getSelectionModel().getSelectedIndex()) {
+      case 0:/*scrum master*/ model.setProductOwner(currentProject,projectTeam[index]); break;
+      case 1:/*product owner*/ model.setScrumMaster(currentProject,projectTeam[index]); break;
+      default: Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("select what new role");
+        alert.setHeaderText("You need to select new role that you want to be assigned.");
+        alert.show();
+    }
+    this.reset();
   }
 }
