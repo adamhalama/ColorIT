@@ -15,7 +15,7 @@
     transition: $transition;
     outline: none;
     cursor: pointer;
-    &:hover,&.active {
+    &:hover,&.nuxt-link-exact-active {
         background: $yellow;
     }
 }
