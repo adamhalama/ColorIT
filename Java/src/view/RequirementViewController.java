@@ -12,9 +12,14 @@ import javafx.scene.layout.VBox;
 import model.Project;
 import model.ProjectManagementModel;
 import model.Requirement;
+import model.TeamMember;
 
 public class RequirementViewController {
   public StackPane stackPane;
+  public TableColumn<ProjectTeamViewModel, String> nameColumn;
+  public TableColumn<ProjectTeamViewModel, String> roleColumn;
+  @FXML private TableView<ProjectTeamViewModel> projectTeamList;
+  private ProjecTeamListViewModel viewModel;
 
   ObservableList<String> searchOptions = FXCollections.observableArrayList("status","days before deadline","name");
   @FXML private TextField searchValue;
@@ -29,6 +34,7 @@ public class RequirementViewController {
   private Project currentProject;
   private Requirement[] requirements;
   @FXML private RequirementDetailsViewController requirementDetailsViewController;
+  private TeamMember[] projectTeam;
 
   public RequirementViewController(){
     //nothing
@@ -43,6 +49,7 @@ public class RequirementViewController {
   }
 
   public void reset(){
+
     cb.setTooltip(new Tooltip("Select search category"));
     requirementListView.getItems().clear();
     this.currentProject = viewHandler.getCurrentProject();
@@ -55,6 +62,19 @@ public class RequirementViewController {
       {
         requirementListView.getItems().add(requirement.getName());
       }
+
+      this.viewModel = new ProjecTeamListViewModel(model,currentProject);
+
+      nameColumn.setCellValueFactory(
+          cellDate -> cellDate.getValue().getNameProperty()
+      );
+      roleColumn.setCellValueFactory(
+          cellData -> cellData.getValue().getRoleProperty()
+      );
+
+      projectTeamList.setItems(viewModel.getTeamList());
+
+      projectTeam = model.getTeamMembers(currentProject);
     }
 
     //this.errorLabel.setText("");
@@ -130,5 +150,20 @@ public class RequirementViewController {
       alert.setHeaderText("It was not able to remove it, please try it later.");
       alert.show();
     }
+  }
+
+  public void addTeamMember(ActionEvent actionEvent)
+  {
+    viewHandler.setCurrentProject(currentProject);
+    viewHandler.openView("AddTeamMemberToProject");
+  }
+
+  public void deleteTeamMember(ActionEvent actionEvent)
+  {
+    int index = this.projectTeamList.getSelectionModel().getSelectedIndex();
+    model.removeTeamMember(currentProject,projectTeam[index]);
+    viewModel.remove(projectTeam[index]);
+    projectTeamList.getSelectionModel().clearSelection();
+    this.reset();
   }
 }

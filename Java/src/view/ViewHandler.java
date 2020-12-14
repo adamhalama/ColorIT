@@ -26,6 +26,7 @@ public class ViewHandler
     private ManageProjectViewController manageProjectViewController;
     private ManageMembersViewController manageMembersViewController;
     private ManageRequirementsViewController manageRequirementsViewController;
+    private AddTeamMemberToProjectViewController addTeamMemberToProjectViewController;
 
     public ViewHandler(ProjectManagementModel model)
     {
@@ -72,6 +73,7 @@ public class ViewHandler
             case "AddMember" : root = loadManageTeam("ManageMemberView.fxml",false); break;
             case "ManageRequirement" : root = loadManageRequirement("ManageRequirementsView.fxml",true); break;
             case "AddRequirement" : root = loadManageRequirement("ManageRequirementsView.fxml",false); break;
+            case "AddTeamMemberToProject" : root = loadAddTeamMemberToProjectView("AddTeamMemberToProjectView.fxml"); break;
         }
         currentScene.setRoot(root);
         String title = "";
@@ -118,6 +120,26 @@ public class ViewHandler
             tabViewController.reset();
         }
         return tabViewController.getRoot();
+    }
+
+    private Region loadAddTeamMemberToProjectView(String fxmlS){
+        Region root = null;
+        if (addTeamMemberToProjectViewController == null){
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource(fxmlS));
+                root = loader.load();
+                addTeamMemberToProjectViewController = loader.getController();
+                addTeamMemberToProjectViewController.init(this,model, root);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        } else {
+            addTeamMemberToProjectViewController.reset();
+        }
+        return addTeamMemberToProjectViewController.getRoot();
     }
 
     private Region loadManageProject(String fxmlS,boolean edit){
