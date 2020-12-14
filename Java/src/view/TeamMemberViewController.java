@@ -98,4 +98,10 @@ public class TeamMemberViewController {
   {
     viewHandler.openView("AddMember");
   }
+
+  public void getMoreInfo()
+  {
+    viewHandler.setCurrentTeamMember(model.getAllTeamMembers()[teamMemberList.getSelectionModel().getFocusedIndex()]);
+    viewHandler.openView("TeamMemberDetails");
+  }
 }

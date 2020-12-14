@@ -62,10 +62,10 @@ public class ProjectManagementModelManager implements ProjectManagementModel
             System.out.println(tasks);
         }*/
 
-        Requirement requirement1 = this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0];
+        //Requirement requirement1 = this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0];
 //       requirement1.getTasks().addTask("Task1", 3600, "very descriptive description", 1000000);
-        addTask(requirement1 ,"Task1", 1, 3600,
-                "very descriptive description", 100000000000L);
+        //addTask(requirement1 ,"Task1", 1, 3600,
+        //        "very descriptive description", 100000000000L);
 
 
        /*persistenceManager.saveProjectListToFile(projectList, teamMemberList);
