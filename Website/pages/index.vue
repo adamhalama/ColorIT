@@ -82,13 +82,6 @@ export default {
                     y:true,
                     cancelable: true,
                     offset: -79,
-                    /* force: true,
-                    onCancel: ()=>{
-                        lastScroll=false;
-                    },
-                    onDone: ()=>{
-                        lastScroll=false;
-                    }, */
                 }
             );
         }
