@@ -32,7 +32,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.teamMemberList.addTeamMember("martin kuklo","nikde@play.33games.com");
         this.teamMemberList.addTeamMember("michaela lazova","vsade@play.33games.com");*/
 
-        persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
+
 
         /*String[] desc = new String[3];
         desc[0] = "i need";
@@ -53,8 +53,23 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[2].setStatus(Status.APPROVED);
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[3].setStatus(Status.ENDED);
 
-       persistenceManager.saveProjectListToFile(projectList, teamMemberList);
-*/
+
+        Requirement requirement1 = this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0];
+//       requirement1.getTasks().addTask("Task1", 3600, "very descriptive description", 1000000);
+        addTask(requirement1 ,"Task1", 1, 3600, "very descriptive description", 1000000);
+
+        Task[] gettingAllTasks = getAllTasks(requirement1);
+        for (Task tasks : gettingAllTasks)
+        {
+            System.out.println(tasks);
+        }*/
+
+
+       /*persistenceManager.saveProjectListToFile(projectList, teamMemberList);
+       persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);*/
+
+
+
     }
 
     @Override
