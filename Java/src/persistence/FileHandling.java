@@ -24,6 +24,12 @@ public class FileHandling
             {
                 teamMemberList = (TeamMemberList) in.readObject();
             }
+            catch (InvalidClassException e)
+            {
+                System.out.print("\nThe TeamMemberList.bin contains an outdated class. You need to delete the .bin data\n" +
+                        "run the program again and fill the list from the start.\n" +
+                        "Alternatively revert the changes in the model classes.\n");
+            }
             catch (Exception e)
             {
                 e.printStackTrace();
@@ -71,6 +77,12 @@ public class FileHandling
             try 
             {
                 projectList = (ProjectList) in.readObject();    
+            }
+            catch (InvalidClassException e)
+            {
+                System.out.print("\nThe ProjectList.bin contains an outdated class. You need to delete the .bin data\n" +
+                        "run the program again and fill the list from the start.\n" +
+                        "Alternatively revert the changes in the model classes.\n");
             }
             catch (Exception e)
             {
