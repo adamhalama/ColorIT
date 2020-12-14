@@ -39,12 +39,13 @@ public class TeamMemberList implements Serializable
 
     public void deleteTeamMember(TeamMember teamMember)
     {
-        for (TeamMember teamMember1 : teamMembers)
+        for (TeamMember teamMember1 : this.teamMembers)
             if (teamMember1.getName().equals(teamMember.getName())
                     && teamMember1.getEmail().equals(teamMember.getEmail()))
             {
-                teamMembers.remove(teamMember1);
+                this.teamMembers.remove(teamMember1);
                 System.out.println("here");
+                break;
             }
 
 

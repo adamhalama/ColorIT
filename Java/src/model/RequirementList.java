@@ -108,7 +108,7 @@ public class RequirementList implements Serializable
     {
       long deadline = requirements.get(i).getDeadlineTime();
 
-      if (new TimeClass(deadline).addDays(-days).getTime() >= currentTime)
+      if (new TimeClass(deadline).addDays(-days).getTime() <= currentTime)
         requirementsBeforeDeadline.add(requirements.get(i));
     }
 
