@@ -84,7 +84,7 @@ public class TaskList implements Serializable
     {
       long deadline = tasks.get(i).getDeadlineTime();
 
-      if (new TimeClass(deadline).addDays(-days).getTime() >= currentTime)
+      if (new TimeClass(deadline).addDays(-days).getTime() <= currentTime)
         tasksBeforeDeadline.add(tasks.get(i));
     }
 

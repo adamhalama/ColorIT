@@ -113,7 +113,7 @@ public class Task implements Serializable
     this.description=description;
   }
 
-  public void setDeadlineTime(int time) {
+  public void setDeadlineTime(long time) {
     this.deadlineTime=time;
   }
 

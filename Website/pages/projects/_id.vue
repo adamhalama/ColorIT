@@ -118,10 +118,7 @@ export default {
     },
     methods: {
         getFormatedTime: function(time) {
-            return moment(time).format("MMM DD")
-        },
-        getFormatedFull: function(time) {
-            return moment(time).format("MMMM Do YYYY")
+            return moment(time).format("MMM DD YYYY")
         },
     },
 }
