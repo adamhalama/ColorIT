@@ -189,8 +189,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public float getProductivityOfMember(Project project, TeamMember teamMember)
-    {
+    public float getProductivityOfMember(Project project, TeamMember teamMember) throws Exception {
         // not sure about the whole exception thing
         // maybe not finished
         // TODO
@@ -200,9 +199,8 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            throw new Exception(e.getMessage());
         }
-        return -1;
     }
 
     @Override

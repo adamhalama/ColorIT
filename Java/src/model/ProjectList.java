@@ -139,7 +139,7 @@ public class ProjectList implements Serializable
      * Gets the productivity of team member that equals to the ratio of estimated time and actual time spent on tasks.
      * @param teamMember The team member which we want the productivity for.
      * @return A float value representing the ratio of estimated time of ended tasks and the spent time of ended tasks.
-     * @throws Exception when the team member is not in the project we want to get productivity for.
+     * @throws Exception when the team member has not tracked any work.
      */
     public float getProductivityOfMember(TeamMember teamMember) throws Exception
     {
@@ -173,7 +173,7 @@ public class ProjectList implements Serializable
         }
 
         if (spendTimeInTotal == 0 && estimatedTimeInTotal == 0)
-            throw new Exception("This team member has not tracked any work");
+            throw new Exception("This team member has not tracked any work.");
 
         return (float) (estimatedTimeInTotal / spendTimeInTotal);
     }
