@@ -25,7 +25,7 @@ public class TaskList implements Serializable
   private int tasksCreated = 0;
 
   /**
-   * One-argument constructor.
+   * Zero-argument constructor.
    * Creates the ArrayList of Task class objects
    */
   public TaskList()
