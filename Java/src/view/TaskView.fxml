@@ -25,7 +25,7 @@
                         <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                      </HBox.margin>
                   </Button>
-                  <Label fx:id="taskName" text="task Name">
+                  <Label fx:id="taskName" text="Task Name">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -50,11 +50,11 @@
                <children>
                   <Label text="Task ID:" />
                   <Label text="Requirement ID:" GridPane.rowIndex="1" />
-                  <Label text="status" GridPane.rowIndex="2" />
-                  <Label text="estimated time:" GridPane.rowIndex="3" />
+                  <Label text="Status" GridPane.rowIndex="2" />
+                  <Label text="Estimated time:" GridPane.rowIndex="3" />
                   <Label text="Description:" GridPane.rowIndex="4" />
-                  <Label text="deadline:" GridPane.rowIndex="5" />
-                  <Label text="total time spend:" GridPane.rowIndex="6" />
+                  <Label text="Deadline:" GridPane.rowIndex="5" />
+                  <Label text="Total time spend:" GridPane.rowIndex="6" />
                   <Label fx:id="taskID" text="Label" GridPane.columnIndex="1" />
                   <Label fx:id="requirementID" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="taskStatus" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -72,6 +72,9 @@
                   <Label text="Responsible person:" GridPane.rowIndex="7" />
                   <Label fx:id="responsiblePerson" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
             </GridPane>
          </children>
       </VBox>
@@ -79,15 +82,27 @@
          <children>
             <HBox prefHeight="34.0" prefWidth="491.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#add" text="add" />
-                  <Button mnemonicParsing="false" onAction="#delete" text="delete" />
-                  <Button mnemonicParsing="false" onAction="#makeResponsible" text="make responsible" />
+                  <Button mnemonicParsing="false" onAction="#add" text="add">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#delete" text="delete">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#makeResponsible" text="make responsible">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Button>
                   <TextField prefHeight="26.0" prefWidth="71.0">
                      <HBox.margin>
-                        <Insets left="120.0" />
+                        <Insets bottom="5.0" left="75.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#setTimeWorked" text="set time worked" />
+                  <Button mnemonicParsing="false" onAction="#setTimeWorked" text="set time worked">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Button>
                </children>
                <VBox.margin>
                   <Insets top="20.0" />

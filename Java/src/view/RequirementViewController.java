@@ -87,7 +87,7 @@ public class RequirementViewController {
       this.description.setText(currentProject.getProjectDescription());
       this.description.prefHeight(Region.USE_COMPUTED_SIZE);
     } else {
-      errorLabel.setText("error have occurred");
+      errorLabel.setText("error has occurred");
     }
   }
 
