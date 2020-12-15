@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * Represents a project.
  * @author Group 6 - 1Y ICT A2020
- * @version 1.0
+ * @version 1.0 - December 2020
  * @since 1.0
  */
 public class Project implements Serializable
@@ -110,12 +110,12 @@ public class Project implements Serializable
         return productOwner;
     }
 
-    /**
+    /*
      * Gets the productivity of team member that equals to the ratio of estimated time and actual time spent on tasks.
      * @param teamMember The team member which we want the productivity for.
      * @return A float value representing the ratio of estimated time of ended tasks and the spent time of ended tasks.
      * @throws Exception when the team member is not in the project we want to get productivity for.
-     */
+
     public float getProductivityOfMember(TeamMember teamMember) throws Exception
     {
         // not finished
@@ -150,7 +150,7 @@ public class Project implements Serializable
         }
                 
         return (float) (estimatedTimeInTotal / spendTimeInTotal);
-    }
+    }*/
 
     /**
      * Adds a team member to the project team.

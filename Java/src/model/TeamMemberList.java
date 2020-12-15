@@ -3,6 +3,12 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Accumulates Project class objects in an ArrayList projects
+ * @author Group 6 - 1Y ICT A2020
+ * @version 1.0 - December 2020
+ * @since 1.0
+ */
 public class TeamMemberList implements Serializable
 {
 

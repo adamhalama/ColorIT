@@ -8,13 +8,14 @@ import java.util.Collections;
 /**
  * Accumulates Requirement class objects in an ArrayList requirements.
  * @author Group 6 - 1Y ICT A2020
- * @version 1.0
+ * @version 1.0 - December 2020
  * @since 1.0
  */
 public class RequirementList implements Serializable
 {
   /**
    * Represents the ArrayList of Requirement class objects.
+   * Holds the requirements of one project.
    */
   private ArrayList<Requirement> requirements;
   /**
@@ -24,6 +25,7 @@ public class RequirementList implements Serializable
   private int requirementsCreated = 1;
 
   /**
+   * One-argument constructor.
    * Creates the ArrayList of Requirement class objects
    */
   public RequirementList()
@@ -34,7 +36,7 @@ public class RequirementList implements Serializable
   /**
    * Creates a new Requirement in the ArrayList of Requirement class, requirements.
    * The requirement gets an auto assigned Project-wide unique ID, based on the number of requirements created.
-   * @param name A string representing the name of the requirement.
+   * @param name A string representing the name of the requirement, trimmed of any spaces.
    * @param nonFunctionalDescription A string representing a non functional description.
    * @param deadline A long representing the time of the deadline with a UNIX timestamp.
    * @param responsibleTeamMember A TeamMember object representing the responsible team member.
@@ -52,7 +54,7 @@ public class RequirementList implements Serializable
 
   /**
    * Creates a new Requirement in the ArrayList of Requirement class, requirements.
-   * @param name A string representing the name of the requirement.
+   * @param name A string representing the name of the requirement, trimmed of any spaces.
    * @param FunctionalDescription An array of strings representing a functional description in "who, what, why" template.
    * @param deadline A long representing the time of the deadline with a UNIX timestamp.
    * @param responsibleTeamMember A TeamMember object representing the responsible team member.
@@ -78,7 +80,7 @@ public class RequirementList implements Serializable
 
   /**
    * Gets all requirements with a specified status.
-   * @param status A Status representing the status of the requirements we want.
+   * @param status A String representing the status of the requirements we want.
    * @return An array of Requirement objects representing requirements with a specified status.
    */
   public Requirement[] getRequirementsByStatus(String status) {
@@ -93,9 +95,9 @@ public class RequirementList implements Serializable
   }
 
   /**
-   * Gets requirements that are close to the deadline.
-   * @param days An integer representing the number of days.
-   * @return An array of Requirement objects representing requirements that are closer to the deadline <br> than the specified number of days
+   * Gets requirements that are closer to the deadline than a specified time.
+   * @param days An integer representing the number of days,<br> specifies how close the to the deadline we want the requirements.
+   * @return An array of Requirement objects that are closer to the deadline <br> than the specified number of days.
    */
   public Requirement[] getRequirementsBeforeDeadline(int days)
   {

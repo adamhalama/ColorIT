@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 /**
  * Represents a Requirement.
+ * Has a name, ID, description,deadline,
+ * responsible member, status and holds its tasks in a TaskList.
  * @author Group 6 - 1Y ICT A2020
- * @version 1.0
+ * @version 1.0 - December 2020 - December 2020
  * @since 1.0
  */
 public class Requirement implements Serializable
@@ -34,7 +36,8 @@ public class Requirement implements Serializable
   private TaskList tasksList;
 
   /**
-   * Creates a Requirement with the specified name and the description.
+   * Five-argument constructor. Creates a requirement with non functional description, sets the status to not started.
+   * Creates a new task list for the requirement.
    * @param id An integer representing an ID, assigned automatically by the RequirementList class.
    * @param name A String representing the name of the requirement.
    * @param description A String representing the nonFunctionalDescription of the requirement.
@@ -52,7 +55,8 @@ public class Requirement implements Serializable
   }
 
   /**
-   * Creates a Requirement with the specified name and the description.
+   * Five-argument constructor. Creates a requirement with functional description, sets the status to not started.
+   * Creates a new task list for the requirement.
    * @param id An integer representing an ID, assigned automatically by the RequirementList class.
    * @param name A String representing the name of the requirement.
    * @param description An array of Strings representing the FunctionalDescription of the requirement.
@@ -87,7 +91,7 @@ public class Requirement implements Serializable
 
   /**
    * Gets the deadline time in a UNIX timestamp format.
-   * @return An long representing the date of the deadline as a UNIX timestamp.
+   * @return A long representing the date of the deadline as a UNIX timestamp.
    */
   public long getDeadlineTime() {
     return this.deadlineTime;
