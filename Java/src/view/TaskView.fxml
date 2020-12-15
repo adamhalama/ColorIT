@@ -3,45 +3,109 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="680.0" prefWidth="1000"
-      xmlns="http://javafx.com/javafx/11.0.1"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="view.TaskViewController">
-
-    <Label text="Requirement number 1">
-        <font>
-            <Font size="27.0"/>
-        </font>
-    </Label>
-    <Label text="description">
-        <font>
-            <Font size="17.0"/>
-        </font>
-    </Label>
-    <Label prefHeight="82.0" prefWidth="600.0"
-           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante lacus, aliquet vel elit ac, venenatis commodo mi. Phasellus ultricies quam ligula, sit amet ullamcorper dolor ullamcorper a. Sed laoreet convallis maximus. Maecenas in odio lectus. Aenean ornare ante a tincidunt sagittis. Integer vehicula facilisis dui id hendrerit. In mollis maximus euismod. Vestibulum ut commodo ex, vel scelerisque ante. Sed. "
-           wrapText="true"/>
-    <Label text="Tasks">
-        <font>
-            <Font size="17.0"/>
-        </font>
-    </Label>
-    <HBox prefHeight="50.0" prefWidth="600.0">
-        <Label text="TaskName1"/>
-        <Button mnemonicParsing="false" text="EditTask1"/>
-    </HBox>
-    <HBox layoutX="10.0" layoutY="184.0" prefHeight="50.0" prefWidth="600.0">
-        <Label text="TaskName2"/>
-        <Button mnemonicParsing="false" text="EditTask2"/>
-    </HBox>
-    <Button layoutX="30.0" layoutY="299.0" mnemonicParsing="false" text="Back"
-            onAction="#openRequirements">
-        <VBox.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0"/>
-        </VBox.margin>
-    </Button>
-</VBox>
+<HBox prefHeight="354.0" prefWidth="1000" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TaskViewController">
+   <children>
+      <VBox prefHeight="680.0" prefWidth="491.0">
+         <children>
+            <HBox prefHeight="58.0" prefWidth="491.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#openRequirements" text="⬅">
+                     <HBox.margin>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label fx:id="taskName" text="task Name">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <GridPane prefHeight="272.0" prefWidth="491.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="89.60001220703126" minHeight="10.0" prefHeight="89.60001220703126" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="58.399981689453114" minHeight="10.0" prefHeight="27.599999999999994" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="51.79999999999998" minHeight="10.0" prefHeight="25.200000000000017" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="51.79999999999998" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Task ID:" />
+                  <Label text="Requirement ID:" GridPane.rowIndex="1" />
+                  <Label text="status" GridPane.rowIndex="2" />
+                  <Label text="estimated time:" GridPane.rowIndex="3" />
+                  <Label text="Description:" GridPane.rowIndex="4" />
+                  <Label text="deadline:" GridPane.rowIndex="5" />
+                  <Label text="total time spend:" GridPane.rowIndex="6" />
+                  <Label fx:id="taskID" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="requirementID" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="taskStatus" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="estimatedTime" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="deadline" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="totalTimeSpend" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <content>
+                      <VBox minHeight="0.0" minWidth="0.0" prefWidth="226.0">
+                           <children>
+                              <Label fx:id="taskDescription" prefWidth="220.0" text="odnsdvonx cc fc rvcwec ev ev erfwevrt wec fxzv wedxdsv fdcxzc vwe cv effcv bgf cgn yuhgj kub ik mjtytv fewce rfdxwv e" wrapText="true" VBox.vgrow="ALWAYS" />
+                           </children></VBox>
+                    </content>
+                  </ScrollPane>
+                  <Label text="Responsible person:" GridPane.rowIndex="7" />
+                  <Label fx:id="responsiblePerson" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+      <VBox prefHeight="680.0" prefWidth="494.0">
+         <children>
+            <HBox prefHeight="34.0" prefWidth="491.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#add" text="add" />
+                  <Button mnemonicParsing="false" onAction="#delete" text="delete" />
+                  <Button mnemonicParsing="false" onAction="#makeResponsible" text="make responsible" />
+                  <TextField prefHeight="26.0" prefWidth="71.0">
+                     <HBox.margin>
+                        <Insets left="120.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#setTimeWorked" text="set time worked" />
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="194.0" prefWidth="494.0">
+              <content>
+                <VBox minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="476.0">
+                     <children>
+                        <TableView fx:id="teamTable" prefHeight="303.0" prefWidth="476.0">
+                          <columns>
+                            <TableColumn fx:id="nameColumn" prefWidth="303.2000000476837" text="name" />
+                              <TableColumn fx:id="timeColumn" prefWidth="161.5999755859375" text="time spend" />
+                          </columns>
+                        </TableView>
+                     </children></VBox>
+              </content>
+            </ScrollPane>
+         </children></VBox>
+   </children>
+</HBox>

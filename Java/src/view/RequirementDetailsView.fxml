@@ -10,15 +10,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox prefHeight="460.0" prefWidth="466.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RequirementDetailsViewController">
    <children>
-      <ScrollPane prefHeight="467.0" prefWidth="466.0">
+      <ScrollPane prefHeight="467.0" prefWidth="466.0" VBox.vgrow="ALWAYS">
          <content>
-            <VBox maxWidth="-Infinity" prefHeight="433.0" prefWidth="454.0">
+            <VBox maxWidth="-Infinity" prefWidth="454.0">
                <children>
                   <Label fx:id="requirementName" text="Requirement name" />
-                  <GridPane prefHeight="115.0" prefWidth="466.0">
+                  <GridPane alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="115.0" prefWidth="466.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="227.4000244140625" minWidth="10.0" prefWidth="152.00003204345703" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.59998321533203" minWidth="10.0" prefWidth="315.199967956543" />
@@ -41,8 +40,8 @@
                      </children>
                   </GridPane>
                   <Label text="description" />
-                  <Label fx:id="description" text="IDK what to write here" />
-                  <ListView prefHeight="228.0" prefWidth="454.0" />
+                  <Label fx:id="description" minHeight="30.0" prefWidth="454.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec justo sed felis laoreet condimentum eget a nunc. Ut vitae felis sit amet neque maximus porttitor in laoreet risus. Praesent sodales vitae erat et posuere. Phasellus id lacus at purus ornare blandit. Phasellus aliquet tortor dolor, mattis tempus metus cursus ullamcorper. Pellentesque nec nisi lacus. Aliquam erat volutpat. Duis dapibus eget sapien et eleifend. Donec eleifend, nisl vitae mattis consectetur, nisi neque posuere sem, at semper est nunc nec magna. Aliquam et dolor lacus. Aenean sed fermentum lectus, sit amet mollis nunc. Proin elementum magna in mauris pellentesque, ac sodales ipsum sodales. Ut mi erat, pharetra ac ex et, gravida venenatis nunc. Nulla viverra elit vitae elit pellentesque, eget dignissim. " wrapText="true" VBox.vgrow="ALWAYS" />
+                  <ListView fx:id="taskList" prefHeight="228.0" prefWidth="454.0" />
                   <HBox prefHeight="34.0" prefWidth="454.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#addTask" text="add" />

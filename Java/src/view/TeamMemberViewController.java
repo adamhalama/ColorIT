@@ -77,6 +77,8 @@ public class TeamMemberViewController {
     TeamMember[] teamMembers = model.getAllTeamMembers();
     TeamMember currentTeamMember = null;
 
+    System.out.println(teamMemberList.getSelectionModel().getFocusedIndex());
+
     if (selectedMember == null){
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("select a team member");

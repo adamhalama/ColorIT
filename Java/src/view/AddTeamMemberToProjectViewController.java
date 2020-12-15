@@ -18,12 +18,14 @@ public class AddTeamMemberToProjectViewController
   private ProjectManagementModel model;
   private ViewHandler viewHandler;
   private TeamMemberListViewModel viewModel;
+  private boolean addToProject;
 
   public AddTeamMemberToProjectViewController(){
     //nothing
   }
 
-  public void init(ViewHandler viewHandler, ProjectManagementModel model, Region root){
+  public void init(ViewHandler viewHandler, ProjectManagementModel model, Region root, boolean addToProject){
+    this.addToProject = addToProject;
     this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
@@ -45,8 +47,9 @@ public class AddTeamMemberToProjectViewController
     return root;
   }
 
-  public void reset()
+  public void reset(boolean addToProject)
   {
+    this.addToProject = addToProject;
     viewModel.update();
   }
 
@@ -59,18 +62,32 @@ public class AddTeamMemberToProjectViewController
     if (selectedMember ==null){
       Alert alert = new Alert(Alert.AlertType.INFORMATION);
       alert.setTitle("select a team member");
-      alert.setHeaderText("You need to select team member that you want to edit first.");
+      alert.setHeaderText("You need to select team member that you want to add first.");
       alert.show();
     } else {
       for (TeamMember teamMember: teamMembers){
         if (teamMember.getEmail().equals(selectedMember.getEmailProperty().get()) &&
             teamMember.getName().equals(selectedMember.getNameProperty().get())){
-          currentTeamMember = teamMember;
+          currentTeamMember = teamMember; break;
         }
       }
-      model.addTeamMember(viewHandler.getCurrentProject(),currentTeamMember);
-      viewHandler.openView("RequirementView");
+      if (addToProject){
+        model.addTeamMember(viewHandler.getCurrentProject(),currentTeamMember);
+        viewHandler.openView("RequirementView");
+      } else {
+        model.addTeamMember(viewHandler.getCurrentTask(),currentTeamMember);
+        viewHandler.openView("TaskView");
+      }
     }
 
+  }
+
+  public void close(ActionEvent actionEvent)
+  {
+    if (addToProject){
+      viewHandler.openView("RequirementView");
+    } else {
+      viewHandler.openView("TaskView");
+    }
   }
 }

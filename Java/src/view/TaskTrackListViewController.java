@@ -4,34 +4,35 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Project;
 import model.ProjectManagementModel;
+import model.Task;
 import model.TeamMember;
 
-public class ProjecTeamListViewModel
+public class TaskTrackListViewController
 {
-  private ObservableList<ProjectTeamViewModel> teamList;
+  private ObservableList<TaskTrackViewModel> teamList;
   private ProjectManagementModel model;
-  private Project currentProject;
+  private Task currentTask;
 
-  public ProjecTeamListViewModel(ProjectManagementModel model, Project currentProject){
+  public TaskTrackListViewController(ProjectManagementModel model, Task currentTask){
     this.model = model;
-    this.currentProject = currentProject;
+    this.currentTask = currentTask;
     this.teamList = FXCollections.observableArrayList();
 
     update();
   }
 
   public void update(){
-    if (currentProject == null){
+    if (currentTask == null){
       return;
     }
     this.teamList.clear();
-    TeamMember[] teamMembers = model.getTeamMembers(currentProject);
+    TeamMember[] teamMembers = model.getTeamMembers(currentTask);
     for (TeamMember teamMember:teamMembers){
-      teamList.add(new ProjectTeamViewModel(teamMember,currentProject,model));
+      teamList.add(new TaskTrackViewModel(teamMember,currentTask,model));
     }
   }
 
-  public ObservableList<ProjectTeamViewModel> getTeamList()
+  public ObservableList<TaskTrackViewModel> getTeamList()
   {
     return teamList;
   }
@@ -39,7 +40,8 @@ public class ProjecTeamListViewModel
   public void remove(TeamMember teamMember){
     int size = teamList.size();
     for (int i = 0;i < size;i++){
-      if (teamList.get(i).getNameProperty().equals(teamMember.getName())){
+      if (teamList.get(i).getNameProperty().equals(teamMember.getName()) &&
+      teamList.get(i).getEmail().equals(model.getEmail(teamMember))){
         teamList.remove(i);
         break;
       }

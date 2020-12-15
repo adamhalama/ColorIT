@@ -61,7 +61,7 @@ public class TeamMemberDetailsViewController {
   {
     viewHandler.setCurrentProject(model.
         getProjectsByTeamMember(viewHandler.
-            getCurrentTeamMember())[projectList.getSelectionModel().getFocusedIndex()]);
+            getCurrentTeamMember())[projectList.getSelectionModel().getSelectedIndex()]);
     viewHandler.openView("RequirementView");
   }
 

@@ -1,14 +1,20 @@
 package view;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import model.ProjectManagementModel;
 import model.Requirement;
+import model.Task;
+import model.TimeClass;
 
 public class RequirementDetailsViewController
 {
+  public ListView<String> taskList;
   @FXML private Label requirementName;
   @FXML private Label requirementID;
   @FXML private Label reasTeamMember;
@@ -20,6 +26,7 @@ public class RequirementDetailsViewController
   private ProjectManagementModel model;
   private Region root;
   private Requirement currentRequirement;
+  private Task[] taskArray;
 
   public RequirementDetailsViewController() {
     //just to have own constructor
@@ -32,6 +39,7 @@ public class RequirementDetailsViewController
   }
 
   public void reset(){
+    this.taskList.getItems().clear();
     currentRequirement = viewHandler.getCurrentRequirement();
     if (currentRequirement == null){
       return;
@@ -50,8 +58,16 @@ public class RequirementDetailsViewController
     }
     this.reasTeamMember.setText(model.getName(model.getResponsibleTeamMember(currentRequirement)));
     this.status.setText(currentRequirement.getStatus().toString());
-    this.deadline.setText(String.valueOf(currentRequirement.getDeadlineTime()));
+    long deadline = model.getDeadlineTime(currentRequirement);
+    this.deadline.setText(new TimeClass(deadline).getFormattedDate());
     //TODO add estimated time
+
+    this.taskArray = model.getAllTasks(currentRequirement); //TODO make switch to change list
+    for (Task task:
+         taskArray)
+    {
+      this.taskList.getItems().add(task.getName());
+    }
   }
   
   public Region getRoot(){
@@ -60,17 +76,32 @@ public class RequirementDetailsViewController
 
   public void addTask(ActionEvent actionEvent)
   {
+    this.viewHandler.openView("AddTask");
   }
 
   public void openTask(ActionEvent actionEvent)
   {
+    viewHandler.setCurrentTask(taskArray[taskList.getSelectionModel().getSelectedIndices().get(0)]);
+    viewHandler.openView("TaskView");
   }
 
   public void editTask(ActionEvent actionEvent)
   {
+    viewHandler.setCurrentTask(taskArray[taskList.getSelectionModel().getSelectedIndices().get(0)]);
+    viewHandler.openView("ManageTask");
   }
 
-  public void deleteTask(ActionEvent actionEvent)
+  public void deleteTask()
   {
+    int index = this.taskList.getSelectionModel().getSelectedIndex();
+    try {
+      model.deleteTask(currentRequirement,taskArray[index]);
+      taskList.getItems().remove(index);
+    } catch (Exception e) {
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("unable to delete");
+      alert.setHeaderText("It was not able to remove it, please try it later.");
+      alert.show();
+    }
   }
 }

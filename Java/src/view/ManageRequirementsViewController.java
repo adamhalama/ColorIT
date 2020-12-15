@@ -4,14 +4,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import model.Project;
-import model.ProjectManagementModel;
-import model.TeamMember;
+import model.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -24,6 +19,7 @@ public class ManageRequirementsViewController {
   @FXML private TextArea requirementDescription;
   @FXML private DatePicker requirementDeadline;
   private Project currentProject;
+  private Requirement currentRequirement;
 
   private Region root;
   private ProjectManagementModel model;
@@ -42,6 +38,11 @@ public class ManageRequirementsViewController {
   }
 
   public void reset(boolean edit){
+    if (edit){
+      this.currentRequirement = viewHandler.getCurrentRequirement();
+    } else {
+      this.currentRequirement = null;
+    }
     this.currentProject = viewHandler.getCurrentProject();
     this.teamMembers = model.getAllTeamMembers();
     this.teamMemberOptions = FXCollections.observableArrayList();
@@ -51,6 +52,27 @@ public class ManageRequirementsViewController {
       this.teamMemberOptions.add(model.getName(teamMember));
     }
     this.RequirementResponsibleMember.setItems(teamMemberOptions);
+    requirementDeadline.setDayCellFactory(picker -> new DateCell() {
+      public void updateItem(LocalDate date, boolean empty) {
+        super.updateItem(date, empty);
+        LocalDate today = LocalDate.now();
+
+        setDisable(empty || date.compareTo(today) < 0 );
+      }
+    });
+    if (edit){
+      this.requirementName.setText(model.getName(currentRequirement));
+      this.requirementDescription.setText(model.getDescription(currentRequirement)[0]); //TODO check if it is functional or non functional
+      /*System.out.println(new TimeClass(model.getDeadlineTime(currentRequirement)).getFormattedDate().split("."));
+      Integer[] datum = Arrays.stream(new TimeClass(model.
+          getDeadlineTime(currentRequirement)).getFormattedDate().split(".")).
+          map(Integer::valueOf).toArray(Integer[]::new);*/
+      this.requirementDeadline.setValue(LocalDate.now());
+    } else {
+      this.requirementDeadline.setValue(LocalDate.now());
+      this.requirementDescription.setText("");
+      this.requirementName.setText("");
+    }
   }
 
   public Region getRoot(){
@@ -63,15 +85,21 @@ public class ManageRequirementsViewController {
     if (viewHandler.getCurrentRequirement() == null){
       LocalDate date = this.requirementDeadline.getValue();
       TeamMember newTeamMember = teamMembers[this.RequirementResponsibleMember.getSelectionModel().getSelectedIndex()];
+      String stringDate = date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear();
       model.addRequirement(
           currentProject,
           this.requirementName.getText(),
           this.requirementDescription.getText(),
-          date.getYear(), //TODO make it to take entire date
+          new TimeClass(stringDate).getTime(), //TODO make it to take entire date
           newTeamMember);
       System.out.println(
           Arrays.toString(model.getAllRequirements(currentProject)));
       viewHandler.openView("RequirementView");
+    } else {
+      Integer[] datum = Arrays.stream(new TimeClass(model.
+          getDeadlineTime(currentRequirement)).getFormattedDate().split(".")).
+          map(Integer::valueOf).toArray(Integer[]::new);
+
     }
   }
 

@@ -47,6 +47,8 @@ public class RequirementViewController {
     requirementDetailsViewController.init(viewHandler, model, root);
     this.chooseRoleBox.getItems().addAll("Scrum master","Product owner");
     this.cb.getItems().addAll("status","days before deadline","name");
+    nameColumn.setSortable(false);
+    roleColumn.setSortable(false);
   }
 
   public void reset(){
@@ -66,12 +68,12 @@ public class RequirementViewController {
 
       this.viewModel = new ProjecTeamListViewModel(model,currentProject);
 
-      nameColumn.setCellValueFactory(
-          cellDate -> cellDate.getValue().getNameProperty()
-      );
-      roleColumn.setCellValueFactory(
-          cellData -> cellData.getValue().getRoleProperty()
-      );
+        nameColumn.setCellValueFactory(
+            cellDate -> cellDate.getValue().getNameProperty()
+        );
+        roleColumn.setCellValueFactory(
+            cellData -> cellData.getValue().getRoleProperty()
+        );
 
       projectTeamList.setItems(viewModel.getTeamList());
 
