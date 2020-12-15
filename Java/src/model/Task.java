@@ -170,11 +170,14 @@ public class Task implements Serializable
   }
 
   /**
-   * Adds a team member to the track time with 0 starting time.
+   * Adds a team member to the track time with 0 starting time, only if the team member is not already added.
    * @param teamMember Specifies which team member should be added.
    */
   public void addTeamMember(TeamMember teamMember)
   {
+    for (int i = 0; i < getTeamMembers().length; i++)
+      if (getTeamMembers()[i].equals(teamMember))
+        throw new IllegalArgumentException("The team member is already added");
 
     trackTimeList.setTimeWorked(teamMember, 0);
   }

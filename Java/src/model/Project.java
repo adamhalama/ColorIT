@@ -153,11 +153,15 @@ public class Project implements Serializable
     }*/
 
     /**
-     * Adds a team member to the project team.
+     * Adds a team member to the project team, only if the team member is not already added.
      * @param teamMember Represents the team member you want to add.
      */
     public void addTeamMember(TeamMember teamMember)
     {
+        for (int i = 0; i < getTeamMembers().length; i++)
+            if (getTeamMembers()[i].equals(teamMember))
+                throw new IllegalArgumentException("The team member is already added");
+
         projectTeam.add(teamMember);
     }
 
