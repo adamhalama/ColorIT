@@ -19,7 +19,7 @@ public class ProjectList implements Serializable
     private ArrayList<Project> projects;
 
     /**
-     * One-argument constructor.
+     * Zero-argument constructor.
      * Creates the ArrayList of Project class objects
      */
     public ProjectList()

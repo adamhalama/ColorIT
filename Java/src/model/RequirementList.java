@@ -25,7 +25,7 @@ public class RequirementList implements Serializable
   private int requirementsCreated = 1;
 
   /**
-   * One-argument constructor.
+   * Zero-argument constructor.
    * Creates the ArrayList of Requirement class objects
    */
   public RequirementList()
