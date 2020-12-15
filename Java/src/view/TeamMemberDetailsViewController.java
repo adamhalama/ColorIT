@@ -38,7 +38,16 @@ public class TeamMemberDetailsViewController {
     if (currentTeamMember != null){
       this.teamMemberName.setText(model.getName(currentTeamMember));
       this.teamMemberEmail.setText(model.getEmail(currentTeamMember));
-      //NOTE is the get productivity done?
+
+      try
+      {
+        this.teamMemberProductivity.setText(model.getProductivityOfMember(currentTeamMember) + "");
+      }
+      catch (Exception e)
+      {
+        this.teamMemberProductivity.setText(e.getMessage());
+      }
+
       this.viewModel = new TeamMDetailsListViewModel(model,viewHandler);
 
       projectName.setCellValueFactory(

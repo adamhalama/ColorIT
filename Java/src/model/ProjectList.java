@@ -8,7 +8,7 @@ import java.util.Arrays;
 /**
  * Accumulates Project class objects in an ArrayList projects
  * @author Group 6 - 1Y ICT A2020
- * @version 1.0
+ * @version 1.0 - December 2020
  * @since 1.0
  */
 public class ProjectList implements Serializable
@@ -19,6 +19,7 @@ public class ProjectList implements Serializable
     private ArrayList<Project> projects;
 
     /**
+     * Zero-argument constructor.
      * Creates the ArrayList of Project class objects
      */
     public ProjectList()
@@ -28,7 +29,7 @@ public class ProjectList implements Serializable
 
     /**
      * Creates a new Project in the ArrayList of Project class, projects.
-     * @param name The name of the project
+     * @param name The name of the project, trimmed of any spaces.
      * @param description The description of the project
      * @throws IllegalArgumentException when the name of the project has already been used,
      * and therefore doesnt create the Project
@@ -142,7 +143,7 @@ public class ProjectList implements Serializable
      * Gets the productivity of team member that equals to the ratio of estimated time and actual time spent on tasks.
      * @param teamMember The team member which we want the productivity for.
      * @return A float value representing the ratio of estimated time of ended tasks and the spent time of ended tasks.
-     * @throws Exception when the team member has not tracked any work.
+     * @throws Exception with a message when the team member has not tracked any work.
      */
     public float getProductivityOfMember(TeamMember teamMember) throws Exception
     {
@@ -181,6 +182,11 @@ public class ProjectList implements Serializable
         return (float) (estimatedTimeInTotal / spendTimeInTotal);
     }
 
+    /**
+     * Sets the name of the project.
+     * @param project Contains the project object you want to set.
+     * @param name Contains the name you want to set it to.
+     */
     public void setProjectName(Project project, String name)
     {
         if (getProjectsByName(name.trim()).length == 0)
@@ -192,5 +198,4 @@ public class ProjectList implements Serializable
         else
             throw new IllegalArgumentException("The name is already used");
     }
-
 }

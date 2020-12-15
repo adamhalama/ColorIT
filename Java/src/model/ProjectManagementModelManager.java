@@ -35,8 +35,8 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
 
         /*String[] desc = new String[3];
-        desc[0] = "i need";
-        desc[1] = " to";
+        desc[0] = "I ";
+        desc[1] = " need to";
         desc[2] = " shit";
 
         this.projectList.getAllProjects()[0].getRequirements().addRequirement("Test Requirement 1", desc,
@@ -53,7 +53,11 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[2].setStatus(Status.APPROVED);
         this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[3].setStatus(Status.ENDED);
 
-
+        long longAsFuck = 1000000000000000000L;
+        Requirement requirement1 = this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0];
+       requirement1.getTasks().addTask("Task1", 3600, "very descriptive description", 1000000);
+        addTask(requirement1 ,"Task1", 1, 3600,
+                "very descriptive description", longAsFuck);
 
 
         Task[] gettingAllTasks = getAllTasks(requirement1);
@@ -62,10 +66,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
             System.out.println(tasks);
         }*/
 
-        //Requirement requirement1 = this.projectList.getAllProjects()[0].getRequirements().getAllRequirements()[0];
-//       requirement1.getTasks().addTask("Task1", 3600, "very descriptive description", 1000000);
-        //addTask(requirement1 ,"Task1", 1, 3600,
-        //        "very descriptive description", 100000000000L);
+
 
 
        /*persistenceManager.saveProjectListToFile(projectList, teamMemberList);
@@ -192,7 +193,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public float getProductivityOfMember(Project project, TeamMember teamMember) throws Exception {
+    public float getProductivityOfMember(TeamMember teamMember) throws Exception {
         // not sure about the whole exception thing
         // maybe not finished
         // TODO
