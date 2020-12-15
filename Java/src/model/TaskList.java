@@ -20,7 +20,7 @@ public class TaskList implements Serializable
       throw new IllegalArgumentException("Invalid name");
     else
       {
-      tasks.add(new Task(name, this.tasksCreated, 0, description, deadlineTime));
+      tasks.add(new Task(name, this.tasksCreated, estimatedTime, description, deadlineTime));
       this.tasksCreated++;
     }
   }
@@ -30,7 +30,7 @@ public class TaskList implements Serializable
       throw new IllegalArgumentException("Invalid name");
     else
       {
-      tasks.add(new Task(name, this.tasksCreated, 0, description, deadlineTime, responsibleTeamMember));
+      tasks.add(new Task(name, this.tasksCreated, estimatedTime, description, deadlineTime, responsibleTeamMember));
       this.tasksCreated++;
     }
   }
