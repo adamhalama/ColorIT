@@ -12,12 +12,12 @@ class TaskTest
   private long testDeadline = new TimeClass().addDays(4).getTime();
   @BeforeEach void setUp()
   {
-    this.task = new Task("Test Task", 1, 60000, "Test description", testDeadline);
+    this.task = new Task("Test Task",1,  1, 60000, "Test description", testDeadline);
   }
 
   @AfterEach void tearDown()
   {
-    this.task = new Task("Test Task", 1, 60000, "Test description", testDeadline);
+    this.task = new Task("Test Task",1,  2, 60000, "Test description", testDeadline);
   }
 
   @Test void getTimeSpent()

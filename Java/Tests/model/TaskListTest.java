@@ -13,40 +13,40 @@ class TaskListTest
   @BeforeEach void setUp()
   {
     this.taskList = new TaskList();
-    this.taskList.addTask("Test Task", 60000, "Test description", testDeadline);
+    this.taskList.addTask("Test Task", 1 , 60000, "Test description", testDeadline);
   }
 
   @AfterEach void tearDown()
   {
     this.taskList = new TaskList();
-    this.taskList.addTask("Test Task", 60000, "Test description", testDeadline);
+    this.taskList.addTask("Test Task",1, 60000, "Test description", testDeadline);
   }
 
   @Test void addTask()
   {
-    this.taskList.addTask("Test Task 2", 60000, "Test description 2", testDeadline);
+    this.taskList.addTask("Test Task 2", 1, 60000, "Test description 2", testDeadline);
     assertEquals("Test Task 2", this.taskList.getAllTasks()[1].getName());
     assertEquals(2, this.taskList.getAllTasks().length);
   }
 
   @Test void getTasksByName()
   {
-    this.taskList.addTask("Test Task 2", 60000, "Test description 2", testDeadline);
-    this.taskList.addTask("Test Task", 60000, "Test description", testDeadline);
+    this.taskList.addTask("Test Task 2",1,  60000, "Test description 2", testDeadline);
+    this.taskList.addTask("Test Task", 1,  60000, "Test description", testDeadline);
     assertEquals("Test Task 2", this.taskList.getTasksByName("Test Task 2")[0].getName());
     assertEquals(2, this.taskList.getTasksByName("Test Task").length);
   }
 
   @Test void getTasksByStatus()
   {
-    this.taskList.addTask("Test Task 2", 60000, "Test description 2", testDeadline);
+    this.taskList.addTask("Test Task 2",1,  60000, "Test description 2", testDeadline);
     this.taskList.getAllTasks()[1].setStatus(Status.APPROVED);
     assertEquals("Test Task 2", this.taskList.getTasksByStatus(Status.APPROVED)[0].getName());
   }
 
   @Test void getTasksDaysBeforeDeadline()
   {
-    this.taskList.addTask("Test Task 2", 60000, "Test description 2", new TimeClass().addDays(1).getTime());
+    this.taskList.addTask("Test Task 2",1,  60000, "Test description 2", new TimeClass().addDays(1).getTime());
     assertEquals("Test Task 2", this.taskList.getTasksDaysBeforeDeadline(2)[0].getName());
     assertEquals(2, this.taskList.getTasksDaysBeforeDeadline(4).length);
   }
@@ -63,7 +63,7 @@ class TaskListTest
 
   @Test void deleteTask()
   {
-    this.taskList.addTask("Test Task 2", 60000, "Test description 2", new TimeClass().addDays(1).getTime());
+    this.taskList.addTask("Test Task 2",1, 60000, "Test description 2", new TimeClass().addDays(1).getTime());
     assertEquals(2, this.taskList.getAllTasks().length);
     this.taskList.deleteTask(this.taskList.getAllTasks()[1]);
     assertEquals(1, this.taskList.getAllTasks().length);
