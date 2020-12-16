@@ -1,7 +1,5 @@
 package view;
 
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -49,15 +47,15 @@ public class RequirementDetailsViewController
     String [] desc = model.getDescription(currentRequirement);
     if (model.isFunctional(currentRequirement)){
       String finalDescription = "";
-      finalDescription += "As a "+desc[0]+
-          "I want to " + desc[1] +
-          " such that " + desc[2];
+      finalDescription += "As a "+desc[0]+ "\n"+
+          "I want to " + desc[1] + "\n"+
+          "such that " + desc[2];
       this.description.setText(finalDescription);
     } else {
       this.description.setText(desc[0]);
     }
     this.reasTeamMember.setText(model.getName(model.getResponsibleTeamMember(currentRequirement)));
-    this.status.setText(currentRequirement.getStatus().toString());
+    this.status.setText(currentRequirement.getStatus());
     long deadline = model.getDeadlineTime(currentRequirement);
     this.deadline.setText(new TimeClass(deadline).getFormattedDate());
     //TODO add estimated time
@@ -74,18 +72,18 @@ public class RequirementDetailsViewController
     return root;
   }
 
-  public void addTask(ActionEvent actionEvent)
+  public void addTask()
   {
     this.viewHandler.openView("AddTask");
   }
 
-  public void openTask(ActionEvent actionEvent)
+  public void openTask()
   {
     viewHandler.setCurrentTask(taskArray[taskList.getSelectionModel().getSelectedIndices().get(0)]);
     viewHandler.openView("TaskView");
   }
 
-  public void editTask(ActionEvent actionEvent)
+  public void editTask()
   {
     viewHandler.setCurrentTask(taskArray[taskList.getSelectionModel().getSelectedIndices().get(0)]);
     viewHandler.openView("ManageTask");

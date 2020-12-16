@@ -1,24 +1,21 @@
 package view;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import model.ProjectManagementModel;
-import model.Task;
-import model.TeamMember;
+import model.*;
 
 public class TaskTrackViewModel
 {
   private StringProperty nameProperty;
   private StringProperty emailProperty;
   private StringProperty roleProperty;
-  private IntegerProperty timeProperty;
+  private StringProperty timeProperty;
 
   public TaskTrackViewModel(TeamMember teamMember, Task task, ProjectManagementModel model){
     nameProperty = new SimpleStringProperty(model.getName(teamMember));
     emailProperty = new SimpleStringProperty(model.getEmail(teamMember));
-    timeProperty = new SimpleIntegerProperty(model.getTimeSpendOfMember(task, teamMember));
+    timeProperty = new SimpleStringProperty(
+        TimeFormat.formatSeconds(model.getTimeSpendOfMember(task, teamMember)));
 
     //System.out.println(model.getProductOwner(currentProject) + " .equals() " + teamMember);
     //System.out.println(model.getProductOwner(currentProject) == teamMember);
@@ -44,7 +41,7 @@ public class TaskTrackViewModel
     return emailProperty.get();
   }
 
-  public IntegerProperty getTimeProperty(){
+  public StringProperty getTimeProperty(){
     return timeProperty;
   }
 }

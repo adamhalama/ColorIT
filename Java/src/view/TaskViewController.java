@@ -1,13 +1,8 @@
 package view;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import model.ProjectManagementModel;
-import model.Task;
-import model.TimeClass;
+import model.*;
 
 public class TaskViewController {
   public Label taskName;
@@ -20,13 +15,17 @@ public class TaskViewController {
   public Label totalTimeSpend;
   public TableColumn<TaskTrackViewModel, String> nameColumn;
   public TableView<TaskTrackViewModel> teamTable;
-  public TableColumn<TaskTrackViewModel, Number> timeColumn;
+  public TableColumn<TaskTrackViewModel, String> timeColumn;
   public Label responsiblePerson;
+  public TextField hoursSpend;
+  public TextField minutesSpend;
+  public TextField secondsSpend;
   private Region root;
   private ViewHandler viewHandler;
   private ProjectManagementModel model;
   private Task currentTask;
   private TaskTrackListViewController viewModel;
+  private TeamMember[] teamMembers;
 
   public TaskViewController(){
     //nothing
@@ -52,11 +51,12 @@ public class TaskViewController {
     this.requirementID.setText(String.valueOf(model.getRequirementID(currentTask)));
     this.taskStatus.setText(model.getStatus(currentTask));
     this.deadline.setText(new TimeClass(model.getDeadlineTime(currentTask)).getFormattedDate());
-    this.estimatedTime.setText(new TimeClass(model.getEstimatedTime(currentTask)).getFormattedTime());
+    this.estimatedTime.setText(TimeFormat.formatSeconds(model.getEstimatedTime(currentTask)));
     this.taskDescription.setText(model.getDescription(currentTask));
-    this.totalTimeSpend.setText(String.valueOf(model.getTimeSpend(currentTask)));
+    this.totalTimeSpend.setText(TimeFormat.formatSeconds(model.getTotalTime(currentTask)));
 
     this.viewModel = new TaskTrackListViewController(model,currentTask);
+    this.teamMembers = model.getTeamMembers(currentTask);
 
     nameColumn.setCellValueFactory(
         cellDate -> cellDate.getValue().getNameProperty()
@@ -78,21 +78,63 @@ public class TaskViewController {
     viewHandler.openView("RequirementView");
   }
 
-  public void add(ActionEvent actionEvent)
+  public void add()
   {
     viewHandler.setCurrentTask(currentTask);
     viewHandler.openView("AddTeamMemberToTask");
   }
 
-  public void delete(ActionEvent actionEvent)
+  public void setTimeWorked()
   {
+    int time = 0;
+    try {
+      time+= Integer.parseInt(this.hoursSpend.getText()) * 60 * 60;
+      time+= Integer.parseInt(this.minutesSpend.getText()) * 60;
+      time += Integer.parseInt(this.secondsSpend.getText());
+    } catch (Exception e){
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("please put just numbers");
+      alert.setHeaderText("You need to enter just numbers to fields hours and minutes");
+      alert.show();
+      this.minutesSpend.setText("");
+      this.hoursSpend.setText("");
+      return;
+    }
+    try {
+      model.setTimeWorked(currentTask,teamMembers[teamTable.getSelectionModel().getFocusedIndex()], time);
+      this.reset();
+    } catch (Exception e){
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("something went wrong");
+      alert.setHeaderText("Something went wrong please chose team member and enter his new time");
+      alert.show();
+    }
   }
 
-  public void makeResponsible(ActionEvent actionEvent)
+  public void addTimeWorked()
   {
-  }
-
-  public void setTimeWorked(ActionEvent actionEvent)
-  {
+    int time = 0;
+    try {
+      time+= Integer.parseInt(this.hoursSpend.getText()) * 60 * 60;
+      time+= Integer.parseInt(this.minutesSpend.getText()) * 60;
+    } catch (Exception e){
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("please put just numbers");
+      alert.setHeaderText("You need to enter just numbers to fields hours and minutes");
+      alert.show();
+      this.minutesSpend.setText("");
+      this.hoursSpend.setText("");
+      return;
+    }
+    try {
+      model.setTimeWorked(currentTask,teamMembers[teamTable.getSelectionModel().getFocusedIndex()],
+          time + model.getTimeSpendOfMember(currentTask,teamMembers[teamTable.getSelectionModel().getFocusedIndex()]));
+      this.reset();
+    } catch (Exception e){
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+      alert.setTitle("something went wrong");
+      alert.setHeaderText("Something went wrong please chose team member and enter his new time");
+      alert.show();
+    }
   }
 }
