@@ -24,13 +24,17 @@ public class TaskList implements Serializable
    */
   private int tasksCreated = 0;
 
+  private Requirement parentRequirement;
+
   /**
-   * Zero-argument constructor.
+   * One-argument constructor.
    * Creates the ArrayList of Task class objects
+   * @param parentRequirement Representing the parent requirement which this TaskList belongs to.
    */
-  public TaskList()
+  public TaskList(Requirement parentRequirement)
   {
     this.tasks = new ArrayList<Task>();
+    this.parentRequirement = parentRequirement;
   }
 
   /**
@@ -48,7 +52,7 @@ public class TaskList implements Serializable
     else
       {
         this.tasksCreated++;
-        tasks.add(new Task(name,requirementId, this.tasksCreated, estimatedTime, description, deadlineTime));
+        tasks.add(new Task(name,requirementId, this.tasksCreated, estimatedTime, description, deadlineTime, this));
       }
   }
 
@@ -69,7 +73,7 @@ public class TaskList implements Serializable
     else
       {
         this.tasksCreated++;
-        tasks.add(new Task(name, requirementId, this.tasksCreated, estimatedTime, description, deadlineTime, responsibleTeamMember));
+        tasks.add(new Task(name, requirementId, this.tasksCreated, estimatedTime, description, deadlineTime, responsibleTeamMember, this));
       }
   }
 
@@ -153,5 +157,14 @@ public class TaskList implements Serializable
   }
   public void deleteTask(Task task) {
     this.tasks.remove(task);
+  }
+
+  /**
+   * Gets the requirement this taskList belongs to.
+   * @return A Requirement object representing the requirement.
+   */
+  public Requirement getParentRequirement()
+  {
+    return parentRequirement;
   }
 }

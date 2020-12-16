@@ -23,17 +23,19 @@ public class Task implements Serializable
   private TeamMember responsibleTeamMember;
   private String status;
   private TrackTimeList trackTimeList;
+  private TaskList parentTaskList;
 
   /**
-   * Five-argument constructor.
+   * Six-argument constructor.
    * @param name A String representing the name of the task.
    * @param requirementId  Id of requirement that it belongs to.
    * @param id An integer representing an ID, assigned automatically by the TaskList class.
    * @param estimatedTime An integer representing the estimated time to finish the task from start to the end.
    * @param description A string representing the description.
    * @param deadlineTime A long representing the time of the deadline with a UNIX timestamp.
+   * @param parentTaskList A TaskList representing the TaskList which holds the task.
    */
-  public Task(String name,int requirementId, int id, int estimatedTime, String description, long deadlineTime) {
+  public Task(String name,int requirementId, int id, int estimatedTime, String description, long deadlineTime, TaskList parentTaskList) {
     this.id=id;
     this.requirementId = requirementId;
     this.name=name;
@@ -42,18 +44,20 @@ public class Task implements Serializable
     this.estimatedTime=estimatedTime;
     this.status = Status.NOT_STARTED;
     this.trackTimeList = new TrackTimeList();
+    this.parentTaskList = parentTaskList;
   }
 
   /**
-   * Six-argument constructor.
+   * Sevens-argument constructor.
    * @param name A String representing the name of the task.
    * @param id An integer representing an ID, assigned automatically by the TaskList class.
    * @param estimatedTime An integer representing the estimated time to finish the task from start to the end.
    * @param description A string representing the description.
    * @param deadlineTime A long representing the time of the deadline with a UNIX timestamp.
    * @param responsibleTeamMember A TeamMember object representing the responsible team member.
+   * @param parentTaskList A TaskList representing the TaskList which holds the task.
    */
-  public Task(String name, int requirementId, int id, int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember) {
+  public Task(String name, int requirementId, int id, int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember, TaskList parentTaskList) {
     this.id=id;
     this.requirementId = requirementId;
     this.name=name;
@@ -63,6 +67,7 @@ public class Task implements Serializable
     this.responsibleTeamMember=responsibleTeamMember;
     this.status = Status.NOT_STARTED;
     this.trackTimeList = new TrackTimeList();
+    this.parentTaskList = parentTaskList;
   }
 
   /**
@@ -73,10 +78,8 @@ public class Task implements Serializable
     return this.id;
   }
   /**
-   * NOT WORKING
-   * //TODO
    * Gets the ID of the Requirement.
-   * @return An integer representing the ID.
+   * @return An integer representing the requirement ID.
    */
   public int getRequirementID()
   {
@@ -233,11 +236,17 @@ public class Task implements Serializable
   }
 
   /**
-   * Sets the tasks status.
+   * Sets the tasks status. If all the tasks have ended status, the requirement will be set to ended.
    * @param status A Status containing the status.
    */
   public void setStatus(String status) {
     this.status = status;
+
+
+      if (status.equals(Status.ENDED)
+              && (parentTaskList.getTasksByStatus(Status.ENDED).length
+              == parentTaskList.getAllTasks().length))
+        parentTaskList.getParentRequirement().setStatus(Status.ENDED);
   }
 
   /**

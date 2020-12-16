@@ -51,7 +51,7 @@ public class Requirement implements Serializable
     this.responsibleTeamMember = responsibleTeamMember;
     this.status = Status.NOT_STARTED;
     this.description = new nonFunctionalDescription(description);
-    this.tasksList = new TaskList();
+    this.tasksList = new TaskList(this);
   }
 
   /**
@@ -70,7 +70,7 @@ public class Requirement implements Serializable
     this.responsibleTeamMember = responsibleTeamMember;
     this.status = Status.NOT_STARTED;
     this.description = new functionalDescription(description);
-    this.tasksList = new TaskList();
+    this.tasksList = new TaskList(this);
   }
 
   /**

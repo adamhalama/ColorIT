@@ -12,13 +12,23 @@ class TaskListTest
   private long testDeadline = new TimeClass().addDays(4).getTime();
   @BeforeEach void setUp()
   {
-    this.taskList = new TaskList();
+    Requirement requirement = new Requirement(1,
+    "name",
+    "description",
+    100,
+    new TeamMember("John Doe", "john@doe.doe"));
+    this.taskList = new TaskList(requirement);
     this.taskList.addTask("Test Task", 1 , 60000, "Test description", testDeadline);
   }
 
   @AfterEach void tearDown()
   {
-    this.taskList = new TaskList();
+    Requirement requirement = new Requirement(1,
+    "name",
+    "description",
+    100,
+    new TeamMember("John Doe", "john@doe.doe"));
+    this.taskList = new TaskList(requirement);
     this.taskList.addTask("Test Task",1, 60000, "Test description", testDeadline);
   }
 
