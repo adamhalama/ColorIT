@@ -39,7 +39,7 @@ public class ProjecTeamListViewModel
   public void remove(TeamMember teamMember){
     int size = teamList.size();
     for (int i = 0;i < size;i++){
-      if (teamList.get(i).getNameProperty().equals(teamMember.getName())){
+      if (teamList.get(i).getNameProperty().get().equals(teamMember.getName())){
         teamList.remove(i);
         break;
       }

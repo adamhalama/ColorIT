@@ -2,7 +2,6 @@ package view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import model.*;
@@ -13,10 +12,11 @@ public class ManageTasksViewController {
   public TextField taskName;
   public TextArea taskDescription;
   public DatePicker deadline;
-  public ChoiceBox choiceBoxTeam;
+  public ChoiceBox<String> choiceBoxTeam;
   public TextField estimatedHour;
   public TextField estimatedMinutes;
   public TextField estimatedSeconds;
+  public ChoiceBox<String> choiceBoxStatus;
 
   private ProjectManagementModel model;
   private Region root;
@@ -42,9 +42,11 @@ public class ManageTasksViewController {
   public void reset(boolean edit){
     currentRequirement = viewHandler.getCurrentRequirement();
     currentTask = viewHandler.getCurrentTask();
+    choiceBoxStatus.setItems(FXCollections.
+        observableArrayList("Not started","Started","Approved","Rejected","Ended"));
 
     this.teamMemberOptions = FXCollections.observableArrayList();
-    this.teamMembers = model.getAllTeamMembers();
+    this.teamMembers = model.getAllTeamMembers(); //NOTE maybe change this later
     this.choiceBoxTeam.getItems().clear();
     for (TeamMember teamMember: teamMembers){
       teamMemberOptions.add(teamMember.getName());
@@ -65,16 +67,25 @@ public class ManageTasksViewController {
     if (edit){
       this.taskName.setText(model.getName(currentTask));
       this.taskDescription.setText(model.getDescription(currentTask));
-      String time =new TimeClass(model.getEstimatedTime(currentTask)).getFormattedTime() ;
-      this.deadline.setAccessibleText(new TimeClass(model.getDeadlineTime(currentTask)).getFormattedDate());
-      this.choiceBoxTeam.getSelectionModel().clearSelection();
+      this.deadline.setTooltip(new Tooltip(new TimeClass(model.getDeadlineTime(currentTask)).getFormattedDate()));
+      int time = model.getEstimatedTime(currentTask);
+      this.estimatedHour.setText(String.valueOf(time/3600));
+      this.estimatedMinutes.setText(String.valueOf((time/60)%60));
+      this.estimatedSeconds.setText(String.valueOf(time%60));
+      this.choiceBoxTeam.setTooltip(new Tooltip(model.getResponsibleTeamMember(currentTask).getName()));
+      this.choiceBoxStatus.setTooltip(new Tooltip(model.getStatus(currentTask)));
+      this.choiceBoxStatus.setVisible(true);
     } else {
       currentTask = null;
       this.taskName.setText("");
       this.taskDescription.setText("");
       this.deadline.setValue(LocalDate.now());
-      this.choiceBoxTeam.getSelectionModel().clearSelection();
+      this.estimatedHour.setText("");
+      this.estimatedMinutes.setText("");
+      this.estimatedSeconds.setText("");
+      this.choiceBoxStatus.setVisible(false);
     }
+    this.choiceBoxTeam.getSelectionModel().clearSelection();
   }
 
   public Region getRoot()
@@ -82,7 +93,7 @@ public class ManageTasksViewController {
     return root;
   }
 
-  public void confirmTask(ActionEvent actionEvent)
+  public void confirmTask()
   {
     int time = 0;
     try {
@@ -99,13 +110,13 @@ public class ManageTasksViewController {
     if (currentTask == null){
       if (this.choiceBoxTeam.getValue() == null){
         model.addTask(currentRequirement,this.taskName.getText(),model.getRequirementID(currentRequirement),
-            (int)new TimeClass(time).getTime(), this.taskDescription.getText(),
+            time, this.taskDescription.getText(),
             new TimeClass(""+this.deadline.getValue().getDayOfMonth()+"."+
                 this.deadline.getValue().getMonthValue()+"." +
-                this.deadline.getValue().getYear()).getTime());
+                this.deadline.getValue().getYear()).getTime());//TODO check this
       } else {
         model.addTask(currentRequirement,this.taskName.getText(),model.getRequirementID(currentRequirement),
-            (int)new TimeClass(time).getTime(), this.taskDescription.getText(),
+            time, this.taskDescription.getText(),
             new TimeClass(""+this.deadline.getValue().getDayOfMonth()+"."+
                 this.deadline.getValue().getMonthValue()+"." +
                 this.deadline.getValue().getYear()).getTime(),
@@ -119,7 +130,14 @@ public class ManageTasksViewController {
         alert.setHeaderText("You need to select responsible team member.");
         alert.show();
       } else {
-        model.changeTask(this.currentTask,this.taskName.getText(),(int)new TimeClass(time).getTime(),
+        switch (choiceBoxStatus.getSelectionModel().getSelectedIndex()){
+          case 0:model.setStatus(currentTask,Status.NOT_STARTED); break;
+          case 1:model.setStatus(currentTask,Status.STARTED);break;
+          case 2:model.setStatus(currentTask,Status.APPROVED);break;
+          case 3:model.setStatus(currentTask,Status.REJECTED);break;
+          case 4:model.setStatus(currentTask,Status.ENDED);break;
+        }
+        model.changeTask(this.currentTask,this.taskName.getText(),time,
             this.taskDescription.getText(),
             (int)new TimeClass(""+this.deadline.getValue().getDayOfMonth()+"."+ //TODO this should be long
                 this.deadline.getValue().getMonthValue()+"." +

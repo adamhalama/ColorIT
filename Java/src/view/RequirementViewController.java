@@ -16,18 +16,26 @@ import model.TeamMember;
 
 public class RequirementViewController {
   public StackPane stackPane;
+
   public TableColumn<ProjectTeamViewModel, String> nameColumn;
   public TableColumn<ProjectTeamViewModel, String> roleColumn;
-  @FXML private ChoiceBox chooseRoleBox;
   @FXML private TableView<ProjectTeamViewModel> projectTeamList;
+
+  public TableView<RequirementViewModel> requirementTable;
+  public TableColumn<RequirementViewModel, String> reqNameColumn;
+  public TableColumn<RequirementViewModel, String> reqStatusColumn;
+  public TableColumn<RequirementViewModel, String> reqEstiTimeColumn;
+  public TableColumn<RequirementViewModel, String> reqUsedTimeColumn;
+  private RequirementListViewModel viewModel2;
+
+  @FXML private ChoiceBox<String> chooseRoleBox;
+
   private ProjecTeamListViewModel viewModel;
 
   @FXML private TextField searchValue;
-  @FXML private ChoiceBox cb;
-  @FXML private ListView<String> requirementListView;
+  @FXML private ChoiceBox<String> cb;
   @FXML private Label description;
   @FXML private Label projectName;
-  @FXML private Label errorLabel;
   private Region root;
   private ViewHandler viewHandler;
   private ProjectManagementModel model;
@@ -54,19 +62,15 @@ public class RequirementViewController {
   public void reset(){
 
     cb.setTooltip(new Tooltip("Select search category"));
-    requirementListView.getItems().clear();
     this.currentProject = viewHandler.getCurrentProject();
     requirementDetailsViewController.reset();
 
     if (this.currentProject != null)
     {
       this.requirements = model.getAllRequirements(this.currentProject);
-      for (Requirement requirement: requirements)
-      {
-        requirementListView.getItems().add(requirement.getName());
-      }
 
       this.viewModel = new ProjecTeamListViewModel(model,currentProject);
+      this.viewModel2 = new RequirementListViewModel(model,currentProject);
 
         nameColumn.setCellValueFactory(
             cellDate -> cellDate.getValue().getNameProperty()
@@ -78,16 +82,27 @@ public class RequirementViewController {
       projectTeamList.setItems(viewModel.getTeamList());
 
       projectTeam = model.getTeamMembers(currentProject);
-    }
 
-    //this.errorLabel.setText("");
-    this.currentProject = this.viewHandler.getCurrentProject();
-    if (currentProject != null){
+      this.viewModel2 = new RequirementListViewModel(model,currentProject);
+
+      reqNameColumn.setCellValueFactory(
+          cellDate -> cellDate.getValue().getNameProperty()
+      );
+      reqEstiTimeColumn.setCellValueFactory(
+          cellDate -> cellDate.getValue().getReqEstiTimeProperty()
+      );
+      reqStatusColumn.setCellValueFactory(
+          cellDate -> cellDate.getValue().getStatusProperty()
+      );
+      reqUsedTimeColumn.setCellValueFactory(
+          cellDate -> cellDate.getValue().getReqUsedTimeProperty()
+      );
+
+      requirementTable.setItems(viewModel2.getReqList());
+
       this.projectName.setText(currentProject.getProjectName());
       this.description.setText(currentProject.getProjectDescription());
       this.description.prefHeight(Region.USE_COMPUTED_SIZE);
-    } else {
-      errorLabel.setText("error has occurred");
     }
   }
 
@@ -95,29 +110,45 @@ public class RequirementViewController {
     return root;
   }
 
-  public void openTasks()
-  {
-    viewHandler.openView("TaskView");
-  }
-
   public void openProject()
   {
     viewHandler.openView("ProjectView");
   }
 
-  public void search(ActionEvent actionEvent)
+  public void search()
   {
+    //TODO make search :P
   }
 
-  public void morePriority(ActionEvent actionEvent)
+  public void morePriority()
   {
+    int i = requirementTable.getSelectionModel().getFocusedIndex();
+    try {
+      model.reorderRequirements(currentProject,i,i-1);
+    } catch (Exception e) {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("not possible");
+      alert.setHeaderText("Sorry but it is not possible to move the requirement more up.");
+      alert.show();
+    }
+    reset();
   }
 
-  public void lessPriority(ActionEvent actionEvent)
+  public void lessPriority()
   {
+    int i = requirementTable.getSelectionModel().getFocusedIndex();
+    try {
+      model.reorderRequirements(currentProject,i,i+1);
+    } catch (Exception e) {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("not possible");
+      alert.setHeaderText("Sorry but it is not possible to move the requirement more down.");
+      alert.show();
+    }
+    reset();
   }
 
-  public void addRequirement(ActionEvent actionEvent)
+  public void addRequirement()
   {
     this.viewHandler.setCurrentRequirement(null);
     stackPane.getChildren().get(0).setVisible(false);
@@ -126,26 +157,25 @@ public class RequirementViewController {
 
   public void openRequirement()
   {
-    this.viewHandler.setCurrentRequirement(requirements[requirementListView.getSelectionModel()
-        .getSelectedIndices().get(0)]);
+    this.viewHandler.setCurrentRequirement(requirements[requirementTable.getSelectionModel().getFocusedIndex()]);
     stackPane.getChildren().get(0).setVisible(true);
     requirementDetailsViewController.reset();
   }
 
-  public void editRequirement(ActionEvent actionEvent)
+  public void editRequirement()
   {
     this.viewHandler.setCurrentRequirement(
-        requirements[this.requirementListView.getSelectionModel().getSelectedIndex()]
+        requirements[requirementTable.getSelectionModel().getFocusedIndex()]
     );
     this.viewHandler.openView("ManageRequirement");
   }
 
-  public void deleteRequirement(ActionEvent actionEvent)
+  public void deleteRequirement()
   {
-    int index = this.requirementListView.getSelectionModel().getSelectedIndex();
+    int index = this.requirementTable.getSelectionModel().getFocusedIndex();
     try {
       model.deleteRequirement(currentProject,requirements[index]);
-      requirementListView.getItems().remove(index);
+      viewModel2.remove(requirements[index]);
       stackPane.getChildren().get(0).setVisible(false);
     } catch (Exception e) {
       Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -155,13 +185,13 @@ public class RequirementViewController {
     }
   }
 
-  public void addTeamMember(ActionEvent actionEvent)
+  public void addTeamMember()
   {
     viewHandler.setCurrentProject(currentProject);
     viewHandler.openView("AddTeamMemberToProject");
   }
 
-  public void deleteTeamMember(ActionEvent actionEvent)
+  public void deleteTeamMember()
   {
     int index = this.projectTeamList.getSelectionModel().getSelectedIndex();
     model.removeTeamMember(currentProject,projectTeam[index]);
