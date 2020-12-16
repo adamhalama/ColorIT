@@ -139,7 +139,9 @@ public class ManageRequirementsViewController {
       if (!this.requirementName.getText().equals(model.getName(currentRequirement))){
         model.setName(currentRequirement,this.requirementName.getText());
       }
-      model.setDeadlineTime(currentRequirement,(int) new TimeClass(stringDate).getTime()); //TODO change type
+      System.out.println(new TimeClass(stringDate).getTime());
+      System.out.println((int) new TimeClass(stringDate).getTime());
+      model.setDeadlineTime(currentRequirement,new TimeClass(stringDate).getTime());
       model.setResponsibleTeamMember(currentRequirement,newTeamMember);
       switch (statusChoiceBox.getSelectionModel().getSelectedIndex()){
         case 0:model.setStatus(currentRequirement,Status.NOT_STARTED); break;

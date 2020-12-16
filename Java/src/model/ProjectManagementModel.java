@@ -47,7 +47,7 @@ public interface ProjectManagementModel
     void setName(Requirement requirement, String name);
     void setDescription(Requirement requirement, String description);
     void setDescription(Requirement requirement, String who, String what, String why);
-    void setDeadlineTime(Requirement requirement, int newTime);
+    void setDeadlineTime(Requirement requirement, long newTime);
     void setResponsibleTeamMember(Requirement requirement, TeamMember teamMember);
     void setStatus(Requirement requirement, String status);
     void addTask(Requirement requirement, String name, int id, int estimatedTime,
@@ -59,7 +59,7 @@ public interface ProjectManagementModel
     Task[] getTasksByName(Requirement requirement, String name);
     void deleteTask(Requirement requirement, Task task);
     void changeTask(Task task, String name, int estimatedTime, String description,
-                           int deadlineTime, TeamMember responsibleTeamMember);
+                           long deadlineTime, TeamMember responsibleTeamMember);
     Task[] getTasksByStatus(Requirement requirement, String status);
     Task[] getTasksDaysBeforeDeadline(Requirement requirement, int days);
     int getTaskID(Task task);
@@ -76,7 +76,7 @@ public interface ProjectManagementModel
     void setName(Task task, String name);
     void setDescription(Task task, String description);
     void setEstimatedTime(Task task, int estimatedTime);
-    void setDeadlineTIme(Task task, int time);
+    void setDeadlineTIme(Task task, long time);
     void setResponsibleTeamMember(Task task, TeamMember teamMember);
     void setStatus(Task task, String status);
     void setTimeWorked(Task task, TeamMember teamMember, int time);

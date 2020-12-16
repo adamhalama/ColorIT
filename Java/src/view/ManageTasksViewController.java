@@ -139,7 +139,7 @@ public class ManageTasksViewController {
         }
         model.changeTask(this.currentTask,this.taskName.getText(),time,
             this.taskDescription.getText(),
-            (int)new TimeClass(""+this.deadline.getValue().getDayOfMonth()+"."+ //TODO this should be long
+            new TimeClass(""+this.deadline.getValue().getDayOfMonth()+"."+
                 this.deadline.getValue().getMonthValue()+"." +
                 this.deadline.getValue().getYear()).getTime(),
             teamMembers[this.choiceBoxTeam.getSelectionModel().getSelectedIndex()]);

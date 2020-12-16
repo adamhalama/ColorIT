@@ -361,7 +361,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public void setDeadlineTime(Requirement requirement, int newTime) {
+    public void setDeadlineTime(Requirement requirement, long newTime) {
         requirement.setDeadlineTime(newTime);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
@@ -424,7 +424,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     @Override
     public void changeTask(Task task, String name,
-                           int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember)
+                           int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember)
     {
         task.setName(name);
         task.setEstimatedTime(estimatedTime);
@@ -534,7 +534,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public void setDeadlineTIme(Task task, int time)
+    public void setDeadlineTIme(Task task, long time)
     {
         task.setDeadlineTime(time);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
