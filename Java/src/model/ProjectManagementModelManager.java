@@ -2,6 +2,12 @@ package model;
 
 import persistence.*;
 
+/**
+ *
+ * @author Group 6 - 1Y ICT A2020
+ * @version 1.0 - December 2020 - December 2020
+ * @since 1.0
+ */
 public class ProjectManagementModelManager implements ProjectManagementModel
     {
 
@@ -73,6 +79,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
 
     }
+
 
     @Override
     public void addProject(String name, String description)
@@ -424,7 +431,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     @Override
     public void changeTask(Task task, String name,
-                           int estimatedTime, String description, int deadlineTime, TeamMember responsibleTeamMember)
+                           int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember)
     {
         task.setName(name);
         task.setEstimatedTime(estimatedTime);
@@ -534,7 +541,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     @Override
-    public void setDeadlineTIme(Task task, int time)
+    public void setDeadlineTIme(Task task, long time)
     {
         task.setDeadlineTime(time);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
