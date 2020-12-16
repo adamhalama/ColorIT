@@ -157,23 +157,24 @@ public class ProjectList implements Serializable
         for (int k = 0; k < projects.size(); k++)
         {
             Requirement[] requirements = projects.get(k).getRequirements().getAllRequirements();
-
             for (int i = 0; i < requirements.length; i++)
             {
                 Task[] tasks = requirements[i].getTasks().getAllTasks();
-
                 for (int j = 0; j < tasks.length; j++)
                 {
-                    if (tasks[i].getStatus().equals(Status.ENDED))
+                    if (tasks[j].getStatus().equals(Status.ENDED))
                     {
-                        ArrayList<TeamMember> taskTeamMembers
-                                = new ArrayList<>(Arrays.asList(tasks[i].getTeamMembers()));
-
-                        if (taskTeamMembers.contains(teamMember))
+                        TeamMember[] taskMembers = tasks[j].getTeamMembers();
+                        for (int l = 0; l < taskMembers.length; l++)
                         {
-                            spendTimeInTotal += tasks[i].getTimeSpentOfMember(teamMember);
-                            estimatedTimeInTotal += tasks[i].getEstimatedTime();
+                            if (taskMembers[l].equals(teamMember))
+                            {
+                                spendTimeInTotal += tasks[i].getTimeSpentOfMember(teamMember);
+                                estimatedTimeInTotal += tasks[i].getEstimatedTime();
+                            }
                         }
+
+
                     }
                 }
             }
@@ -182,7 +183,9 @@ public class ProjectList implements Serializable
         if (spendTimeInTotal == 0 && estimatedTimeInTotal == 0)
             throw new Exception("This team member has not tracked any work.");
 
-        return (float) (estimatedTimeInTotal / spendTimeInTotal);
+        float returnValue =  (float) estimatedTimeInTotal / spendTimeInTotal;
+
+        return returnValue;
     }
 
     /**

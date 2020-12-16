@@ -41,7 +41,7 @@ public class TeamMemberDetailsViewController {
 
       try
       {
-        this.teamMemberProductivity.setText(model.getProductivityOfMember(currentTeamMember) + "");
+        this.teamMemberProductivity.setText(String.valueOf(model.getProductivityOfMember(currentTeamMember)));
       }
       catch (Exception e)
       {
