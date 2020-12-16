@@ -2,6 +2,7 @@ package model;
 
 public interface ProjectManagementModel
 {
+
     void addProject(String name, String description);
     Project[] getProjectsByName(String projectName);
     Project[] getAllProjects();

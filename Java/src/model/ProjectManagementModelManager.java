@@ -2,6 +2,12 @@ package model;
 
 import persistence.*;
 
+/**
+ *
+ * @author Group 6 - 1Y ICT A2020
+ * @version 1.0 - December 2020 - December 2020
+ * @since 1.0
+ */
 public class ProjectManagementModelManager implements ProjectManagementModel
     {
 
@@ -73,6 +79,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
 
     }
+
 
     @Override
     public void addProject(String name, String description)
