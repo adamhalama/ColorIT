@@ -9,10 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import model.Project;
-import model.ProjectManagementModel;
-import model.Requirement;
-import model.TeamMember;
+import model.*;
 
 public class RequirementViewController {
   public StackPane stackPane;
@@ -54,7 +51,7 @@ public class RequirementViewController {
     this.root = root;
     requirementDetailsViewController.init(viewHandler, model, root);
     this.chooseRoleBox.getItems().addAll("Scrum master","Product owner");
-    this.cb.getItems().addAll("status","days before deadline","name");
+    this.cb.getItems().addAll("status","days before deadline","name","ID","see all");
     nameColumn.setSortable(false);
     roleColumn.setSortable(false);
   }
@@ -64,13 +61,13 @@ public class RequirementViewController {
     cb.setTooltip(new Tooltip("Select search category"));
     this.currentProject = viewHandler.getCurrentProject();
     requirementDetailsViewController.reset();
+    this.searchValue.setText("");
 
     if (this.currentProject != null)
     {
       this.requirements = model.getAllRequirements(this.currentProject);
 
       this.viewModel = new ProjecTeamListViewModel(model,currentProject);
-      this.viewModel2 = new RequirementListViewModel(model,currentProject);
 
         nameColumn.setCellValueFactory(
             cellDate -> cellDate.getValue().getNameProperty()
@@ -83,7 +80,7 @@ public class RequirementViewController {
 
       projectTeam = model.getTeamMembers(currentProject);
 
-      this.viewModel2 = new RequirementListViewModel(model,currentProject);
+      this.viewModel2 = new RequirementListViewModel(model,currentProject,this.requirements);
 
       reqNameColumn.setCellValueFactory(
           cellDate -> cellDate.getValue().getNameProperty()
@@ -117,7 +114,44 @@ public class RequirementViewController {
 
   public void search()
   {
-    //TODO make search :P
+    switch (cb.getSelectionModel().getSelectedIndex()){
+      case 0:
+        switch (this.searchValue.getText()){
+          case Status.NOT_STARTED : model.getRequirementsByStatus(currentProject,Status.NOT_STARTED);break;
+          case Status.STARTED: model.getRequirementsByStatus(currentProject,Status.STARTED);break;
+          case Status.APPROVED : model.getRequirementsByStatus(currentProject,Status.APPROVED);
+          case Status.REJECTED: model.getRequirementsByStatus(currentProject,Status.REJECTED);
+          case Status.ENDED: model.getRequirementsByStatus(currentProject,Status.ENDED);
+          default:
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("state not found");
+            alert.setHeaderText("states that you can search for are \""+Status.NOT_STARTED + "\", \"" +
+                Status.STARTED+ "\", \""+ Status.APPROVED+ "\", \""+ Status.REJECTED+ "\", \""+
+                Status.ENDED+ "\".");
+            alert.show();
+        }
+      case 1:
+        try {
+          this.requirements = model.getRequirementsBeforeDeadline(currentProject,Integer.parseInt(searchValue.getText()));
+          this.viewModel2.update(requirements);
+          requirementTable.setItems(viewModel2.getReqList());
+        } catch (Exception e) {
+          //TODO error
+        }
+      case 2:
+        this.requirements = model.getRequirementsByName(currentProject,searchValue.getText());
+        this.viewModel2.update(requirements);
+        requirementTable.setItems(viewModel2.getReqList());break;
+      case 3:
+        try {
+          this.requirements = new Requirement[]{model.getRequirementByID(currentProject,Integer.parseInt(searchValue.getText()))};
+          this.viewModel2.update(requirements);
+          requirementTable.setItems(viewModel2.getReqList());
+        } catch (Exception e) {
+          //TODO error
+        } break;
+      case 4: reset();
+    }
   }
 
   public void morePriority()

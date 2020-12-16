@@ -12,21 +12,20 @@ public class RequirementListViewModel
   private ProjectManagementModel model;
   private Project project;
 
-  public RequirementListViewModel(ProjectManagementModel model,Project project){
+  public RequirementListViewModel(ProjectManagementModel model,Project project, Requirement[] requirements){
     this.model = model;
     this.project = project;
     this.reqList = FXCollections.observableArrayList();
 
-    update();
+    update(requirements);
   }
 
-  public void update()
+  public void update(Requirement[] requirements)
   {
     if (project == null){
       return;
     }
     this.reqList.clear();
-    Requirement[] requirements = model.getAllRequirements(project);
     for (Requirement requirement:requirements){
       reqList.add(new RequirementViewModel(requirement,model));
     }
