@@ -47,9 +47,9 @@ public class TaskList implements Serializable
       throw new IllegalArgumentException("Invalid name");
     else
       {
-      tasks.add(new Task(name,requirementId, this.tasksCreated, estimatedTime, description, deadlineTime));
-      this.tasksCreated++;
-    }
+        this.tasksCreated++;
+        tasks.add(new Task(name,requirementId, this.tasksCreated, estimatedTime, description, deadlineTime));
+      }
   }
 
   /**
@@ -68,9 +68,9 @@ public class TaskList implements Serializable
       throw new IllegalArgumentException("Invalid name");
     else
       {
-      tasks.add(new Task(name, requirementId, this.tasksCreated, estimatedTime, description, deadlineTime, responsibleTeamMember));
-      this.tasksCreated++;
-    }
+        this.tasksCreated++;
+        tasks.add(new Task(name, requirementId, this.tasksCreated, estimatedTime, description, deadlineTime, responsibleTeamMember));
+      }
   }
 
   /**
