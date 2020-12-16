@@ -192,13 +192,13 @@ public class ProjectList implements Serializable
      */
     public void setProjectName(Project project, String name)
     {
-        if (getProjectsByName(name.trim()).length == 0)
-        {
-            if (name.trim().equals(""))
-                throw new IllegalArgumentException("Invalid name");
-            projects.get(projects.indexOf(project)).setName(name.trim());
-        }
-        else
-            throw new IllegalArgumentException("The name is already used");
+        if (name.trim().equals(""))
+            throw new IllegalArgumentException("Invalid name");
+
+        for (Project project1 : projects)
+            if (project1.getProjectName().trim().equals(name.trim()))
+                throw new IllegalArgumentException("The name is already used");
+
+        projects.get(projects.indexOf(project)).setName(name.trim());
     }
 }
