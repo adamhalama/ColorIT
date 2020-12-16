@@ -154,6 +154,7 @@ public class ManageRequirementsViewController {
       } else {
         model.setDescription(currentRequirement,this.requirementDescription.getText());
       }
+      viewHandler.openView("RequirementView");
     }
   }
 
