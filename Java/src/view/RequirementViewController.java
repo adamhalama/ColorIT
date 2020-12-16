@@ -117,11 +117,31 @@ public class RequirementViewController {
     switch (cb.getSelectionModel().getSelectedIndex()){
       case 0:
         switch (this.searchValue.getText()){
-          case Status.NOT_STARTED : model.getRequirementsByStatus(currentProject,Status.NOT_STARTED);break;
-          case Status.STARTED: model.getRequirementsByStatus(currentProject,Status.STARTED);break;
-          case Status.APPROVED : model.getRequirementsByStatus(currentProject,Status.APPROVED);
-          case Status.REJECTED: model.getRequirementsByStatus(currentProject,Status.REJECTED);
-          case Status.ENDED: model.getRequirementsByStatus(currentProject,Status.ENDED);
+          case Status.NOT_STARTED :
+            requirements = model.getRequirementsByStatus(currentProject,Status.NOT_STARTED);
+            this.viewModel2.update(requirements);
+            requirementTable.setItems(viewModel2.getReqList());
+            break;
+          case Status.STARTED:
+            requirements = model.getRequirementsByStatus(currentProject,Status.STARTED);
+            this.viewModel2.update(requirements);
+            requirementTable.setItems(viewModel2.getReqList());
+            break;
+          case Status.APPROVED :
+            requirements = model.getRequirementsByStatus(currentProject,Status.APPROVED);
+            this.viewModel2.update(requirements);
+            requirementTable.setItems(viewModel2.getReqList());
+            break;
+          case Status.REJECTED:
+            requirements = model.getRequirementsByStatus(currentProject,Status.REJECTED);
+            this.viewModel2.update(requirements);
+            requirementTable.setItems(viewModel2.getReqList());
+            break;
+          case Status.ENDED:
+            requirements = model.getRequirementsByStatus(currentProject,Status.ENDED);
+            this.viewModel2.update(requirements);
+            requirementTable.setItems(viewModel2.getReqList());
+            break;
           default:
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("state not found");
@@ -137,7 +157,7 @@ public class RequirementViewController {
           requirementTable.setItems(viewModel2.getReqList());
         } catch (Exception e) {
           //TODO error
-        }
+        }break;
       case 2:
         this.requirements = model.getRequirementsByName(currentProject,searchValue.getText());
         this.viewModel2.update(requirements);

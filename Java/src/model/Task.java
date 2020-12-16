@@ -15,6 +15,7 @@ public class Task implements Serializable
 {
 
   private int id;
+  private int requirementId;
   private String name;
   private String description;
   private int estimatedTime;
@@ -26,13 +27,15 @@ public class Task implements Serializable
   /**
    * Five-argument constructor.
    * @param name A String representing the name of the task.
+   * @param requirementId  Id of requirement that it belongs to.
    * @param id An integer representing an ID, assigned automatically by the TaskList class.
    * @param estimatedTime An integer representing the estimated time to finish the task from start to the end.
    * @param description A string representing the description.
    * @param deadlineTime A long representing the time of the deadline with a UNIX timestamp.
    */
-  public Task(String name, int id, int estimatedTime, String description, long deadlineTime) {
+  public Task(String name,int requirementId, int id, int estimatedTime, String description, long deadlineTime) {
     this.id=id;
+    this.requirementId = requirementId;
     this.name=name;
     this.description=description;
     this.deadlineTime=deadlineTime;
@@ -50,8 +53,9 @@ public class Task implements Serializable
    * @param deadlineTime A long representing the time of the deadline with a UNIX timestamp.
    * @param responsibleTeamMember A TeamMember object representing the responsible team member.
    */
-  public Task(String name, int id, int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember) {
+  public Task(String name, int requirementId, int id, int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember) {
     this.id=id;
+    this.requirementId = requirementId;
     this.name=name;
     this.description=description;
     this.deadlineTime=deadlineTime;
@@ -76,7 +80,7 @@ public class Task implements Serializable
    */
   public int getRequirementID()
   {
-    return 0;
+    return requirementId;
   }
 
   /**

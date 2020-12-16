@@ -67,7 +67,7 @@ public class TimeClass implements Serializable
    * @return A String representing the date of the saved UNIX timestamp. MM.dd.yyyy
    */
   public String getFormattedDate() {
-    return new SimpleDateFormat("MM.dd.yyyy").format(this.savedTimestamp);
+    return new SimpleDateFormat("dd.MM.yyyy").format(this.savedTimestamp);
   }
 
   /**
@@ -77,7 +77,7 @@ public class TimeClass implements Serializable
    */
   public long parseString(String dateString) {
     try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("MM.dd.yyyy");
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
       Date parsedDate = dateFormat.parse(dateString);
       return parsedDate.getTime();
     } catch(Exception e) {

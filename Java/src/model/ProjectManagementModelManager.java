@@ -391,7 +391,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void addTask(Requirement requirement, String name, int id, int estimatedTime,
                         String description, long deadlineTime, TeamMember responsibleTeamMember)
     {
-        requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime, responsibleTeamMember);
+        requirement.getTasks().addTask(name, id, estimatedTime, description, deadlineTime, responsibleTeamMember);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
@@ -399,7 +399,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     public void addTask(Requirement requirement, String name, int id, int estimatedTime,
                         String description, long deadlineTime)
     {
-        requirement.getTasks().addTask(name, estimatedTime, description, deadlineTime);
+        requirement.getTasks().addTask(name, id, estimatedTime, description, deadlineTime);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
@@ -468,7 +468,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     @Override
     public int getRequirementID(Task task)
     {
-        return 0;
+        return task.getRequirementID();
     }
 
     @Override

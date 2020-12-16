@@ -41,13 +41,13 @@ public class TaskList implements Serializable
    * @param description A string representing the description.
    * @param deadlineTime A long representing the time of the deadline with a UNIX timestamp.
    */
-  public void addTask(String name, int estimatedTime, String description, long deadlineTime)
+  public void addTask(String name, int requirementId, int estimatedTime, String description, long deadlineTime)
   {
     if (name.trim().equals(""))
       throw new IllegalArgumentException("Invalid name");
     else
       {
-      tasks.add(new Task(name, this.tasksCreated, estimatedTime, description, deadlineTime));
+      tasks.add(new Task(name,requirementId, this.tasksCreated, estimatedTime, description, deadlineTime));
       this.tasksCreated++;
     }
   }
@@ -56,18 +56,19 @@ public class TaskList implements Serializable
    * Creates a new Task in the ArrayList of Task class, tasks.
    * The Task gets an auto assigned Requirement-wide unique ID, based on the number of tasks created.
    * @param name A string representing the name of the task, trimmed of any spaces.
+   * @param requirementId id of requirement that it belongs to.
    * @param estimatedTime an int representing the estimated time to finish the task from start to the end.
    * @param description A string representing the description.
    * @param deadlineTime A long representing the time of the deadline with a UNIX timestamp.
    * @param responsibleTeamMember A TeamMember object representing the responsible team member.
    */
-  public void addTask(String name, int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember)
+  public void addTask(String name,int requirementId, int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember)
   {
     if (name.trim().equals(""))
       throw new IllegalArgumentException("Invalid name");
     else
       {
-      tasks.add(new Task(name, this.tasksCreated, estimatedTime, description, deadlineTime, responsibleTeamMember));
+      tasks.add(new Task(name, requirementId, this.tasksCreated, estimatedTime, description, deadlineTime, responsibleTeamMember));
       this.tasksCreated++;
     }
   }
