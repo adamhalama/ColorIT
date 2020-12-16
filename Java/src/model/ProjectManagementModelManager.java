@@ -5,8 +5,6 @@ import persistence.*;
 public class ProjectManagementModelManager implements ProjectManagementModel
     {
 
-    // maybe not finished
-
     private ProjectList projectList;
     private TeamMemberList teamMemberList;
 
@@ -194,9 +192,6 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     @Override
     public float getProductivityOfMember(TeamMember teamMember) throws Exception {
-        // not sure about the whole exception thing
-        // maybe not finished
-        // TODO
         try
         {
             return projectList.getProductivityOfMember(teamMember);

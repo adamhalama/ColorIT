@@ -39,10 +39,13 @@ public class ProjectList implements Serializable
         if (name.trim().equals(""))
             throw new IllegalArgumentException("Invalid name");
 
-        if (getProjectsByName(name.trim()).length == 0)
+        for (Project project : projects)
+            if (project.getProjectName().trim().equals(name.trim()))
+                throw new IllegalArgumentException("The name is already used");
+
             projects.add(new Project(name.trim(), description));
-        else
-            throw new IllegalArgumentException("The name is already used");
+
+
     }
 
     /**
@@ -55,7 +58,7 @@ public class ProjectList implements Serializable
         ArrayList<Project> foundProjects = new ArrayList<Project>();
         for (Project project : projects)
         {
-            if (project.getProjectName().trim().equalsIgnoreCase(projectName))
+            if (project.getProjectName().trim().equalsIgnoreCase(projectName.trim()))
                 foundProjects.add(project);
         }
         return foundProjects.toArray(new Project[0]);
