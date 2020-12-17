@@ -2,7 +2,6 @@ package view;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import model.ProjectManagementModel;
@@ -10,7 +9,7 @@ import model.TeamMember;
 
 public class ManageMembersViewController {
   public TextField name;
-  public TextArea email;
+  public TextField email;
   public Label errorLabel;
   private TeamMember teamMember;
 
