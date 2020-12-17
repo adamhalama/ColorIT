@@ -151,7 +151,8 @@ public class ProjectList implements Serializable
     public float getProductivityOfMember(TeamMember teamMember) throws Exception
     {
         // not finished
-        int spendTimeInTotal = 0;
+        int individualTimeSpend = 0;
+        int collectiveTimeSpend = 0;
         int estimatedTimeInTotal = 0;
 
         for (int k = 0; k < projects.size(); k++)
@@ -169,7 +170,8 @@ public class ProjectList implements Serializable
                         {
                             if (taskMembers[l].equals(teamMember))
                             {
-                                spendTimeInTotal += tasks[i].getTimeSpent();
+                                individualTimeSpend += tasks[i].getTimeSpentOfMember(teamMember);
+                                collectiveTimeSpend += tasks[i].getTimeSpent();
                                 estimatedTimeInTotal += tasks[i].getEstimatedTime();
                                 break;
                             }
@@ -181,10 +183,14 @@ public class ProjectList implements Serializable
             }
         }
 
-        if (spendTimeInTotal == 0 && estimatedTimeInTotal == 0)
+        if (individualTimeSpend == 0)
             throw new Exception("This team member has not tracked any work.");
 
-        float returnValue =  (float) estimatedTimeInTotal / spendTimeInTotal;
+        float returnValue = (float)
+
+        individualTimeSpend *  ((float) estimatedTimeInTotal / collectiveTimeSpend)
+                /
+                individualTimeSpend;
 
         return returnValue;
     }
