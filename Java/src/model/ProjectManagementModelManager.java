@@ -621,6 +621,11 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Sets the requirements status.
+     * @param requirement Specifies which requirement.
+     * @param status A Status containing the status.
+     */
     @Override
     public void setStatus(Requirement requirement, String status)
     {
@@ -628,6 +633,17 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Creates a new Task in the ArrayList of Task class, tasks.
+     * The Task gets an auto assigned Requirement-wide unique ID, based on the number of tasks created.
+     * @param requirement Specifies which requirement.
+     * @param name A string representing the name of the task, trimmed of any spaces.
+     * @param id id of requirement that it belongs to.
+     * @param estimatedTime an int representing the estimated time to finish the task from start to the end.
+     * @param description A string representing the description.
+     * @param deadlineTime A long representing the time of the deadline with a UNIX timestamp.
+     * @param responsibleTeamMember A TeamMember object representing the responsible team member.
+     */
     @Override
     public void addTask(Requirement requirement, String name, int id, int estimatedTime,
                         String description, long deadlineTime, TeamMember responsibleTeamMember)
@@ -636,6 +652,16 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Creates a new Task in the ArrayList of Task class, tasks.
+     * The Task gets an auto assigned Requirement-wide unique ID, based on the number of tasks created.
+     * @param requirement Specifies which requirement.
+     * @param name A string representing the name of the task, trimmed of any spaces.
+     * @param id id of requirement that it belongs to.
+     * @param estimatedTime an int representing the estimated time to finish the task from start to the end.
+     * @param description A string representing the description.
+     * @param deadlineTime A long representing the time of the deadline with a UNIX timestamp.
+     */
     @Override
     public void addTask(Requirement requirement, String name, int id, int estimatedTime,
                         String description, long deadlineTime)
@@ -644,6 +670,12 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Sets the time worked for a team member.
+     * @param task Specifies which task.
+     * @param teamMember Specifies the team member the time will be set for.
+     * @param newTime Contains the new time the member has worked
+     */
     @Override
     public void ChangeTaskTrackTime(Task task, TeamMember teamMember, int newTime)
     {
@@ -651,6 +683,11 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Gets all tasks of this TaskList.
+     * @param requirement Specifies which requirement.
+     * @return An array of Task objects.
+     */
     @Override
     public Task[] getAllTasks(Requirement requirement)
     {

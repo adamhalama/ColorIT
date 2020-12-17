@@ -59,7 +59,8 @@ public class TrackTimeList implements Serializable
     {
         for (TrackTime trackTime : this.trackTimeList)
         {
-            if (trackTime.getTeamMember().equals(teamMember)) {
+            if (trackTime.getTeamMember().equals(teamMember))
+            {
                 return trackTime.getTime();
             }
         }
