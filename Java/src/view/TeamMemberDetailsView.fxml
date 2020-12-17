@@ -57,7 +57,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="teamMemberProductivity" text="number">
+                        <Label fx:id="teamMemberProductivity" maxWidth="300.0" prefHeight="20.0" prefWidth="58.0" text="number">
                            <font>
                               <Font size="14.0" />
                            </font>
