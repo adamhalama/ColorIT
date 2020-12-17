@@ -41,7 +41,7 @@
                         <Label text="Deadline:" GridPane.rowIndex="2" />
                         <Label fx:id="deadline" text="1.1.2000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label text="Status:" GridPane.rowIndex="3" />
-                        <Label fx:id="status" text="not started" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="status" text="Not started" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <Label text="Description:">
@@ -58,19 +58,19 @@
                      </VBox.margin></ListView>
                   <HBox alignment="CENTER" prefHeight="34.0" prefWidth="454.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#addTask" text="add">
+                        <Button mnemonicParsing="false" onAction="#addTask" text="Add">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin></Button>
-                        <Button mnemonicParsing="false" onAction="#openTask" text="open">
+                        <Button mnemonicParsing="false" onAction="#openTask" text="Open">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin></Button>
-                        <Button mnemonicParsing="false" onAction="#editTask" text="edit">
+                        <Button mnemonicParsing="false" onAction="#editTask" text="Edit">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin></Button>
-                        <Button mnemonicParsing="false" onAction="#deleteTask" text="delete">
+                        <Button mnemonicParsing="false" onAction="#deleteTask" text="Delete">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin></Button>

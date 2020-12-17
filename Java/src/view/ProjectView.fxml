@@ -11,29 +11,29 @@
    <ListView fx:id="projectListView" prefHeight="374.0" prefWidth="590.0" />
    <HBox prefHeight="38.0" prefWidth="600.0">
       <children>
-         <Button mnemonicParsing="false" onAction="#addProject" text="addProject">
+         <Button mnemonicParsing="false" onAction="#addProject" text="Add project">
             <HBox.margin>
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </HBox.margin>
          </Button>
-         <Button mnemonicParsing="false" onAction="#openProject" text="openProject">
+         <Button mnemonicParsing="false" onAction="#openProject" text="Open project">
             <HBox.margin>
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </HBox.margin>
          </Button>
-         <Button mnemonicParsing="false" onAction="#editProject" text="editProject">
+         <Button mnemonicParsing="false" onAction="#editProject" text="Edit project">
             <HBox.margin>
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </HBox.margin>
          </Button>
-         <Button layoutX="216.0" layoutY="20.0" mnemonicParsing="false" onAction="#deleteProject" text="deleteProject">
+         <Button layoutX="216.0" layoutY="20.0" mnemonicParsing="false" onAction="#deleteProject" text="Delete project">
             <HBox.margin>
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </HBox.margin>
          </Button>
       </children>
    </HBox>
-   <Label text="errorLabel" textFill="RED" fx:id="errorLabel">
+   <Label fx:id="errorLabel" text="errorLabel" textFill="RED">
       <VBox.margin>
          <Insets bottom="10.0" left="10.0" />
       </VBox.margin>
