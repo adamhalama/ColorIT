@@ -685,7 +685,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Gets all tasks of this TaskList.
-     * @param requirement Specifies which requirement.
+     * @param requirement Specifies which requirement, which holds the tasks.
      * @return An array of Task objects.
      */
     @Override
@@ -694,12 +694,23 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         return requirement.getTasks().getAllTasks();
     }
 
+    /**
+     * Gets all tasks with same name as the input string.
+     * @param requirement Specifies which requirement, which holds the tasks.
+     * @param name A String representing the name of the wanted tasks.
+     * @return An array of Task objects with the same name as the input
+     */
     @Override
     public Task[] getTasksByName(Requirement requirement, String name)
     {
         return requirement.getTasks().getTasksByName(name);
     }
 
+    /**
+     * Deletes a task.
+     * @param requirement Specifies the requirement the task is from.
+     * @param task Specifies the task to delete.
+     */
     @Override
     public void deleteTask(Requirement requirement, Task task)
     {
@@ -707,6 +718,15 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     *
+     * @param task Specifies which task do we want to change.
+     * @param name A string containing the name, which is then trimmed.
+     * @param estimatedTime An integer containing the estimated time.
+     * @param description A string containing the description.
+     * @param deadlineTime A long containing a new deadline date as a UNIX timestamp.
+     * @param responsibleTeamMember  A TeamMember object containing the responsible team member.
+     */
     @Override
     public void changeTask(Task task, String name,
                            int estimatedTime, String description, long deadlineTime, TeamMember responsibleTeamMember)
@@ -719,84 +739,158 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Gets all requirements with a specified status.
+     * @param requirement Specifies the requirement we want to get tasks from.
+     * @param status A String representing the status of the tasks we want.
+     * @return An array of Tasks objects with a specified status.
+     */
     @Override
     public Task[] getTasksByStatus(Requirement requirement, String status)
     {
         return requirement.getTasks().getTasksByStatus(status);
     }
 
+    /**
+     * Gets all tasks that are closer to the deadline than a specified time.
+     * @param requirement Specifies the requirement we want to get tasks from.
+     * @param days An integer representing the number of days,<br> specifies how close the to the deadline we want the tasks.
+     * @return An array of Task objects are closer to the deadline <br> than the specified number of days.
+     */
     @Override
     public Task[] getTasksDaysBeforeDeadline(Requirement requirement, int days)
     {
         return requirement.getTasks().getTasksDaysBeforeDeadline(days);
     }
 
+    /**
+     * Gets the ID of the task.
+     * @param task Specifies which task.
+     * @return An integer representing the ID.
+     */
     @Override
     public int getTaskID(Task task)
     {
         return task.getTaskID();
     }
 
+    /**
+     * Gets the name.
+     * @param task Specifies which task.
+     * @return A string representing the name.
+     */
     @Override
     public String getName(Task task)
     {
         return task.getName();
     }
 
+    /**
+     * Gets the ID of the Requirement.
+     * @param task Specifies which task.
+     * @return An integer representing the requirement ID.
+     */
     @Override
     public int getRequirementID(Task task)
     {
         return task.getRequirementID();
     }
 
+    /**
+     * Gets the description.
+     * @param task Specifies which task
+     * @return A string representing the description.
+     */
     @Override
     public String getDescription(Task task)
     {
         return task.getDescription();
     }
 
+    /**
+     * Gets the estimated time.
+     * @param task Specifies which task
+     * @return An integer representing the estimated time.
+     */
     @Override
     public int getEstimatedTime(Task task)
     {
         return task.getEstimatedTime();
     }
 
+    /**
+     * Gets the deadline time.
+     * @param task Specifies which task
+     * @return A long representing the date of the deadline as a UNIX timestamp.
+     */
     @Override
     public long getDeadlineTime(Task task)
     {
         return task.getDeadlineTime();
     }
 
+    /**
+     * Gets the total time spend on this task, by every team member.
+     * @param task Specifies which task
+     * @return An integer representing the time spend.
+     */
     @Override
     public int getTimeSpend(Task task)
     {
         return task.getTimeSpent();
     }
 
+    /**
+     * Gets the time spend of one team member.
+     * @param task Specifies which task
+     * @param teamMember Specifies the team member.
+     * @return An integer representing the time spend.
+     */
     @Override
     public int getTimeSpendOfMember(Task task, TeamMember teamMember)
     {
         return task.getTimeSpentOfMember(teamMember);
     }
 
+    /**
+     * Gets all the team members working on this task.
+     * @param task Specifies which task
+     * @return An array of team members that worked on the task.
+     */
     @Override
     public TeamMember[] getTeamMembers(Task task)
     {
         return task.getTeamMembers();
     }
 
+    /**
+     * Gets the responsible team member.
+     * @param task Specifies which task.
+     * @return Responsible team member for the task.
+     */
     @Override
     public TeamMember getResponsibleTeamMember(Task task)
     {
         return task.getResponsibleTeamMember();
     }
 
+    /**
+     * Gets the status of the task.
+     * @param task Specifies which task.
+     * @return A string representing the status of the task.
+     */
     @Override
     public String getStatus(Task task)
     {
         return task.getStatus();
     }
 
+
+    /**
+     * Sets the name, to a trimmed form of the input.
+     * @param task Specifies which task.
+     * @param name A string containing the name, which is then trimmed.
+     */
     @Override
     public void setName(Task task, String name)
     {
@@ -804,6 +898,12 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+
+    /**
+     * Sets the description.
+     * @param task Specifies which task.
+     * @param description A string containing the description.
+     */
     @Override
     public void setDescription(Task task, String description)
     {
@@ -811,6 +911,12 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+
+    /**
+     * Sets the estimated time to finish the task.
+     * @param task Specifies which task.
+     * @param estimatedTime An integer containing the estimated time.
+     */
     @Override
     public void setEstimatedTime(Task task, int estimatedTime)
     {
@@ -818,6 +924,11 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Sets the deadline time.
+     * @param task Specifies which task.
+     * @param time A long containing a new deadline date as a UNIX timestamp.
+     */
     @Override
     public void setDeadlineTIme(Task task, long time)
     {
@@ -825,6 +936,12 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+
+    /**
+     * Sets the responsible team member.
+     * @param task Specifies which task.
+     * @param teamMember A TeamMember object containing the responsible team member.
+     */
     @Override
     public void setResponsibleTeamMember(Task task, TeamMember teamMember)
     {
@@ -832,6 +949,11 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Sets the tasks status. If all the tasks have ended status, the requirement will be set to ended.
+     * @param task Specifies which task.
+     * @param status A Status containing the status.
+     */
     @Override
     public void setStatus(Task task, String status)
     {
@@ -839,6 +961,12 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Sets the time worked for a team member.
+     * @param task Specifies which task.
+     * @param teamMember Specifies the team member the time will be set for.
+     * @param time Contains the new time the member has worked
+     */
     @Override
     public void setTimeWorked(Task task, TeamMember teamMember, int time)
     {
@@ -846,6 +974,11 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Adds a team member to the track time with 0 starting time, only if the team member is not already added.
+     * @param task Specifies which task.
+     * @param teamMember Specifies which team member should be added.
+     */
     @Override
     public void addTeamMember(Task task, TeamMember teamMember)
     {
@@ -853,6 +986,12 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+
+    /**
+     * Creates a new Team Member in the arraylist
+     * @param name A string containing the name.
+     * @param email A string containing the email.
+     */
     @Override
     public void addTeamMember(String name, String email)
     {
@@ -860,60 +999,109 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
     }
 
+
+    /**
+     * Deletes a team member from list of members.
+     * @param teamMember Contains the team member we want to remove.
+     */
     @Override
-    public void deleteTeamMember(TeamMember teamMember) 
+    public void deleteTeamMember(TeamMember teamMember)
     {
         teamMemberList.deleteTeamMember(teamMember);
         persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
     }
 
+    /**
+     * Gets the whole TrackTimeList into an track time array.
+     * @param task Specifies which task.
+     * @return An array of TrackTime.
+     */
     @Override
     public TrackTime[] getTrackTime(Task task)
     {
         return task.getTrackTime();
     }
 
+    /**
+     * Gets the total time spend on this task, by all team members together.
+     * @param task Specifies which task.
+     * @return An integer representing the time spend.
+     */
     @Override
-    public int getTotalTime(Task task) 
+    public int getTotalTime(Task task)
     {
         return task.getTimeSpent();
     }
 
+
+    /**
+     * Gets all team members.
+     * @return An array representing all the team members that were created.
+     */
     @Override
-    public TeamMember[] getAllTeamMembers() 
+    public TeamMember[] getAllTeamMembers()
     {
         return teamMemberList.getAllTeamMembers();
     }
 
+
+    /**
+     * Gets the email.
+     * @param teamMember Specifies which team member.
+     * @return A string representing the email.
+     */
     @Override
-    public String getEmail(TeamMember teamMember) 
+    public String getEmail(TeamMember teamMember)
     {
         return teamMember.getEmail();
     }
 
+    /**
+     * Gets the name.
+     * @param teamMember Specifies which team member.
+     * @return A string representing the name.
+     */
     @Override
-    public String getName(TeamMember teamMember) 
+    public String getName(TeamMember teamMember)
     {
         return teamMember.getName();
     }
 
+
+    /**
+     * Sets the email of a team member, if the email is not already used.
+     * @param teamMember Contains the team member we want to change the email in.
+     * @param email A String that contains the email.
+     */
     @Override
-    public void setEmail(TeamMember teamMember, String email) 
+    public void setEmail(TeamMember teamMember, String email)
     {
         teamMemberList.setTeamMemberEmail(teamMember, email);
         persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
     }
 
+
+    /**
+     * Sets the name, if its valid.
+     * @param teamMember Contains the team member we want to change the name in.
+     * @param name A string containing the name, trimmed of any spaces
+     */
     @Override
-    public void setName(TeamMember teamMember, String name) 
+    public void setName(TeamMember teamMember, String name)
     {
         teamMember.setName(name);
         persistenceManager.saveTeamMemberListToFile(teamMemberList, projectList);
     }
 
+    /**
+     * Returns an array of Project class objects based on what TeamMember they have
+     * @param teamMember the TeamMember you want to search by
+     * @return array of Project class objects with a specified TeamMember
+     */
     @Override
     public Project[] getProjectsWorkedOn(TeamMember teamMember)
     {
         return projectList.getProjectsByTeamMember(teamMember);
     }
+
 }

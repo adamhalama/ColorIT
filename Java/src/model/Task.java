@@ -120,7 +120,7 @@ public class Task implements Serializable
   }
 
   /**
-   * Gets the total time spend on this task, by every team member..
+   * Gets the total time spend on this task, by all team members together.
    * @return An integer representing the time spend.
    */
   public int getTimeSpent() {

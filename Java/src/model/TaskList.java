@@ -156,6 +156,11 @@ public class TaskList implements Serializable
     }
     return  totalTime;
   }
+
+  /**
+   * Deletes a task.
+   * @param task Specifies the task to delete.
+   */
   public void deleteTask(Task task) {
     this.tasks.remove(task);
   }
