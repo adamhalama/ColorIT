@@ -545,12 +545,22 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         return requirement.getStatus();
     }
 
+    /**
+     * Gets the deadline time in a UNIX timestamp format.
+     * @param requirement Specifies which requirement.
+     * @return A long representing the date of the deadline as a UNIX timestamp.
+     */
     @Override
     public long getDeadlineTime(Requirement requirement)
     {
         return requirement.getDeadlineTime();
     }
 
+    /**
+     * Sets the requirements name.
+     * @param requirement Specifies which requirement.
+     * @param name A String containing the requirement name.
+     */
     @Override
     public void setName(Requirement requirement, String name)
     {
@@ -558,6 +568,11 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Sets the requirements description.
+     * @param requirement Specifies which requirement.
+     * @param description A String containing the requirements non functional description.
+     */
     @Override
     public void setDescription(Requirement requirement, String description)
     {
@@ -565,6 +580,13 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Sets the requirements description.
+     * @param requirement Specifies which requirement.
+     * @param who A String containing the requirements  functional description.
+     * @param who A String containing the requirements  functional description.
+     * @param who A String containing the requirements  functional description.
+     */
     @Override
     public void setDescription(Requirement requirement, String who, String what, String why)
     {
@@ -576,12 +598,22 @@ public class ProjectManagementModelManager implements ProjectManagementModel
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Sets the deadline time of the requirement.
+     * @param requirement Specifies which requirement.
+     * @param newTime A long containing a new deadline date as a UNIX timestamp.
+     */
     @Override
     public void setDeadlineTime(Requirement requirement, long newTime) {
         requirement.setDeadlineTime(newTime);
         persistenceManager.saveProjectListToFile(projectList, teamMemberList);
     }
 
+    /**
+     * Sets the requirements responsible team member.
+     * @param requirement Specifies which requirement.
+     * @param teamMember A TeamMember object containing the responsible team member.
+     */
     @Override
     public void setResponsibleTeamMember(Requirement requirement, TeamMember teamMember)
     {

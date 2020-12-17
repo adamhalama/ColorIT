@@ -169,8 +169,9 @@ public class ProjectList implements Serializable
                         {
                             if (taskMembers[l].equals(teamMember))
                             {
-                                spendTimeInTotal += tasks[i].getTimeSpentOfMember(teamMember);
+                                spendTimeInTotal += tasks[i].getTimeSpent();
                                 estimatedTimeInTotal += tasks[i].getEstimatedTime();
+                                break;
                             }
                         }
 
