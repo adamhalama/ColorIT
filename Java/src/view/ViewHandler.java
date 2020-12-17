@@ -57,7 +57,7 @@ public class ViewHandler
          but "openView("mainMenu");" is missing
           or "openView("projectTab");"
          */
-        openView("TeamMemberView");
+        openView("ProjectTabView");
     }
 
     public void openView(String id){
@@ -94,13 +94,13 @@ public class ViewHandler
         primaryStage.show();
 
         switch (id){
-            case "TeamMemberView":
-            case "TabView": tabViewController.openTab(0);break;
-            case "ProjectTabView": tabViewController.openTab(1); break;
+            case "TeamMemberView": tabViewController.openTab(1);break;
+            case "TabView":
+            case "ProjectTabView": tabViewController.openTab(0); break;
             case "ProjectView":
             case "TaskView":
             case "RequirementView":
-                tabViewController.openTab(1); tabViewController.openProjectWindow(id);break;
+                tabViewController.openTab(0); tabViewController.openProjectWindow(id);break;
         }
     }
 

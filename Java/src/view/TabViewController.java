@@ -51,8 +51,8 @@ public class TabViewController {
       int index = ((Tab) event.getSource()).getTabPane().getSelectionModel().getSelectedIndex();
       switch (index)
       {
-        case 0:teamMemberViewController.reset(); break;
-        case 1:projectTabViewController.reset();
+        case 0:projectTabViewController.reset(); break;
+        case 1:teamMemberViewController.reset();
       }
     }
   }
