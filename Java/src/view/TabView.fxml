@@ -8,11 +8,11 @@
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="view.TabViewController" userData="Color IT Manager">
     <TabPane fx:id="tabPane" prefHeight="710" prefWidth="600" tabClosingPolicy="UNAVAILABLE">
-        <Tab closable="false" onSelectionChanged="#tabSelected" text="Team Manager">
-            <fx:include fx:id="teamMemberView" source="TeamMemberView.fxml" />
-        </Tab>
         <Tab onSelectionChanged="#tabSelected" text="Project Manager">
             <fx:include fx:id="projectTabView" source="ProjectTabView.fxml" />
+        </Tab>
+        <Tab closable="false" onSelectionChanged="#tabSelected" text="Team Manager">
+            <fx:include fx:id="teamMemberView" source="TeamMemberView.fxml" />
         </Tab>
     </TabPane>
 </VBox>
