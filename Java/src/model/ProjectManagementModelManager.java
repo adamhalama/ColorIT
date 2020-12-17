@@ -82,7 +82,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Adds a project to the list of projects.
-     * Saves the project file.
+     * Saves the changes.
      * @param name A String containing the name.
      * @param description A String containing the description.
      */
@@ -116,7 +116,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Deletes a specified project.
-     * Saves the project file.
+     * Saves the changes.
      * @param projectID An integer containing the id of the project we want to delete.
      */
     @Override
@@ -227,6 +227,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Adds a team member to the project.
+     * Saves the changes.
      * @param project Specifies to which project will the team member be added.
      * @param teamMember Contains the team member that will be added.
      */
@@ -240,6 +241,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Removes the team member from a project.
+     * Saves the changes.
      * @param project Specifies from which project will the team member be removed.
      * @param teamMember Contains the team member that will be removed.
      */
@@ -252,6 +254,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the name of the project.
+     * Saves the changes.
      * @param project Specifies which project will have the name changed.
      * @param name Contains the name.
      */
@@ -264,6 +267,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the scrum master of the project.
+     * Saves the changes.
      * @param project Specifies which project will have the scrum master changed.
      * @param teamMember Contains the Scrum master.
      */
@@ -276,6 +280,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the product owner of the project.
+     * Saves the changes.
      * @param project Specifies which project will have the product owner changed.
      * @param teamMember Contains the product owner.
      */
@@ -306,6 +311,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the project description.
+     * Saves the changes.
      * @param project Contains the project in which the description will be changed.
      * @param description Contains the description.
      */
@@ -330,6 +336,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Deletes a requirement.
+     * Saves the changes.
      * @param project Specifies which project is the requirement.
      * @param requirement Specifies which requirement is gonna be deleted.
      */
@@ -342,6 +349,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Reorders two requirements, swaps their places in the ArrayList.
+     * Saves the changes.
      * @param project Specifies which project are the requirements in.
      * @param index1 An integer representing a position of the first requirement.
      * @param index2 An integer representing a position of the second requirement.
@@ -356,6 +364,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     /**
      * Creates a new Requirement in the ArrayList of Requirement class, requirements.
      * The requirement gets an auto assigned Project-wide unique ID, based on the number of requirements created.
+     * Saves the changes.
      * @param project Specifies which project we want to add requirement to.
      * @param name A string representing the name of the requirement, trimmed of any spaces.
      * @param nonFunctionalDescription A string representing a non functional description.
@@ -373,6 +382,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     /**
      * Creates a new Requirement in the ArrayList of Requirement class, requirements.
      * The requirement gets an auto assigned Project-wide unique ID, based on the number of requirements created.
+     * Saves the changes.
      * @param project Specifies which project we want to add requirement to.
      * @param name A string representing the name of the requirement, trimmed of any spaces.
      * @param FunctionalDescription A string representing a functional description.
@@ -558,6 +568,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the requirements name.
+     * Saves the changes.
      * @param requirement Specifies which requirement.
      * @param name A String containing the requirement name.
      */
@@ -570,6 +581,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the requirements description.
+     * Saves the changes.
      * @param requirement Specifies which requirement.
      * @param description A String containing the requirements non functional description.
      */
@@ -582,6 +594,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the requirements description.
+     * Saves the changes.
      * @param requirement Specifies which requirement.
      * @param who A String containing the requirements  functional description.
      * @param who A String containing the requirements  functional description.
@@ -600,6 +613,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the deadline time of the requirement.
+     * Saves the changes.
      * @param requirement Specifies which requirement.
      * @param newTime A long containing a new deadline date as a UNIX timestamp.
      */
@@ -611,6 +625,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the requirements responsible team member.
+     * Saves the changes.
      * @param requirement Specifies which requirement.
      * @param teamMember A TeamMember object containing the responsible team member.
      */
@@ -623,6 +638,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the requirements status.
+     * Saves the changes.
      * @param requirement Specifies which requirement.
      * @param status A Status containing the status.
      */
@@ -636,6 +652,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     /**
      * Creates a new Task in the ArrayList of Task class, tasks.
      * The Task gets an auto assigned Requirement-wide unique ID, based on the number of tasks created.
+     * Saves the changes.
      * @param requirement Specifies which requirement.
      * @param name A string representing the name of the task, trimmed of any spaces.
      * @param id id of requirement that it belongs to.
@@ -654,6 +671,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Creates a new Task in the ArrayList of Task class, tasks.
+     * Saves the changes.
      * The Task gets an auto assigned Requirement-wide unique ID, based on the number of tasks created.
      * @param requirement Specifies which requirement.
      * @param name A string representing the name of the task, trimmed of any spaces.
@@ -672,6 +690,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the time worked for a team member.
+     * Saves the changes.
      * @param task Specifies which task.
      * @param teamMember Specifies the team member the time will be set for.
      * @param newTime Contains the new time the member has worked
@@ -708,6 +727,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Deletes a task.
+     * Saves the changes.
      * @param requirement Specifies the requirement the task is from.
      * @param task Specifies the task to delete.
      */
@@ -719,7 +739,8 @@ public class ProjectManagementModelManager implements ProjectManagementModel
     }
 
     /**
-     *
+     * Changes information within the task.
+     * Saves the changes.
      * @param task Specifies which task do we want to change.
      * @param name A string containing the name, which is then trimmed.
      * @param estimatedTime An integer containing the estimated time.
@@ -888,6 +909,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the name, to a trimmed form of the input.
+     * Saves the changes.
      * @param task Specifies which task.
      * @param name A string containing the name, which is then trimmed.
      */
@@ -901,6 +923,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the description.
+     * Saves the changes.
      * @param task Specifies which task.
      * @param description A string containing the description.
      */
@@ -914,6 +937,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the estimated time to finish the task.
+     * Saves the changes.
      * @param task Specifies which task.
      * @param estimatedTime An integer containing the estimated time.
      */
@@ -926,6 +950,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the deadline time.
+     * Saves the changes.
      * @param task Specifies which task.
      * @param time A long containing a new deadline date as a UNIX timestamp.
      */
@@ -939,6 +964,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the responsible team member.
+     * Saves the changes.
      * @param task Specifies which task.
      * @param teamMember A TeamMember object containing the responsible team member.
      */
@@ -951,6 +977,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the tasks status. If all the tasks have ended status, the requirement will be set to ended.
+     * Saves the changes.
      * @param task Specifies which task.
      * @param status A Status containing the status.
      */
@@ -963,6 +990,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the time worked for a team member.
+     * Saves the changes.
      * @param task Specifies which task.
      * @param teamMember Specifies the team member the time will be set for.
      * @param time Contains the new time the member has worked
@@ -976,6 +1004,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Adds a team member to the track time with 0 starting time, only if the team member is not already added.
+     * Saves the changes.
      * @param task Specifies which task.
      * @param teamMember Specifies which team member should be added.
      */
@@ -989,6 +1018,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Creates a new Team Member in the arraylist
+     * Saves the changes.
      * @param name A string containing the name.
      * @param email A string containing the email.
      */
@@ -1002,6 +1032,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Deletes a team member from list of members.
+     * Saves the changes.
      * @param teamMember Contains the team member we want to remove.
      */
     @Override
@@ -1070,6 +1101,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the email of a team member, if the email is not already used.
+     * Saves the changes.
      * @param teamMember Contains the team member we want to change the email in.
      * @param email A String that contains the email.
      */
@@ -1083,6 +1115,7 @@ public class ProjectManagementModelManager implements ProjectManagementModel
 
     /**
      * Sets the name, if its valid.
+     * Saves the changes.
      * @param teamMember Contains the team member we want to change the name in.
      * @param name A string containing the name, trimmed of any spaces
      */
