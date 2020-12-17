@@ -38,6 +38,7 @@ public class TeamMemberViewController {
     );
 
     teamMemberList.setItems(viewModel.getTeamList());
+
   }
 
   public Region getRoot()

@@ -29,6 +29,8 @@ public class RequirementViewController {
 
   private ProjecTeamListViewModel viewModel;
 
+  @FXML private Label errorLabel;
+
   @FXML private TextField searchValue;
   @FXML private ChoiceBox<String> cb;
   @FXML private Label description;
@@ -100,6 +102,9 @@ public class RequirementViewController {
       this.projectName.setText(currentProject.getProjectName());
       this.description.setText(currentProject.getProjectDescription());
       this.description.prefHeight(Region.USE_COMPUTED_SIZE);
+
+      errorLabel.setText("");
+
     }
   }
 
@@ -157,6 +162,7 @@ public class RequirementViewController {
           requirementTable.setItems(viewModel2.getReqList());
         } catch (Exception e) {
           //TODO error
+          errorLabel.setText(e.getMessage());
         }break;
       case 2:
         this.requirements = model.getRequirementsByName(currentProject,searchValue.getText());
@@ -168,7 +174,7 @@ public class RequirementViewController {
           this.viewModel2.update(requirements);
           requirementTable.setItems(viewModel2.getReqList());
         } catch (Exception e) {
-          //TODO error
+          errorLabel.setText(e.getMessage());
         } break;
       case 4: reset();
     }
