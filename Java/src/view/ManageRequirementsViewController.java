@@ -12,16 +12,16 @@ import model.*;
 import java.time.LocalDate;
 
 public class ManageRequirementsViewController {
-  public ToggleGroup descriptionType;
-  public VBox statusBox;
-  public ChoiceBox<String> statusChoiceBox;
-  public Label actualDeadline;
-  public StackPane stackPaneDescription;
-  public TextField who;
-  public TextField what;
-  public TextField why;
-  public Label actualRespTeamMem;
-  public Label actualStatus;
+  @FXML private ToggleGroup descriptionType;
+  @FXML private VBox statusBox;
+  @FXML private ChoiceBox<String> statusChoiceBox;
+  @FXML private Label actualDeadline;
+  @FXML private StackPane stackPaneDescription;
+  @FXML private TextField who;
+  @FXML private TextField what;
+  @FXML private TextField why;
+  @FXML private Label actualRespTeamMem;
+  @FXML private Label actualStatus;
   private ObservableList<String> teamMemberOptions;
   private TeamMember[] teamMembers;
   @FXML private ChoiceBox<String> RequirementResponsibleMember;
@@ -60,7 +60,7 @@ public class ManageRequirementsViewController {
     this.stackPaneDescription.getChildren().get(1).setVisible(true);
     
     this.currentProject = viewHandler.getCurrentProject();
-    this.teamMembers = model.getAllTeamMembers();
+    this.teamMembers = model.getTeamMembers(currentProject);
     this.teamMemberOptions = FXCollections.observableArrayList();
     for (TeamMember teamMember:
          teamMembers)
