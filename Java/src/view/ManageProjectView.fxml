@@ -6,21 +6,38 @@
 
 <VBox prefHeight="240.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManageProjectViewController">
    <children>
-      <Label text="Name:" />
-      <TextField fx:id="name" />
-      <Label text="Description:" />
-      <TextArea fx:id="description" prefHeight="102.0" prefWidth="600.0" />
+      <HBox>
+         <children>
+            <Label prefHeight="26.0" prefWidth="101.0" text="Name:" />
+            <TextField fx:id="name" prefHeight="26.0" prefWidth="526.0" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Label prefHeight="18.0" prefWidth="177.0" text="Description:" />
+            <TextArea fx:id="description" prefHeight="102.0" prefWidth="600.0" />
+         </children>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </HBox>
       <HBox prefHeight="44.0" prefWidth="600.0">
          <children>
             <Button mnemonicParsing="false" onAction="#save" text="Save">
                <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                  <Insets bottom="5.0" right="5.0" top="10.0" />
                </HBox.margin></Button>
             <Button mnemonicParsing="false" onAction="#cancel" text="Cancel">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                </HBox.margin></Button>
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets left="77.0" />
+         </padding>
       </HBox>
       <Label fx:id="errorLabel" text="error label" textFill="RED">
          <VBox.margin>
